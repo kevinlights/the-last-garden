@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://TurnQueue.gd" type="Script" id=2]
 [ext_resource path="res://ui/ui_navigation.gd" type="Script" id=3]
 [ext_resource path="res://Mouse.gd" type="Script" id=4]
 [ext_resource path="res://ui_hud.gd" type="Script" id=5]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 4
+load_path = "res://.import/selecteur_moche.png-d2888fb7ecd3ec3e26f49846e3c44cca.stex"
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -22,6 +26,8 @@ script = ExtResource( 2 )
 script = ExtResource( 3 )
 
 [node name="Mouse" type="Sprite" parent="ui_navigation"]
+position = Vector2( 116.312, -1.29236 )
+texture = SubResource( 1 )
 script = ExtResource( 4 )
 
 [node name="ui_hud" type="CanvasLayer" parent="."]
