@@ -8,14 +8,20 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "Character",
+"language": "GDScript",
+"path": "res://Characters/Character.gd"
+} ]
 _global_script_class_icons={
-
+"Character": ""
 }
 
 [application]
 
 config/name="Pot-au-Jeu-2"
+run/main_scene="res://Game.tscn"
 config/icon="res://icon.png"
 
 [rendering]
