@@ -14,8 +14,9 @@ load_path = "res://.import/selecteur_moche.png-d2888fb7ecd3ec3e26f49846e3c44cca.
 script = ExtResource( 1 )
 
 [node name="TileMap" type="TileMap" parent="."]
-position = Vector2( -1, 0 )
 mode = 1
+cell_size = Vector2( 90, 50 )
+cell_custom_transform = Transform2D( 0, 0, 0, 0, 0, 0 )
 cell_tile_origin = 1
 format = 1
 
@@ -26,8 +27,9 @@ script = ExtResource( 2 )
 script = ExtResource( 3 )
 
 [node name="Mouse" type="Sprite" parent="ui_navigation"]
-position = Vector2( 116.312, -1.29236 )
+scale = Vector2( 0.395, 0.394 )
 texture = SubResource( 1 )
+offset = Vector2( 0, 63 )
 script = ExtResource( 4 )
 
 [node name="ui_hud" type="CanvasLayer" parent="."]
@@ -46,3 +48,4 @@ margin_top = 460.402
 margin_right = 334.637
 margin_bottom = 561.402
 text = "Plant 1"
+
