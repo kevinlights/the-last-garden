@@ -11,6 +11,13 @@ var selecting_tile : bool = false
 func _ready():
 	pass # Replace with function body.
 
+# Suspend le jeu jusqu'a qu'une tile soit selectionnee
+func select_tile():
+	selecting_tile = true
+	var tile : Vector2 = yield(self,"tile_selected")
+	selecting_tile = false
+
+# Gestion des inputs de navigation sur la tilemap
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
 		if event.is_pressed() and event.button_index == BUTTON_LEFT:

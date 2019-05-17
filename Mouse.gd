@@ -1,7 +1,6 @@
 extends Sprite
 
-onready var tileMap : TileMap = get_node("../NavMap")
-
+onready var tileMap : TileMap = get_node("../../TileMap")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

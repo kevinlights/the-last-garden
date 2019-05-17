@@ -9,7 +9,9 @@ func _ready():
 
 func play():
 	while(true):
-		# Selection et pose des graines
+		# Selection d'une graine
+		# TODO
+		# Selection d'une case pour poser la graine
 		# TODO
 		# Jouer le tour
 		turnQueue.play_turn()

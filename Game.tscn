@@ -24,3 +24,17 @@ script = ExtResource( 3 )
 script = ExtResource( 4 )
 
 [node name="ui_hud" type="CanvasLayer" parent="."]
+
+[node name="EndTurnButton" type="Button" parent="ui_hud"]
+margin_left = 800.0
+margin_top = 495.0
+margin_right = 963.0
+margin_bottom = 561.0
+text = "Fin du tour"
+
+[node name="Button" type="Button" parent="ui_hud"]
+margin_left = 240.637
+margin_top = 460.402
+margin_right = 334.637
+margin_bottom = 561.402
+text = "Plant 1"
