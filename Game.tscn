@@ -15,7 +15,7 @@
 [ext_resource path="res://art2d/plant_button_hover.png" type="Texture" id=13]
 [ext_resource path="res://font/riffic.otf" type="DynamicFontData" id=14]
 
-[sub_resource type="TileSet" id=6]
+[sub_resource type="TileSet" id=1]
 0/name = "corrupt.png 0"
 0/texture = ExtResource( 2 )
 0/tex_offset = Vector2( 0, 0 )
@@ -27,7 +27,7 @@
 0/shapes = [  ]
 0/z_index = 0
 
-[sub_resource type="TileSet" id=1]
+[sub_resource type="TileSet" id=2]
 0/name = "grass"
 0/texture = ExtResource( 3 )
 0/tex_offset = Vector2( 0, 0 )
@@ -39,21 +39,20 @@
 0/shapes = [  ]
 0/z_index = 0
 
-[sub_resource type="StreamTexture" id=2]
+[sub_resource type="StreamTexture" id=3]
 flags = 4
 load_path = "res://.import/selecteur_moche.png-d2888fb7ecd3ec3e26f49846e3c44cca.stex"
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=4]
 flags = 4
+atlas = ExtResource( 12 )
+region = Rect2( 377, 7, 140, 202 )
 
-atlas = ExtResource( 11 )
-region = Rect2( 384, -22, 128, 224 )
-
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=5]
 size = 32
 font_data = ExtResource( 14 )
 
-[sub_resource type="StreamTexture" id=5]
+[sub_resource type="StreamTexture" id=6]
 flags = 4
 load_path = "res://.import/bg.png-88f66991dc3989c70cdf2ceb7cadff40.stex"
 
@@ -68,7 +67,7 @@ zoom = Vector2( 2.35, 2.35 )
 [node name="BordsDown" type="TileMap" parent="."]
 z_index = -2
 mode = 1
-tile_set = SubResource( 6 )
+tile_set = SubResource( 1 )
 cell_size = Vector2( 224, 126 )
 format = 1
 tile_data = PoolIntArray( -327671, 0, 0, -262135, 0, 0, -196599, 0, 0, -131063, 0, 0, -65527, 0, 0, 9, 0, 0, 65545, 0, 0, 131081, 0, 0, 196617, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0 )
@@ -76,7 +75,7 @@ tile_data = PoolIntArray( -327671, 0, 0, -262135, 0, 0, -196599, 0, 0, -131063, 
 [node name="BordsUp" type="TileMap" parent="."]
 z_index = -3
 mode = 1
-tile_set = SubResource( 6 )
+tile_set = SubResource( 1 )
 cell_size = Vector2( 224, 126 )
 format = 1
 tile_data = PoolIntArray( -393216, 0, 0, -393215, 0, 0, -393214, 0, 0, -393213, 0, 0, -393212, 0, 0, -393211, 0, 0, -393210, 0, 0, -393209, 0, 0, -393208, 0, 0, -262145, 0, 0, -196609, 0, 0, -131073, 0, 0, -65537, 0, 0, -1, 0, 0, 65535, 0, 0, 131071, 0, 0, 196607, 0, 0, 262143, 0, 0 )
@@ -86,7 +85,7 @@ editor/display_folded = true
 position = Vector2( 1, 0 )
 z_index = -3
 mode = 1
-tile_set = SubResource( 1 )
+tile_set = SubResource( 2 )
 cell_size = Vector2( 224, 126 )
 format = 1
 tile_data = PoolIntArray( -327680, 0, 0, -327679, 0, 0, -327678, 0, 0, -327677, 0, 0, -327676, 0, 0, -327675, 0, 0, -327674, 0, 0, -327673, 0, 0, -327672, 0, 0, -262144, 0, 0, -262143, 0, 0, -262142, 0, 0, -262141, 0, 0, -262140, 0, 0, -262139, 0, 0, -262138, 0, 0, -262137, 0, 0, -262136, 0, 0, -196608, 0, 0, -196607, 0, 0, -196606, 0, 0, -196605, 0, 0, -196604, 0, 0, -196603, 0, 0, -196602, 0, 0, -196601, 0, 0, -196600, 0, 0, -131072, 0, 0, -131071, 0, 0, -131070, 0, 0, -131069, 0, 0, -131068, 0, 0, -131067, 0, 0, -131066, 0, 0, -131065, 0, 0, -131064, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0 )
@@ -106,15 +105,13 @@ script = ExtResource( 7 )
 position = Vector2( 144.605, -86.8501 )
 scale = Vector2( 0.974993, 0.988049 )
 z_index = -1
-texture = SubResource( 2 )
+texture = SubResource( 3 )
 script = ExtResource( 8 )
 
 [node name="ui_hud" type="CanvasLayer" parent="."]
-editor/display_folded = true
 script = ExtResource( 9 )
 
 [node name="PissenlitButton" type="TextureButton" parent="ui_hud"]
-editor/display_folded = true
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 34.8156
@@ -129,14 +126,13 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="ui_hud/PissenlitButton"]
-margin_left = 45.0
-margin_top = -20.0
-margin_right = 165.0
-margin_bottom = 208.0
-texture = SubResource( 6 )
+margin_left = 40.0
+margin_top = 10.0
+margin_right = 180.0
+margin_bottom = 212.0
+texture = SubResource( 4 )
 
 [node name="EndTurn" type="TextureButton" parent="ui_hud"]
-editor/display_folded = true
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -155,7 +151,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="ui_hud/EndTurn"]
 margin_right = 224.0
 margin_bottom = 223.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "Fin de tour"
 align = 1
 valign = 1
@@ -166,9 +162,10 @@ scale = Vector2( 0.559144, 0.570343 )
 transform = Transform2D( 0.559144, 0, 0, 0.570343, 0, 0 )
 
 [node name="Sprite" type="Sprite" parent="bg"]
-position = Vector2( 927.848, 534.334 )
-scale = Vector2( 0.974187, 0.974187 )
-texture = SubResource( 5 )
+position = Vector2( 1005.22, 543.815 )
+scale = Vector2( 2.23009, 2.27932 )
+texture = SubResource( 6 )
+
 [connection signal="plant_selected" from="ui_hud" to="." method="_on_ui_hud_plant_selected"]
 [connection signal="pressed" from="ui_hud/PissenlitButton" to="ui_hud" method="on_pissenlit_selected"]
 [connection signal="pressed" from="ui_hud/EndTurn" to="ui_hud" method="_on_EndTurnButton_pressed"]
