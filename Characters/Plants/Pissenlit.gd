@@ -21,6 +21,15 @@ func update():
 		hatch()
 	if current_turn == turns_to_fade:
 		fade()
+		
+	#Update le label de longévité
+	var longevite = get_node("Sprite2/Longevite")
+	if current_turn < turns_to_hatch:
+		longevite.set_text(str(turns_to_hatch - current_turn))
+		longevite.set("custom_colors/font_color", Color(0,0,0.8))
+	else:
+		longevite.set_text(str(turns_to_fade - current_turn))
+		longevite.set("custom_colors/font_color", Color(0.8,0,0))
 	emit_signal("updated")
 
 # La plante eclos
