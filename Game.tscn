@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 [gd_scene load_steps=17 format=2]
+=======
+[gd_scene load_steps=11 format=2]
+>>>>>>> b5a567055a3b8c427602d6a19b74ee44dd571739
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://art2d/grass.png" type="Texture" id=2]
@@ -7,11 +11,15 @@
 [ext_resource path="res://ui/ui_navigation.gd" type="Script" id=5]
 [ext_resource path="res://ui/Mouse.gd" type="Script" id=6]
 [ext_resource path="res://ui/ui_hud.gd" type="Script" id=7]
+<<<<<<< HEAD
 [ext_resource path="res://art2d/plant_button.png" type="Texture" id=8]
 [ext_resource path="res://art2d/plant_button_hover.png" type="Texture" id=9]
 [ext_resource path="res://art2d/plant_button_focused.png" type="Texture" id=10]
 [ext_resource path="res://art2d/pissenlit.png" type="Texture" id=11]
 [ext_resource path="res://font/riffic.otf" type="DynamicFontData" id=12]
+=======
+[ext_resource path="res://art2d/bg.png" type="Texture" id=8]
+>>>>>>> b5a567055a3b8c427602d6a19b74ee44dd571739
 
 [sub_resource type="TileSet" id=1]
 0/name = "grass"
@@ -64,6 +72,7 @@ script = ExtResource( 6 )
 [node name="ui_hud" type="CanvasLayer" parent="."]
 script = ExtResource( 7 )
 
+<<<<<<< HEAD
 [node name="PissenlitButton" type="TextureButton" parent="ui_hud"]
 editor/display_folded = true
 anchor_top = 1.0
@@ -113,6 +122,32 @@ align = 1
 valign = 1
 
 [connection signal="plant_selected" from="ui_hud" to="." method="_on_ui_hud_plant_selected"]
+=======
+[node name="EndTurnButton" type="Button" parent="ui_hud"]
+margin_left = 800.0
+margin_top = 495.0
+margin_right = 963.0
+margin_bottom = 561.0
+text = "Fin du tour"
+
+[node name="PissenlitButton" type="Button" parent="ui_hud"]
+margin_left = 240.637
+margin_top = 460.402
+margin_right = 334.637
+margin_bottom = 561.402
+text = "Plant 1"
+
+[node name="bg" type="Sprite" parent="."]
+position = Vector2( 508.79, 307.091 )
+scale = Vector2( 0.559144, 0.570343 )
+z_index = -100
+texture = ExtResource( 8 )
+
+[connection signal="plant_selected" from="ui_hud" to="." method="_on_ui_hud_plant_selected"]
+[connection signal="pressed" from="ui_hud/EndTurnButton" to="ui_hud" method="_on_EndTurnButton_pressed"]
+[connection signal="pressed" from="ui_hud/EndTurnButton" to="." method="_on_EndTurnButton_pressed"]
+[connection signal="pressed" from="ui_hud/EndTurnButton" to="ui_navigation" method="_on_EndTurnButton_pressed"]
+>>>>>>> b5a567055a3b8c427602d6a19b74ee44dd571739
 [connection signal="pressed" from="ui_hud/PissenlitButton" to="ui_hud" method="on_pissenlit_selected"]
 [connection signal="pressed" from="ui_hud/EndTurn" to="ui_hud" method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EndTurn" to="." method="_on_EndTurnButton_pressed"]
