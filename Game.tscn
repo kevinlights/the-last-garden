@@ -30,10 +30,10 @@
 flags = 4
 load_path = "res://.import/selecteur_moche.png-d2888fb7ecd3ec3e26f49846e3c44cca.stex"
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=6]
 flags = 4
 atlas = ExtResource( 11 )
-region = Rect2( 184, 8, 178, 188 )
+region = Rect2( 384, -22, 128, 224 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 32
@@ -95,11 +95,11 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="ui_hud/PissenlitButton"]
-margin_left = 22.1333
-margin_top = -40.24
-margin_right = 216.133
-margin_bottom = 160.76
-texture = SubResource( 3 )
+margin_left = 45.0
+margin_top = -20.0
+margin_right = 165.0
+margin_bottom = 208.0
+texture = SubResource( 6 )
 
 [node name="EndTurn" type="TextureButton" parent="ui_hud"]
 editor/display_folded = true
