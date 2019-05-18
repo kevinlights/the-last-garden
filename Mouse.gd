@@ -8,4 +8,4 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position = tileMap.map_to_world(tileMap.world_to_map(get_global_mouse_position()))
+	global_position = tileMap.map_to_world(tileMap.world_to_map(get_global_mouse_position())) + Vector2(0,tileMap.cell_size.y/2)

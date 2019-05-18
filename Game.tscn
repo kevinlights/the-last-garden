@@ -1,10 +1,29 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
-[ext_resource path="res://TurnQueue.gd" type="Script" id=2]
-[ext_resource path="res://ui/ui_navigation.gd" type="Script" id=3]
-[ext_resource path="res://Mouse.gd" type="Script" id=4]
-[ext_resource path="res://ui_hud.gd" type="Script" id=5]
+[ext_resource path="res://art2d/grass.png" type="Texture" id=2]
+[ext_resource path="res://TurnQueue.gd" type="Script" id=3]
+[ext_resource path="res://ui/ui_navigation.gd" type="Script" id=4]
+[ext_resource path="res://Mouse.gd" type="Script" id=5]
+[ext_resource path="res://ui_hud.gd" type="Script" id=6]
+
+[sub_resource type="TileSet" id=2]
+0/name = "grass"
+0/texture = ExtResource( 2 )
+0/tex_offset = Vector2( -56, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 224, 256 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": null,
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
 
 [sub_resource type="StreamTexture" id=1]
 flags = 4
@@ -14,26 +33,27 @@ load_path = "res://.import/selecteur_moche.png-d2888fb7ecd3ec3e26f49846e3c44cca.
 script = ExtResource( 1 )
 
 [node name="TileMap" type="TileMap" parent="."]
+position = Vector2( -1, 0 )
 mode = 1
-cell_size = Vector2( 90, 50 )
-cell_custom_transform = Transform2D( 0, 0, 0, 0, 0, 0 )
-cell_tile_origin = 1
+tile_set = SubResource( 2 )
+cell_size = Vector2( 112, 64 )
 format = 1
+tile_data = PoolIntArray( -262138, 0, 0, -262136, 0, 0, -262134, 0, 0, -131066, 0, 0, -131064, 0, 0, -131062, 0, 0, 6, 0, 0, 8, 0, 0, 10, 0, 0 )
 
 [node name="TurnQueue" type="Node" parent="."]
-script = ExtResource( 2 )
-
-[node name="ui_navigation" type="Node" parent="."]
 script = ExtResource( 3 )
 
-[node name="Mouse" type="Sprite" parent="ui_navigation"]
-scale = Vector2( 0.395, 0.394 )
-texture = SubResource( 1 )
-offset = Vector2( 0, 63 )
+[node name="ui_navigation" type="Node" parent="."]
 script = ExtResource( 4 )
 
-[node name="ui_hud" type="CanvasLayer" parent="."]
+[node name="Mouse" type="Sprite" parent="ui_navigation"]
+position = Vector2( 100.014, -32 )
+scale = Vector2( 0.5, 0.5 )
+texture = SubResource( 1 )
 script = ExtResource( 5 )
+
+[node name="ui_hud" type="CanvasLayer" parent="."]
+script = ExtResource( 6 )
 
 [node name="EndTurnButton" type="Button" parent="ui_hud"]
 margin_left = 800.0
@@ -42,10 +62,11 @@ margin_right = 963.0
 margin_bottom = 561.0
 text = "Fin du tour"
 
-[node name="Plant1Button" type="Button" parent="ui_hud"]
+[node name="PissenlitButton" type="Button" parent="ui_hud"]
 margin_left = 240.637
 margin_top = 460.402
 margin_right = 334.637
 margin_bottom = 561.402
 text = "Plant 1"
-
+[connection signal="pressed" from="ui_hud/EndTurnButton" to="." method="_on_EndTurnButton_pressed"]
+[connection signal="pressed" from="ui_hud/PissenlitButton" to="ui_hud" method="on_pissenlit_selected"]

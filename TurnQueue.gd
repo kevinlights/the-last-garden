@@ -1,5 +1,6 @@
 extends Node
 
+signal turn_finished()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -9,6 +10,8 @@ func _ready():
 func play_turn():
 	for child in get_children(): 
 		child.update()
+		yield(child,"updated")
+	emit_signal("turn_finished")
 
 #Ajoute un character au jeu
 func add_character(character):

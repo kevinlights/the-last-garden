@@ -11,6 +11,8 @@ func _ready():
 
 # TODO : Connecter au bouttons
 func select_plant():
-	while not plant_selected:
-		pass
+	yield(self,"plant_selected")
+	
+func on_pissenlit_selected():
+	selected_plant = "pissenlit"
 	emit_signal("plant_selected",selected_plant)
