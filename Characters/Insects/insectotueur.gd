@@ -79,7 +79,7 @@ func hatch():
 	var bottomRight : Vector2 = Vector2(1,0)
 	
 	var tile : Vector2 = tileMap.world_to_map(global_position)
-	
+	$AnimationPlayer.play("fly")
 	if tile + topLeft in tileMap.get_used_cells():
 		target_tile = tileMap.map_to_world(tile + topLeft) + Vector2(0,tileMap.cell_size.y/2)
 		$insectotueur.frame = sprites["adult_topLeft"]
