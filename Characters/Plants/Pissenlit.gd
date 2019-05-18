@@ -8,6 +8,7 @@ var current_turn : int = 0
 
 func _ready():
 	frame = sprites["seed"]
+	material = material.duplicate();
 
 func process(delta):
 	pass
@@ -24,8 +25,11 @@ func update():
 
 # La plante eclos
 func hatch():
-	frame = sprites["adult_idle"]
+	$AnimationPlayer.play("metamorphose")
+	#frame = sprites["adult_idle"]
 
 # La plante disparais
 func fade():
+	$AnimationPlayer.play("meurt")
+	yield($AnimationPlayer, "animation_finished")
 	get_parent().remove_child(self)
