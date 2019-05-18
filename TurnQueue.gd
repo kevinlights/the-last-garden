@@ -21,3 +21,9 @@ func add_character(character):
 #Renvois les characters dans le jeu
 func get_characters():
 	return get_children()
+	
+func get_characers_positions():
+	var positions : Array = Array()
+	for character in get_characters():
+		positions.append(character.global_position)
+	return positions
