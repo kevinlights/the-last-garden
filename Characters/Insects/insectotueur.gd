@@ -4,6 +4,7 @@ signal goal_reached()
 signal insect_on(position)
 
 onready var tileMap : TileMap = get_node("../../TileMap")
+onready var terrain  = get_node("../../TileMap/terrain")
 onready var turnQueue : Node = get_parent()
 
 export var speed = 200
@@ -59,6 +60,7 @@ func go_to_target_tile(distance : float):
 	else :
 		position = target_tile
 		move_to_tile = false
+		terrain.getBloc(tileMap.world_to_map(position)).corrupt()
 		emit_signal("goal_reached")
 
 func set_target(character : Vector2):
