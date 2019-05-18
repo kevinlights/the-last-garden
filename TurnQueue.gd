@@ -4,6 +4,8 @@ signal turn_finished()
 
 onready var tileMap : TileMap = get_node("../TileMap")
 
+var turn_number : int = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -13,6 +15,7 @@ func play_turn():
 	for child in get_characters():
 		child.update()
 		yield(child,"updated")
+	turn_number += 1
 	emit_signal("turn_finished")
 
 func caracter_priority_sort(a : Character, b : Character) -> bool:

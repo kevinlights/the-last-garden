@@ -26,13 +26,8 @@ var selected_tile : Vector2 = Vector2(-1,-1)
 func _ready():
 	play()
 	randomize()
-	var enemy_spawn_postions : Array = tileMap.tile_peripheriques()
-	
 	ajouter_reine()
-	
-	for i in range(2):
-		var test_spawn = rand_range(0,enemy_spawn_postions.size())
-		ajouter_instect("insectotueur", enemy_spawn_postions[test_spawn],queen_position)
+	insect_spawner(3)
 	
 func play():
 	while true:
@@ -62,6 +57,16 @@ func play():
 				yield(turnQueue,"turn_finished")
 				etat_courant = ETAT.SELECT_PLANT
 				print("End turn")
+
+func insect_spawner(max_nb_insect : int):
+	
+	var nb_insects : int = randi() % max_nb_insect + 1
+	
+	var enemy_spawn_postions : Array = tileMap.tile_peripheriques()
+	for i in range(nb_insects):
+		var test_spawn = randi() % enemy_spawn_postions.size()
+		ajouter_instect("insectotueur", enemy_spawn_postions[test_spawn],queen_position)
+		enemy_spawn_postions.remove(test_spawn)
 
 func _on_EndTurnButton_pressed():
 	etat_courant = ETAT.END_TURN
