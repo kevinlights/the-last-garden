@@ -26,3 +26,6 @@ func get_characers_positions():
 	for character in get_characters():
 		positions.append(character.global_position)
 	return positions
+	
+func _on_insect_on():
+	pass
