@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://art2d/grass.png" type="Texture" id=2]
@@ -7,7 +7,12 @@
 [ext_resource path="res://ui/ui_navigation.gd" type="Script" id=5]
 [ext_resource path="res://ui/Mouse.gd" type="Script" id=6]
 [ext_resource path="res://ui/ui_hud.gd" type="Script" id=7]
-[ext_resource path="res://art2d/bg.png" type="Texture" id=8]
+[ext_resource path="res://art2d/plant_button.png" type="Texture" id=8]
+[ext_resource path="res://art2d/plant_button_hover.png" type="Texture" id=9]
+[ext_resource path="res://art2d/plant_button_focused.png" type="Texture" id=10]
+[ext_resource path="res://art2d/pissenlit.png" type="Texture" id=11]
+[ext_resource path="res://font/riffic.otf" type="DynamicFontData" id=12]
+[ext_resource path="res://art2d/bg.png" type="Texture" id=13]
 
 [sub_resource type="TileSet" id=1]
 0/name = "grass"
@@ -24,6 +29,15 @@
 [sub_resource type="StreamTexture" id=2]
 flags = 4
 load_path = "res://.import/selecteur_moche.png-d2888fb7ecd3ec3e26f49846e3c44cca.stex"
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 184, 8, 178, 188 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 32
+font_data = ExtResource( 12 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -51,28 +65,62 @@ script = ExtResource( 6 )
 [node name="ui_hud" type="CanvasLayer" parent="."]
 script = ExtResource( 7 )
 
-[node name="EndTurnButton" type="Button" parent="ui_hud"]
-margin_left = 800.0
-margin_top = 495.0
-margin_right = 963.0
-margin_bottom = 561.0
-text = "Fin du tour"
+[node name="PissenlitButton" type="TextureButton" parent="ui_hud"]
+editor/display_folded = true
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 34.8156
+margin_top = -136.267
+margin_right = 256.816
+margin_bottom = 85.7331
+rect_scale = Vector2( 0.6, 0.6 )
+texture_normal = ExtResource( 8 )
+texture_hover = ExtResource( 9 )
+texture_focused = ExtResource( 10 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="PissenlitButton" type="Button" parent="ui_hud"]
-margin_left = 240.637
-margin_top = 460.402
-margin_right = 334.637
-margin_bottom = 561.402
-text = "Plant 1"
+[node name="TextureRect" type="TextureRect" parent="ui_hud/PissenlitButton"]
+margin_left = 22.1333
+margin_top = -40.24
+margin_right = 216.133
+margin_bottom = 160.76
+texture = SubResource( 3 )
+
+[node name="EndTurn" type="TextureButton" parent="ui_hud"]
+editor/display_folded = true
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -157.676
+margin_top = -139.44
+margin_right = 64.3236
+margin_bottom = 84.5597
+rect_scale = Vector2( 0.6, 0.6 )
+texture_normal = ExtResource( 8 )
+texture_hover = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="ui_hud/EndTurn"]
+margin_right = 224.0
+margin_bottom = 223.0
+custom_fonts/font = SubResource( 4 )
+text = "Fin de tour"
+align = 1
+valign = 1
 
 [node name="bg" type="Sprite" parent="."]
 position = Vector2( 508.79, 307.091 )
 scale = Vector2( 0.559144, 0.570343 )
 z_index = -100
-texture = ExtResource( 8 )
+texture = ExtResource( 13 )
 
 [connection signal="plant_selected" from="ui_hud" to="." method="_on_ui_hud_plant_selected"]
-[connection signal="pressed" from="ui_hud/EndTurnButton" to="ui_hud" method="_on_EndTurnButton_pressed"]
-[connection signal="pressed" from="ui_hud/EndTurnButton" to="." method="_on_EndTurnButton_pressed"]
-[connection signal="pressed" from="ui_hud/EndTurnButton" to="ui_navigation" method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/PissenlitButton" to="ui_hud" method="on_pissenlit_selected"]
+[connection signal="pressed" from="ui_hud/EndTurn" to="." method="_on_EndTurnButton_pressed"]
+[connection signal="pressed" from="ui_hud/EndTurn" to="ui_navigation" method="_on_EndTurnButton_pressed"]
+[connection signal="pressed" from="ui_hud/EndTurn" to="ui_hud" method="_on_EndTurnButton_pressed"]
