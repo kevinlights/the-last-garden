@@ -27,12 +27,17 @@ load_path = "res://.import/selecteur_moche.png-d2888fb7ecd3ec3e26f49846e3c44cca.
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 562.978, 313.728 )
+current = true
+zoom = Vector2( 1.5, 1.5 )
+
 [node name="TileMap" type="TileMap" parent="."]
 mode = 1
 tile_set = SubResource( 1 )
 cell_size = Vector2( 224, 126 )
 format = 1
-tile_data = PoolIntArray( -131070, 0, 0, -131069, 0, 0, -131068, 0, 0, -131067, 0, 0, -131066, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0 )
+tile_data = PoolIntArray( -196606, 0, 0, -196605, 0, 0, -196604, 0, 0, -196603, 0, 0, -196602, 0, 0, -131070, 0, 0, -131069, 0, 0, -131068, 0, 0, -131067, 0, 0, -131066, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0 )
 script = ExtResource( 3 )
 
 [node name="TurnQueue" type="Node" parent="."]
@@ -63,6 +68,10 @@ margin_top = 460.402
 margin_right = 334.637
 margin_bottom = 561.402
 text = "Plant 1"
+
+[node name="Line2D" type="Line2D" parent="."]
+visible = false
+texture_mode = 1702127986
 [connection signal="plant_selected" from="ui_hud" to="." method="_on_ui_hud_plant_selected"]
 [connection signal="pressed" from="ui_hud/EndTurnButton" to="." method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EndTurnButton" to="ui_hud" method="_on_EndTurnButton_pressed"]

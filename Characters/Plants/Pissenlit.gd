@@ -1,6 +1,6 @@
 extends Character
 
-var turns_to_hatch : int = 2
+var turns_to_hatch : int = 3
 var turns_to_fade : int = 4
 
 var sprites :Dictionary = {"icon":0,"seed":1,"adult_idle":2,"adult_wink":3}
