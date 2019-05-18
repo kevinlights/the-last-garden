@@ -96,21 +96,25 @@ func hatch():
 	$AnimationPlayer.play("fly")
 	if tile + topLeft in tileMap.get_used_cells():
 		target_tile = tileMap.map_to_world(tile + topLeft) + Vector2(0,tileMap.cell_size.y/2)
+		emit_signal("insect_on",tileMap.world_to_map(target_tile))
 		$insectotueur.frame = sprites["adult_topLeft"]
 		$insectotueur.flip_h = false
 		move_to_tile = true
 	elif tile + topRight in tileMap.get_used_cells():
 		target_tile = tileMap.map_to_world(tile + topRight) + Vector2(0,tileMap.cell_size.y/2)
+		emit_signal("insect_on",tileMap.world_to_map(target_tile))
 		$insectotueur.frame = sprites["adult_topLeft"]
 		$insectotueur.flip_h = true
 		move_to_tile = true
 	elif tile + bottomLeft in tileMap.get_used_cells():
 		target_tile = tileMap.map_to_world(tile + bottomLeft) + Vector2(0,tileMap.cell_size.y/2)
+		emit_signal("insect_on",tileMap.world_to_map(target_tile))
 		$insectotueur.frame = sprites["adult_bottomLeft"]
 		$insectotueur.flip_h = false
 		move_to_tile = true
 	elif tile + bottomRight in tileMap.get_used_cells():
 		target_tile = tileMap.map_to_world(tile + bottomRight) + Vector2(0,tileMap.cell_size.y/2)
+		emit_signal("insect_on",tileMap.world_to_map(target_tile))
 		$insectotueur.frame = sprites["adult_bottomLeft"]
 		$insectotueur.flip_h = true
 		move_to_tile = true

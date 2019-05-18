@@ -52,6 +52,7 @@ current = true
 zoom = Vector2( 1.5, 1.5 )
 
 [node name="TileMap" type="TileMap" parent="."]
+z_index = -2
 mode = 1
 tile_set = SubResource( 1 )
 cell_size = Vector2( 224, 126 )
@@ -71,7 +72,7 @@ script = ExtResource( 6 )
 [node name="Mouse" type="Sprite" parent="ui_navigation"]
 position = Vector2( 144.605, -86.8501 )
 scale = Vector2( 0.974993, 0.988049 )
-z_index = 1
+z_index = -1
 texture = SubResource( 2 )
 script = ExtResource( 7 )
 
@@ -126,7 +127,7 @@ align = 1
 valign = 1
 
 [node name="bg" type="CanvasLayer" parent="."]
-layer = -1
+layer = -3
 scale = Vector2( 0.559144, 0.570343 )
 transform = Transform2D( 0.559144, 0, 0, 0.570343, 0, 0 )
 

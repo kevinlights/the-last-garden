@@ -117,7 +117,7 @@ position = Vector2( 0, -68.011 )
 scale = Vector2( 1.13321, 0.88011 )
 texture = ExtResource( 3 )
 hframes = 4
-frame = 2
+frame = 1
 
 [node name="Longevite" type="Label" parent="Sprite2"]
 margin_left = -60.0
@@ -131,4 +131,3 @@ playback_speed = 1.5
 anims/idle = SubResource( 3 )
 anims/metamorphose = SubResource( 4 )
 anims/meurt = SubResource( 5 )
-
