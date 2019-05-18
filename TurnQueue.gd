@@ -15,13 +15,18 @@ func play_turn():
 		yield(child,"updated")
 	emit_signal("turn_finished")
 
+func caracter_priority_sort(a : Character, b : Character) -> bool:
+	return a.is_insect
+
 #Ajoute un character au jeu
 func add_character(character):
 	add_child(character)
 
 #Renvois les characters dans le jeu
 func get_characters():
-	return get_children()
+	var characters = get_children()
+	characters.sort_custom(self,"caracter_priority_sort")
+	return characters
 	
 func get_characers_positions():
 	var positions : Array = Array()

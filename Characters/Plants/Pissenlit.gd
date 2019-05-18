@@ -1,8 +1,11 @@
-﻿extends Character
+extends Character
+
+signal hatch_done_internal()
 
 onready var tileMap : TileMap = get_node("../../TileMap")
 onready var turnQueue : Node = get_parent()
 onready var root : Node2D = get_parent().get_parent()
+onready var longevite = get_node("Sprite2/Longevite")
 
 var projectile_ressource = load("res://Characters/Plants/Projectile.tscn")
 
@@ -11,10 +14,11 @@ export var turns_to_fade : int = 4
 export var attack_radius : int = 1
 
 var sprites : Dictionary = {"icon":0,"seed":1,"adult_idle":2,"adult_wink":3}
-var shoot_zone : Array = [Vector2(0,1),Vector2(-1,0),Vector2(0,1),Vector2(0,-1),   # radius = 1 
+var shoot_zone : Array = [Vector2(1,0),Vector2(-1,0),Vector2(0,1),Vector2(0,-1),   # radius = 1 
 						  Vector2(1,1),Vector2(-1,-1),Vector2(-1,1),Vector2(1,-1)] # radius = 2 (diagonals)
 var current_turn : int = 0
-onready var longevite = get_node("Sprite2/Longevite")
+var to_remove : int = false
+
 
 func _ready():
 	is_insect = false
@@ -22,24 +26,30 @@ func _ready():
 	$Sprite2.material = $Sprite2.material.duplicate();
 	longevite.set("custom_colors/font_color", Color(0,0,0.8))
 	longevite.set_text(str(turns_to_hatch - current_turn))
+
 func process(delta):
 	pass
 
 func update():
 	# Timer pour le yield (pas beau)
 	yield(get_tree().create_timer(0.2), "timeout")
-	current_turn += 1
-	if current_turn == turns_to_hatch:
-		hatch()
-	if current_turn == turns_to_fade:
-		fade()
-		
-	#Update le label de longévité
-	if current_turn < turns_to_hatch:
-		longevite.set_text(str(turns_to_hatch - current_turn))
-	else:
-		longevite.set_text(str(turns_to_fade - current_turn))
-	emit_signal("updated")
+	if not to_remove:
+		current_turn += 1
+		if current_turn == turns_to_hatch:
+			hatch()
+			yield(self, "hatch_done_internal")
+		if current_turn == turns_to_fade:
+			fade()
+			
+		#Update le label de longévité
+		if current_turn < turns_to_hatch:
+			longevite.set_text(str(turns_to_hatch - current_turn))
+		else:
+			longevite.set_text(str(turns_to_fade - current_turn))
+		emit_signal("updated")
+	else :
+		emit_signal("updated")
+		get_parent().remove_child(self)
 
 # La plante eclos
 func hatch():
@@ -60,6 +70,8 @@ func hatch():
 				new_projectile.launch(position, tileMap.map_to_world(tile) + Vector2(0,tileMap.cell_size.y/2))
 				yield(new_projectile, "projectile_done")
 				break
+	
+	emit_signal("hatch_done_internal")
 
 	#frame = sprites["adult_idle"]
 
@@ -67,4 +79,7 @@ func hatch():
 func fade():
 	$AnimationPlayer.play("meurt")
 	yield($AnimationPlayer, "animation_finished")
+	to_remove = true
+	
+func delect():
 	get_parent().remove_child(self)
