@@ -1,8 +1,10 @@
 extends Character
 
 signal goal_reached()
+signal insect_on(position)
 
 onready var tileMap : TileMap = get_node("../../TileMap")
+onready var turnQueue : Node = get_parent()
 
 export var speed = 200
 export var turns_to_hatch : int = 2
@@ -15,6 +17,8 @@ var move_to_tile : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#frame = sprites["seed"]
+	connect("insect_on", turnQueue, "_on_insect_on")
 	$insectotueur.frame = sprites["seed"]
 
 func _process(delta):
@@ -33,6 +37,7 @@ func update():
 	if current_turn > turns_to_hatch:
 		var path = tileMap.get_astar_path(global_position, target_character)
 		target_tile = path[1]
+		emit_signal("insect_on",target_tile)
 		change_orientation(tileMap.world_to_map(target_tile-global_position))
 		move_to_tile = true
 		yield(self,"goal_reached")
