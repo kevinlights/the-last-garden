@@ -1,8 +1,10 @@
 extends Character
 
 signal goal_reached()
+signal insect_on(position)
 
 onready var tileMap : TileMap = get_node("../../TileMap")
+onready var turnQueue : Node = get_parent()
 
 export var speed = 200
 export var turns_to_hatch : int = 2
@@ -15,7 +17,9 @@ var move_to_tile : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	frame = sprites["seed"]
+	#frame = sprites["seed"]
+	connect("insect_on", turnQueue, "_on_insect_on")
+	$insectotueur.frame = sprites["seed"]
 
 func _process(delta):
 	if move_to_tile:
@@ -33,6 +37,7 @@ func update():
 	if current_turn > turns_to_hatch:
 		var path = tileMap.get_astar_path(global_position, target_character)
 		target_tile = path[1]
+		emit_signal("insect_on",target_tile)
 		change_orientation(tileMap.world_to_map(target_tile-global_position))
 		move_to_tile = true
 		yield(self,"goal_reached")
@@ -59,17 +64,17 @@ func change_orientation(direction : Vector2):
 	var bottomRight : Vector2 = Vector2(1,0)
 	
 	if direction == topLeft:
-		frame = sprites["adult_topLeft"]
-		flip_h = false
+		$insectotueur.frame = sprites["adult_topLeft"]
+		$insectotueur.flip_h = false
 	if direction == topRight:
-		frame = sprites["adult_topLeft"]
-		flip_h = true
+		$insectotueur.frame = sprites["adult_topLeft"]
+		$insectotueur.flip_h = true
 	if direction == bottomLeft:
-		frame = sprites["adult_bottomLeft"]
-		flip_h = false
+		$insectotueur.frame = sprites["adult_bottomLeft"]
+		$insectotueur.flip_h = false
 	if direction == bottomRight:
-		frame = sprites["adult_bottomLeft"]
-		flip_h = true
+		$insectotueur.frame = sprites["adult_bottomLeft"]
+		$insectotueur.flip_h = true
 
 func hatch():
 	
@@ -82,21 +87,21 @@ func hatch():
 	
 	if tile + topLeft in tileMap.get_used_cells():
 		target_tile = tileMap.map_to_world(tile + topLeft) + Vector2(0,tileMap.cell_size.y/2)
-		frame = sprites["adult_topLeft"]
-		flip_h = false
+		$insectotueur.frame = sprites["adult_topLeft"]
+		$insectotueur.flip_h = false
 		move_to_tile = true
 	elif tile + topRight in tileMap.get_used_cells():
 		target_tile = tileMap.map_to_world(tile + topRight) + Vector2(0,tileMap.cell_size.y/2)
-		frame = sprites["adult_topLeft"]
-		flip_h = true
+		$insectotueur.frame = sprites["adult_topLeft"]
+		$insectotueur.flip_h = true
 		move_to_tile = true
 	elif tile + bottomLeft in tileMap.get_used_cells():
 		target_tile = tileMap.map_to_world(tile + bottomLeft) + Vector2(0,tileMap.cell_size.y/2)
-		frame = sprites["adult_bottomLeft"]
-		flip_h = false
+		$insectotueur.frame = sprites["adult_bottomLeft"]
+		$insectotueur.flip_h = false
 		move_to_tile = true
 	elif tile + bottomRight in tileMap.get_used_cells():
 		target_tile = tileMap.map_to_world(tile + bottomRight) + Vector2(0,tileMap.cell_size.y/2)
-		frame = sprites["adult_bottomLeft"]
-		flip_h = true
+		$insectotueur.frame = sprites["adult_bottomLeft"]
+		$insectotueur.flip_h = true
 		move_to_tile = true
