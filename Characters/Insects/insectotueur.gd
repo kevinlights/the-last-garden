@@ -43,6 +43,7 @@ func update():
 		yield(self,"goal_reached")
 		move_to_tile = false
 	if current_turn > turns_to_hatch:
+		# maj tileMap
 		var path = tileMap.get_astar_path(global_position, target_character)
 		target_tile = path[1]
 		emit_signal("insect_on",tileMap.world_to_map(target_tile))
