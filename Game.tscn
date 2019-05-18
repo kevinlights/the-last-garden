@@ -63,7 +63,7 @@ script = ExtResource( 3 )
 [node name="terrain" type="Node2D" parent="TileMap"]
 script = ExtResource( 4 )
 
-[node name="TurnQueue" type="YSort" parent="."]
+[node name="TurnQueue" type="Node" parent="."]
 script = ExtResource( 5 )
 
 [node name="ui_navigation" type="Node" parent="."]
@@ -135,6 +135,7 @@ transform = Transform2D( 0.559144, 0, 0, 0.570343, 0, 0 )
 position = Vector2( 927.848, 534.334 )
 scale = Vector2( 0.974187, 0.974187 )
 texture = SubResource( 5 )
+
 [connection signal="plant_selected" from="ui_hud" to="." method="_on_ui_hud_plant_selected"]
 [connection signal="pressed" from="ui_hud/PissenlitButton" to="ui_hud" method="on_pissenlit_selected"]
 [connection signal="pressed" from="ui_hud/EndTurn" to="." method="_on_EndTurnButton_pressed"]
