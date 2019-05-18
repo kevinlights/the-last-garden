@@ -7,6 +7,7 @@ var sprites :Dictionary = {"icon":0,"seed":1,"adult_idle":2,"adult_wink":3}
 var current_turn : int = 0
 
 func _ready():
+	is_insect = false
 	$Sprite2.frame = sprites["seed"]
 	$Sprite2.material = $Sprite2.material.duplicate();
 

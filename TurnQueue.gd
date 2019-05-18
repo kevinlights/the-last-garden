@@ -2,6 +2,8 @@ extends Node
 
 signal turn_finished()
 
+onready var tileMap : TileMap = get_node("../TileMap")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -26,6 +28,12 @@ func get_characers_positions():
 	for character in get_characters():
 		positions.append(character.global_position)
 	return positions
-	
-func _on_insect_on():
-	pass
+
+# Si un insecte marche sur une plante il la detruis
+func _on_insect_on(position):
+	for character in get_characters():
+		if not character.is_insect :
+			print("character: ",tileMap.world_to_map(character.global_position))
+			print("insect: ",position)
+			if tileMap.world_to_map(character.global_position) == position:
+				character.fade()
