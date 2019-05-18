@@ -63,7 +63,7 @@ script = ExtResource( 3 )
 [node name="terrain" type="Node2D" parent="TileMap"]
 script = ExtResource( 4 )
 
-[node name="TurnQueue" type="Node" parent="."]
+[node name="TurnQueue" type="YSort" parent="."]
 script = ExtResource( 5 )
 
 [node name="ui_navigation" type="Node" parent="."]
