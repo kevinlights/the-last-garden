@@ -8,11 +8,10 @@
 [ext_resource path="res://ui/Mouse.gd" type="Script" id=6]
 [ext_resource path="res://ui/ui_hud.gd" type="Script" id=7]
 [ext_resource path="res://art2d/plant_button.png" type="Texture" id=8]
-[ext_resource path="res://art2d/plant_button_hover.png" type="Texture" id=9]
-[ext_resource path="res://art2d/plant_button_focused.png" type="Texture" id=10]
-[ext_resource path="res://art2d/pissenlit.png" type="Texture" id=11]
+[ext_resource path="res://art2d/plant_button_focused.png" type="Texture" id=9]
+[ext_resource path="res://art2d/pissenlit.png" type="Texture" id=10]
+[ext_resource path="res://art2d/plant_button_hover.png" type="Texture" id=11]
 [ext_resource path="res://font/riffic.otf" type="DynamicFontData" id=12]
-[ext_resource path="res://art2d/bg.png" type="Texture" id=13]
 
 [sub_resource type="TileSet" id=1]
 0/name = "grass"
@@ -32,12 +31,16 @@ load_path = "res://.import/selecteur_moche.png-d2888fb7ecd3ec3e26f49846e3c44cca.
 
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
-atlas = ExtResource( 11 )
+atlas = ExtResource( 10 )
 region = Rect2( 184, 8, 178, 188 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 32
 font_data = ExtResource( 12 )
+
+[sub_resource type="StreamTexture" id=5]
+flags = 4
+load_path = "res://.import/bg.png-88f66991dc3989c70cdf2ceb7cadff40.stex"
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -70,7 +73,6 @@ script = ExtResource( 6 )
 [node name="ui_hud" type="CanvasLayer" parent="."]
 script = ExtResource( 7 )
 
-
 [node name="PissenlitButton" type="TextureButton" parent="ui_hud"]
 editor/display_folded = true
 anchor_top = 1.0
@@ -81,8 +83,7 @@ margin_right = 256.816
 margin_bottom = 85.7331
 rect_scale = Vector2( 0.6, 0.6 )
 texture_normal = ExtResource( 8 )
-texture_hover = ExtResource( 9 )
-texture_focused = ExtResource( 10 )
+texture_focused = ExtResource( 9 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -106,7 +107,7 @@ margin_right = 64.3236
 margin_bottom = 84.5597
 rect_scale = Vector2( 0.6, 0.6 )
 texture_normal = ExtResource( 8 )
-texture_hover = ExtResource( 9 )
+texture_pressed = ExtResource( 11 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -119,14 +120,17 @@ text = "Fin de tour"
 align = 1
 valign = 1
 
-[node name="bg" type="Sprite" parent="."]
-position = Vector2( 508.79, 307.091 )
+[node name="bg" type="CanvasLayer" parent="."]
+layer = -1
 scale = Vector2( 0.559144, 0.570343 )
-z_index = -100
-texture = ExtResource( 13 )
+transform = Transform2D( 0.559144, 0, 0, 0.570343, 0, 0 )
 
+[node name="Sprite" type="Sprite" parent="bg"]
+position = Vector2( 927.848, 534.334 )
+scale = Vector2( 0.974187, 0.974187 )
+texture = SubResource( 5 )
 [connection signal="plant_selected" from="ui_hud" to="." method="_on_ui_hud_plant_selected"]
 [connection signal="pressed" from="ui_hud/PissenlitButton" to="ui_hud" method="on_pissenlit_selected"]
+[connection signal="pressed" from="ui_hud/EndTurn" to="ui_hud" method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EndTurn" to="." method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EndTurn" to="ui_navigation" method="_on_EndTurnButton_pressed"]
-[connection signal="pressed" from="ui_hud/EndTurn" to="ui_hud" method="_on_EndTurnButton_pressed"]

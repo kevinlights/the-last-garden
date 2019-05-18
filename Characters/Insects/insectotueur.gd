@@ -32,7 +32,6 @@ func update():
 		move_to_tile = false
 	if current_turn > turns_to_hatch:
 		var path = tileMap.get_astar_path(global_position, target_character)
-		get_node("../../Line2D").points = path
 		target_tile = path[1]
 		change_orientation(tileMap.world_to_map(target_tile-global_position))
 		move_to_tile = true
