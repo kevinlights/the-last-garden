@@ -1,6 +1,7 @@
 extends Node2D
 
 onready var tileMap : TileMap = $TileMap
+onready var terrain = get_node("TileMap/terrain")
 onready var turnQueue : Node = $TurnQueue
 onready var ui_hud : CanvasLayer = $ui_hud
 onready var ui_navigation : Node = $ui_navigation
@@ -45,7 +46,7 @@ func play():
 				ui_navigation.select_tile()
 				selected_tile = yield(ui_navigation,"tile_selected")
 				if etat_courant != ETAT.END_TURN:
-					if tileMap.isTileFree(selected_tile,turnQueue.get_characers_positions()):
+					if tileMap.isTileFree(selected_tile,turnQueue.get_characers_positions()) and not terrain.getBloc(selected_tile).isCorrupted:
 						ajouter_character(selected_plant, selected_tile)
 						etat_courant = ETAT.SELECT_PLANT
 						print("selected tile :",selected_tile)

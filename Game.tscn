@@ -1,17 +1,18 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://art2d/grass.png" type="Texture" id=2]
 [ext_resource path="res://TileMap.gd" type="Script" id=3]
-[ext_resource path="res://TurnQueue.gd" type="Script" id=4]
-[ext_resource path="res://ui/ui_navigation.gd" type="Script" id=5]
-[ext_resource path="res://ui/Mouse.gd" type="Script" id=6]
-[ext_resource path="res://ui/ui_hud.gd" type="Script" id=7]
-[ext_resource path="res://art2d/plant_button.png" type="Texture" id=8]
-[ext_resource path="res://art2d/plant_button_focused.png" type="Texture" id=9]
-[ext_resource path="res://art2d/pissenlit.png" type="Texture" id=10]
-[ext_resource path="res://art2d/plant_button_hover.png" type="Texture" id=11]
-[ext_resource path="res://font/riffic.otf" type="DynamicFontData" id=12]
+[ext_resource path="res://terrain.gd" type="Script" id=4]
+[ext_resource path="res://TurnQueue.gd" type="Script" id=5]
+[ext_resource path="res://ui/ui_navigation.gd" type="Script" id=6]
+[ext_resource path="res://ui/Mouse.gd" type="Script" id=7]
+[ext_resource path="res://ui/ui_hud.gd" type="Script" id=8]
+[ext_resource path="res://art2d/plant_button.png" type="Texture" id=9]
+[ext_resource path="res://art2d/plant_button_focused.png" type="Texture" id=10]
+[ext_resource path="res://art2d/pissenlit.png" type="Texture" id=11]
+[ext_resource path="res://art2d/plant_button_hover.png" type="Texture" id=12]
+[ext_resource path="res://font/riffic.otf" type="DynamicFontData" id=13]
 
 [sub_resource type="TileSet" id=1]
 0/name = "grass"
@@ -31,12 +32,12 @@ load_path = "res://.import/selecteur_moche.png-d2888fb7ecd3ec3e26f49846e3c44cca.
 
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
-atlas = ExtResource( 10 )
+atlas = ExtResource( 11 )
 region = Rect2( 184, 8, 178, 188 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 32
-font_data = ExtResource( 12 )
+font_data = ExtResource( 13 )
 
 [sub_resource type="StreamTexture" id=5]
 flags = 4
@@ -58,20 +59,23 @@ format = 1
 tile_data = PoolIntArray( -196606, 0, 0, -196605, 0, 0, -196604, 0, 0, -196603, 0, 0, -196602, 0, 0, -131070, 0, 0, -131069, 0, 0, -131068, 0, 0, -131067, 0, 0, -131066, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0 )
 script = ExtResource( 3 )
 
-[node name="TurnQueue" type="Node" parent="."]
+[node name="terrain" type="Node2D" parent="TileMap"]
 script = ExtResource( 4 )
 
-[node name="ui_navigation" type="Node" parent="."]
+[node name="TurnQueue" type="Node" parent="."]
 script = ExtResource( 5 )
+
+[node name="ui_navigation" type="Node" parent="."]
+script = ExtResource( 6 )
 
 [node name="Mouse" type="Sprite" parent="ui_navigation"]
 position = Vector2( 144.605, -86.8501 )
 scale = Vector2( 0.974993, 0.988049 )
 texture = SubResource( 2 )
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 
 [node name="ui_hud" type="CanvasLayer" parent="."]
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 
 [node name="PissenlitButton" type="TextureButton" parent="ui_hud"]
 editor/display_folded = true
@@ -82,8 +86,8 @@ margin_top = -136.267
 margin_right = 256.816
 margin_bottom = 85.7331
 rect_scale = Vector2( 0.6, 0.6 )
-texture_normal = ExtResource( 8 )
-texture_focused = ExtResource( 9 )
+texture_normal = ExtResource( 9 )
+texture_focused = ExtResource( 10 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -106,8 +110,8 @@ margin_top = -139.44
 margin_right = 64.3236
 margin_bottom = 84.5597
 rect_scale = Vector2( 0.6, 0.6 )
-texture_normal = ExtResource( 8 )
-texture_pressed = ExtResource( 11 )
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 12 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -129,9 +133,9 @@ transform = Transform2D( 0.559144, 0, 0, 0.570343, 0, 0 )
 position = Vector2( 924.861, 525.549 )
 scale = Vector2( 0.974187, 0.974187 )
 texture = SubResource( 5 )
+
 [connection signal="plant_selected" from="ui_hud" to="." method="_on_ui_hud_plant_selected"]
 [connection signal="pressed" from="ui_hud/PissenlitButton" to="ui_hud" method="on_pissenlit_selected"]
-[connection signal="pressed" from="ui_hud/EndTurn" to="ui_navigation" method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EndTurn" to="ui_hud" method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EndTurn" to="." method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EndTurn" to="ui_navigation" method="_on_EndTurnButton_pressed"]
