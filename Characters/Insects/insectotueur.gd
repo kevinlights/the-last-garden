@@ -14,6 +14,7 @@ var current_turn : int = 0
 var target_character : Vector2 = Vector2()
 var target_tile : Vector2 = Vector2()
 var move_to_tile : bool = false
+onready var longevite = get_node("insectotueur/Longevite")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,6 +22,8 @@ func _ready():
 	is_insect = true
 	connect("insect_on", turnQueue, "_on_insect_on")
 	$insectotueur.frame = sprites["seed"]
+	
+	longevite.set_text(str(turns_to_hatch - current_turn))
 
 func _process(delta):
 	if move_to_tile:
@@ -31,6 +34,10 @@ func update():
 	yield(get_tree().create_timer(0.2), "timeout")
 	current_turn += 1
 	
+	if current_turn < turns_to_hatch:
+		longevite.set_text(str(turns_to_hatch - current_turn))
+		
+		
 	if current_turn == turns_to_hatch:
 		hatch()
 		yield(self,"goal_reached")
@@ -109,3 +116,4 @@ func hatch():
 		
 func fade():
 	get_parent().remove_child(self)
+	longevite.set_text(" ")

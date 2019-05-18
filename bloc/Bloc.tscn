@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://bloc/Bloc.gd" type="Script" id=1]
+[ext_resource path="res://bloc/dissolution.shader" type="Shader" id=2]
+[ext_resource path="res://art2d/corrupt.png" type="Texture" id=3]
+[ext_resource path="res://art2d/grass.png" type="Texture" id=4]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 2 )
+shader_param/dissolution = 0.0
+shader_param/color = Color( 1, 0.360784, 0.988235, 1 )
+shader_param/tex2 = ExtResource( 3 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "corrupt"
+tracks/0/type = "value"
+tracks/0/path = NodePath("grass:material:shader_param/dissolution")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[node name="Bloc" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="grass" type="Sprite" parent="."]
+material = SubResource( 1 )
+texture = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/corrupt = SubResource( 2 )
+

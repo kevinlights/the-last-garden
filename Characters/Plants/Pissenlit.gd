@@ -1,4 +1,4 @@
-extends Character
+﻿extends Character
 
 onready var tileMap : TileMap = get_node("../../TileMap")
 onready var turnQueue : Node = get_parent()
@@ -14,12 +14,14 @@ var sprites : Dictionary = {"icon":0,"seed":1,"adult_idle":2,"adult_wink":3}
 var shoot_zone : Array = [Vector2(0,1),Vector2(-1,0),Vector2(0,1),Vector2(0,-1),   # radius = 1 
 						  Vector2(1,1),Vector2(-1,-1),Vector2(-1,1),Vector2(1,-1)] # radius = 2 (diagonals)
 var current_turn : int = 0
+onready var longevite = get_node("Sprite2/Longevite")
 
 func _ready():
 	is_insect = false
 	$Sprite2.frame = sprites["seed"]
 	$Sprite2.material = $Sprite2.material.duplicate();
-
+	longevite.set("custom_colors/font_color", Color(0,0,0.8))
+	longevite.set_text(str(turns_to_hatch - current_turn))
 func process(delta):
 	pass
 
@@ -31,6 +33,12 @@ func update():
 		hatch()
 	if current_turn == turns_to_fade:
 		fade()
+		
+	#Update le label de longévité
+	if current_turn < turns_to_hatch:
+		longevite.set_text(str(turns_to_hatch - current_turn))
+	else:
+		longevite.set_text(str(turns_to_fade - current_turn))
 	emit_signal("updated")
 
 # La plante eclos
@@ -40,6 +48,8 @@ func hatch():
 	$AnimationPlayer.play("metamorphose")
 	yield($AnimationPlayer, "animation_finished")
 	$AnimationPlayer.play("idle")
+
+	longevite.set("custom_colors/font_color", Color(0.8,0,0))
 	
 	for i in range(attack_radius):
 		for offset in shoot_zone:
@@ -50,6 +60,7 @@ func hatch():
 				new_projectile.launch(position, tileMap.map_to_world(tile) + Vector2(0,tileMap.cell_size.y/2))
 				yield(new_projectile, "projectile_done")
 				break
+
 	#frame = sprites["adult_idle"]
 
 # La plante disparais

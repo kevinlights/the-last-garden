@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Characters/Insects/insectotueur.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Insects/shadow.png" type="Texture" id=2]
 [ext_resource path="res://art2d/insectotueur.png" type="Texture" id=3]
+[ext_resource path="res://font/riffic.otf" type="DynamicFontData" id=4]
 
-[sub_resource type="Animation" id=1]
-resource_name = "fly"
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 4 )
+
+[sub_resource type="Animation" id=2]
 length = 4.0
 loop = true
 tracks/0/type = "value"
@@ -52,5 +56,13 @@ offset = Vector2( 5, -20 )
 hframes = 3
 frame = 1
 
+[node name="Longevite" type="Label" parent="insectotueur"]
+margin_left = -40.0
+margin_top = 40.0
+margin_bottom = 67.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0.862745, 1 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/fly = SubResource( 1 )
+
+anims/fly = SubResource( 2 )
