@@ -126,7 +126,7 @@ scale = Vector2( 0.559144, 0.570343 )
 transform = Transform2D( 0.559144, 0, 0, 0.570343, 0, 0 )
 
 [node name="Sprite" type="Sprite" parent="bg"]
-position = Vector2( 927.848, 534.334 )
+position = Vector2( 924.861, 525.549 )
 scale = Vector2( 0.974187, 0.974187 )
 texture = SubResource( 5 )
 [connection signal="plant_selected" from="ui_hud" to="." method="_on_ui_hud_plant_selected"]

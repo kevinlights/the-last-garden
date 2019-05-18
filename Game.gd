@@ -27,7 +27,6 @@ func _ready():
 	var enemy_spawn_postions : Array = tileMap.tile_peripheriques()
 	for i in range(2):
 		var test_spawn = rand_range(0,enemy_spawn_postions.size())
-		print(enemy_spawn_postions[test_spawn])
 		ajouter_instect("insectotueur", enemy_spawn_postions[test_spawn],queen_position)
 	
 func play():

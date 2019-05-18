@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Characters/Insects/shadow.png" type="Texture" id=1]
+[ext_resource path="res://Projectile.gd" type="Script" id=2]
+
+[node name="Projectile" type="Sprite"]
+position = Vector2( 358.145, -81.8388 )
+scale = Vector2( 0.709534, 0.709534 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )

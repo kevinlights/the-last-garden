@@ -41,7 +41,6 @@ script = ExtResource( 1 )
 visible = false
 modulate = Color( 1, 1, 1, 0.494118 )
 position = Vector2( 0.071, -1.76 )
-scale = Vector2( 1, 1 )
 z_index = 1
 texture = ExtResource( 2 )
 
@@ -55,4 +54,3 @@ frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/fly = SubResource( 1 )
-

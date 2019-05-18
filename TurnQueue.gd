@@ -29,11 +29,23 @@ func get_characers_positions():
 		positions.append(character.global_position)
 	return positions
 
+func contain_enemy(tile : Vector2):
+	for character in get_characters():
+		if character.is_insect :
+			if tileMap.world_to_map(character.global_position) == tile:
+				return true
+	return false
+
 # Si un insecte marche sur une plante il la detruis
 func _on_insect_on(position):
 	for character in get_characters():
 		if not character.is_insect :
-			print("character: ",tileMap.world_to_map(character.global_position))
-			print("insect: ",position)
 			if tileMap.world_to_map(character.global_position) == position:
+				character.fade()
+
+# Si un proectile touche un insect il le detruis
+func _on_projectile_done(position):
+	for character in get_characters():
+		if character.is_insect :
+			if tileMap.world_to_map(character.global_position) == tileMap.world_to_map(position):
 				character.fade()

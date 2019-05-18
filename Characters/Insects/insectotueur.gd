@@ -38,7 +38,6 @@ func update():
 	if current_turn > turns_to_hatch:
 		var path = tileMap.get_astar_path(global_position, target_character)
 		target_tile = path[1]
-		print("current: ",tileMap.world_to_map(path[0]))
 		emit_signal("insect_on",tileMap.world_to_map(target_tile))
 		change_orientation(tileMap.world_to_map(target_tile-global_position))
 		move_to_tile = true
@@ -107,3 +106,6 @@ func hatch():
 		$insectotueur.frame = sprites["adult_bottomLeft"]
 		$insectotueur.flip_h = true
 		move_to_tile = true
+		
+func fade():
+	get_parent().remove_child(self)
