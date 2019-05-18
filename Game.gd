@@ -71,7 +71,7 @@ func ajouter_character(character_name : String, tile : Vector2):
 	match character_name:
 		"pissenlit":
 			new_character = pissenlit_ressource.instance()
-			new_character.position = tileMap.map_to_world(tile) + Vector2(0,tileMap.cell_size.y/2)
+			new_character.position += tileMap.map_to_world(tile) + Vector2(0,tileMap.cell_size.y/2)
 	turnQueue.add_character(new_character)
 	
 func ajouter_instect(instect_name : String, tile : Vector2, cible : Vector2):
