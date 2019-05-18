@@ -10,13 +10,12 @@ shader = ExtResource( 2 )
 shader_param/dissolution = 0.0
 shader_param/color = null
 
-[sub_resource type="DynamicFont" id=5]
-size = 25
+[sub_resource type="DynamicFont" id=2]
+size = 30
 outline_color = Color( 0.439216, 0.407843, 0.407843, 1 )
 font_data = ExtResource( 4 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "idle"
+[sub_resource type="Animation" id=3]
 length = 3.0
 loop = true
 tracks/0/type = "value"
@@ -56,7 +55,7 @@ tracks/2/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.14514, 0.869375 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:material:shader_param/dissolution")
 tracks/0/interp = 1
@@ -94,7 +93,7 @@ tracks/2/keys = {
 "values": [ 0.0, 1.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite2:material:shader_param/dissolution")
 tracks/0/interp = 1
@@ -123,14 +122,13 @@ frame = 2
 [node name="Longevite" type="Label" parent="Sprite2"]
 margin_left = -60.0
 margin_top = 50.0
-margin_right = -42.0
 margin_bottom = 77.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 1.5
-anims/idle = SubResource( 2 )
-anims/metamorphose = SubResource( 3 )
-anims/meurt = SubResource( 4 )
+anims/idle = SubResource( 3 )
+anims/metamorphose = SubResource( 4 )
+anims/meurt = SubResource( 5 )
 
