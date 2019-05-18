@@ -8,4 +8,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	global_position = tileMap.map_to_world(tileMap.world_to_map(get_global_mouse_position())) + Vector2(0,tileMap.cell_size.y/2)
+	var tile : Vector2 = tileMap.world_to_map(get_global_mouse_position())
+	if tile in tileMap.get_used_cells():
+		visible = true
+		global_position = tileMap.map_to_world(tile) + Vector2(0,tileMap.cell_size.y/2)
+	else : 
+		visible = false

@@ -5,6 +5,8 @@ onready var turnQueue : Node = $TurnQueue
 onready var ui_hud : CanvasLayer = $ui_hud
 onready var ui_navigation : Node = $ui_navigation
 
+var pissenlit_ressource = load("res://Characters/Plants/Pissenlit.tscn")
+
 enum ETAT {
 	SELECT_PLANT,
 	SELECT_TILE,
@@ -34,8 +36,12 @@ func play():
 				# TODO : mauvaise selection et deselection
 				ui_navigation.select_tile()
 				selected_tile = yield(ui_navigation,"tile_selected")
-				etat_courant = ETAT.SELECT_PLANT if etat_courant != ETAT.END_TURN else etat_courant
-				print("selected tile :",selected_tile)
+				if etat_courant != ETAT.END_TURN:
+					if not (selected_tile in tileMap.get_used_cells()) :
+						etat_courant = ETAT.SELECT_TILE
+					else :
+						etat_courant = ETAT.SELECT_PLANT
+						print("selected tile :",selected_tile)
 			ETAT.END_TURN:
 				turnQueue.play_turn()
 				yield(turnQueue,"turn_finished")
@@ -49,3 +55,11 @@ func _on_ui_hud_plant_selected(plant):
 	if etat_courant in [ETAT.SELECT_TILE,ETAT.SELECT_PLANT]:
 		selected_plant = plant
 		print("selected plant:",selected_plant)
+		
+func ajouter_character(character_name : String, position : String):
+	var new_character
+	match character_name:
+		"pissenlit":
+			new_character = pissenlit_ressource.instance()
+			new_character.position = position
+	turnQueue.add_character(new_character)
