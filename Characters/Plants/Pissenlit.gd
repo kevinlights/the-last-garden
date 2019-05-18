@@ -19,7 +19,6 @@ var shoot_zone : Array = [Vector2(1,0),Vector2(-1,0),Vector2(0,1),Vector2(0,-1),
 var current_turn : int = 0
 var to_remove : int = false
 
-
 func _ready():
 	is_insect = false
 	$Sprite2.frame = sprites["seed"]
@@ -80,6 +79,3 @@ func fade():
 	$AnimationPlayer.play("meurt")
 	yield($AnimationPlayer, "animation_finished")
 	to_remove = true
-	
-func delect():
-	get_parent().remove_child(self)
