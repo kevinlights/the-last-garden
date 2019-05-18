@@ -1,5 +1,7 @@
 extends Node2D
 
+signal updated()
+
 class_name Character
 
 # Called when the node enters the scene tree for the first time.
@@ -8,4 +10,4 @@ func _ready():
 
 # Play the next turn for the character
 func update():
-	pass
+	emit_signal("updated")

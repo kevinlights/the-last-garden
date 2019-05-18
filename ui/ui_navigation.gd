@@ -2,7 +2,7 @@ extends Node
 
 signal tile_selected(tile)
 
-onready var tileMap : TileMap = get_node("../NavMap")
+onready var tileMap : TileMap = get_node("../TileMap")
 onready var mouse : Sprite = $Mouse
 
 var selecting_tile : bool = false
