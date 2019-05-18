@@ -1,4 +1,4 @@
-﻿extends Character
+extends Character
 
 onready var tileMap : TileMap = get_node("../../TileMap")
 onready var turnQueue : Node = get_parent()
@@ -27,7 +27,7 @@ func process(delta):
 
 func update():
 	# Timer pour le yield (pas beau)
-	yield(get_tree().create_timer(0.2), "timeout")
+	yield(get_tree().create_timer(0), "timeout")
 	current_turn += 1
 	if current_turn == turns_to_hatch:
 		hatch()

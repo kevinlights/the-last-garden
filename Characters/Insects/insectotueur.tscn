@@ -64,5 +64,5 @@ custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0.862745, 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-
 anims/fly = SubResource( 2 )
+

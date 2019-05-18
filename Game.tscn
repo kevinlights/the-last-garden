@@ -105,7 +105,7 @@ margin_left = -157.676
 margin_top = -139.44
 margin_right = 64.3236
 margin_bottom = 84.5597
-rect_scale = Vector2( 0.6, 0.6 )
+rect_scale = Vector2( 0.6, 0.5 )
 texture_normal = ExtResource( 8 )
 texture_pressed = ExtResource( 11 )
 __meta__ = {
@@ -126,12 +126,12 @@ scale = Vector2( 0.559144, 0.570343 )
 transform = Transform2D( 0.559144, 0, 0, 0.570343, 0, 0 )
 
 [node name="Sprite" type="Sprite" parent="bg"]
-position = Vector2( 924.861, 525.549 )
+position = Vector2( 927.848, 534.334 )
 scale = Vector2( 0.974187, 0.974187 )
 texture = SubResource( 5 )
+
 [connection signal="plant_selected" from="ui_hud" to="." method="_on_ui_hud_plant_selected"]
 [connection signal="pressed" from="ui_hud/PissenlitButton" to="ui_hud" method="on_pissenlit_selected"]
-[connection signal="pressed" from="ui_hud/EndTurn" to="ui_navigation" method="_on_EndTurnButton_pressed"]
-[connection signal="pressed" from="ui_hud/EndTurn" to="ui_hud" method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EndTurn" to="." method="_on_EndTurnButton_pressed"]
+[connection signal="pressed" from="ui_hud/EndTurn" to="ui_hud" method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EndTurn" to="ui_navigation" method="_on_EndTurnButton_pressed"]

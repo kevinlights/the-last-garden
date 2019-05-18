@@ -7,6 +7,7 @@ onready var ui_navigation : Node = $ui_navigation
 
 var pissenlit_ressource = load("res://Characters/Plants/Pissenlit.tscn")
 var insectotueur_ressource = load("res://Characters/Insects/insectotueur.tscn")
+var plantemere_ressource = load("res://Characters/Plants/PlanteMere.tscn")
 
 enum ETAT {
 	SELECT_PLANT,
@@ -25,6 +26,9 @@ func _ready():
 	play()
 	randomize()
 	var enemy_spawn_postions : Array = tileMap.tile_peripheriques()
+	
+	ajouter_reine()
+	
 	for i in range(2):
 		var test_spawn = rand_range(0,enemy_spawn_postions.size())
 		ajouter_instect("insectotueur", enemy_spawn_postions[test_spawn],queen_position)
@@ -82,3 +86,8 @@ func ajouter_instect(instect_name : String, tile : Vector2, cible : Vector2):
 			new_instect.position = tileMap.map_to_world(tile) + Vector2(0,tileMap.cell_size.y/2)
 			new_instect.set_target(cible)
 	turnQueue.add_character(new_instect)
+	
+func ajouter_reine():
+	var new_queen = plantemere_ressource.instance()
+	new_queen.position = queen_position
+	turnQueue.add_character(new_queen)

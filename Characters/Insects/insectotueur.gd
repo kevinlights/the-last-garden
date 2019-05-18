@@ -37,7 +37,6 @@ func update():
 	if current_turn < turns_to_hatch:
 		longevite.set_text(str(turns_to_hatch - current_turn))
 		
-		
 	if current_turn == turns_to_hatch:
 		hatch()
 		yield(self,"goal_reached")
@@ -113,7 +112,8 @@ func hatch():
 		$insectotueur.frame = sprites["adult_bottomLeft"]
 		$insectotueur.flip_h = true
 		move_to_tile = true
-		
+	
+	longevite.set_text(str(""))
 func fade():
 	get_parent().remove_child(self)
 	longevite.set_text(" ")
