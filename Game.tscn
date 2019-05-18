@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://art2d/grass.png" type="Texture" id=2]
 [ext_resource path="res://TurnQueue.gd" type="Script" id=3]
-[ext_resource path="res://ui/ui_navigation.gd" type="Script" id=4]
-[ext_resource path="res://Mouse.gd" type="Script" id=5]
-[ext_resource path="res://ui_hud.gd" type="Script" id=6]
+[ext_resource path="res://Pissenlit.gd" type="Script" id=4]
+[ext_resource path="res://ui/ui_navigation.gd" type="Script" id=5]
+[ext_resource path="res://Mouse.gd" type="Script" id=6]
+[ext_resource path="res://ui_hud.gd" type="Script" id=7]
 
 [sub_resource type="TileSet" id=2]
 0/name = "grass"
@@ -43,17 +44,20 @@ tile_data = PoolIntArray( -262138, 0, 0, -262136, 0, 0, -262134, 0, 0, -131066, 
 [node name="TurnQueue" type="Node" parent="."]
 script = ExtResource( 3 )
 
-[node name="ui_navigation" type="Node" parent="."]
+[node name="Pissenlit" type="Sprite" parent="TurnQueue"]
 script = ExtResource( 4 )
+
+[node name="ui_navigation" type="Node" parent="."]
+script = ExtResource( 5 )
 
 [node name="Mouse" type="Sprite" parent="ui_navigation"]
 position = Vector2( 100.014, -32 )
 scale = Vector2( 0.5, 0.5 )
 texture = SubResource( 1 )
-script = ExtResource( 5 )
+script = ExtResource( 6 )
 
 [node name="ui_hud" type="CanvasLayer" parent="."]
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 
 [node name="EndTurnButton" type="Button" parent="ui_hud"]
 margin_left = 800.0
@@ -68,5 +72,8 @@ margin_top = 460.402
 margin_right = 334.637
 margin_bottom = 561.402
 text = "Plant 1"
+[connection signal="plant_selected" from="ui_hud" to="." method="_on_ui_hud_plant_selected"]
 [connection signal="pressed" from="ui_hud/EndTurnButton" to="." method="_on_EndTurnButton_pressed"]
+[connection signal="pressed" from="ui_hud/EndTurnButton" to="ui_hud" method="_on_EndTurnButton_pressed"]
+[connection signal="pressed" from="ui_hud/EndTurnButton" to="ui_navigation" method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/PissenlitButton" to="ui_hud" method="on_pissenlit_selected"]

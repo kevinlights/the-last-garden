@@ -25,3 +25,6 @@ func _unhandled_input(event):
 				var tile : Vector2 = tileMap.world_to_map(mouse.global_position)
 				emit_signal("tile_selected",tile)
 				get_tree().set_input_as_handled()
+
+func _on_EndTurnButton_pressed():
+	emit_signal("tile_selected",Vector2(-1,-1))
