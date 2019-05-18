@@ -97,3 +97,18 @@ func ajouter_reine():
 	var new_queen = plantemere_ressource.instance()
 	new_queen.position = queen_position
 	turnQueue.add_character(new_queen)
+
+func _on_game_won():
+	$ui_hud/EcranFinDePartie.show()
+	$ui_hud/EcranFinDePartie/VBoxContainer/CenterContainer/VICTOIRE.show()
+
+func _on_game_lost():
+	$ui_hud/EcranFinDePartie.show()
+	$ui_hud/EcranFinDePartie/VBoxContainer/CenterContainer/DEFAITE.show()
+	
+func _on_Rejouer_pressed():
+	get_tree().change_scene("res://Game.tscn")
+
+func _on_Retour_pressed():
+	get_tree().change_scene("res://Menu.tscn")
+

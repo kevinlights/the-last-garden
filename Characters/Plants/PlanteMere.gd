@@ -3,8 +3,8 @@ extends Character
 signal game_won()
 signal game_lost()
 
-onready var longevite = $PlanteMereSprite/Longevite
 
+onready var longevite = $PlanteMereSprite/Longevite
 var beginningLevel : int = 15
 var currentLevel : int = beginningLevel
 
@@ -12,6 +12,8 @@ var to_remove : int = false
 
 func _ready():
 	is_insect = false
+	connect('game_won', get_parent().get_parent(), '_on_game_won')
+	connect('game_lost', get_parent().get_parent(), '_on_game_lost')
 	longevite.set("custom_colors/font_color", Color(0,0,0.8))
 	longevite.set_text(str(currentLevel))
 	
@@ -29,6 +31,7 @@ func update():
 		get_parent().remove_child(self)
 	
 func hatch():
+	longevite.set_text("")
 	emit_signal("game_won")
 	
 func fade():
