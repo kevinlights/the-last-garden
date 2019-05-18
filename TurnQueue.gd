@@ -8,10 +8,9 @@ func _ready():
 
 # Met a jour tous les characters
 func play_turn():
-	for child in get_characters(): 
+	for child in get_characters():
 		child.update()
-		#yield(child,"updated")
-	yield(get_tree().create_timer(1.0), "timeout")
+		yield(child,"updated")
 	emit_signal("turn_finished")
 
 #Ajoute un character au jeu
@@ -21,3 +20,9 @@ func add_character(character):
 #Renvois les characters dans le jeu
 func get_characters():
 	return get_children()
+	
+func get_characers_positions():
+	var positions : Array = Array()
+	for character in get_characters():
+		positions.append(character.global_position)
+	return positions

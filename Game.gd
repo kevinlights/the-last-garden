@@ -37,11 +37,13 @@ func play():
 				ui_navigation.select_tile()
 				selected_tile = yield(ui_navigation,"tile_selected")
 				if etat_courant != ETAT.END_TURN:
-					if not (selected_tile in tileMap.get_used_cells()) :
-						etat_courant = ETAT.SELECT_TILE
-					else :
+					if tileMap.isTileFree(selected_tile,turnQueue.get_characers_positions()):
+						ajouter_character(selected_plant, selected_tile)
 						etat_courant = ETAT.SELECT_PLANT
 						print("selected tile :",selected_tile)
+					else :
+						etat_courant = ETAT.SELECT_TILE
+
 			ETAT.END_TURN:
 				turnQueue.play_turn()
 				yield(turnQueue,"turn_finished")
@@ -56,10 +58,10 @@ func _on_ui_hud_plant_selected(plant):
 		selected_plant = plant
 		print("selected plant:",selected_plant)
 		
-func ajouter_character(character_name : String, position : String):
+func ajouter_character(character_name : String, tile : Vector2):
 	var new_character
 	match character_name:
 		"pissenlit":
 			new_character = pissenlit_ressource.instance()
-			new_character.position = position
+			new_character.position = tileMap.map_to_world(tile)
 	turnQueue.add_character(new_character)
