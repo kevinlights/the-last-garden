@@ -7,8 +7,8 @@ var sprites :Dictionary = {"icon":0,"seed":1,"adult_idle":2,"adult_wink":3}
 var current_turn : int = 0
 
 func _ready():
-	frame = sprites["seed"]
-	material = material.duplicate();
+	$Sprite2.frame = sprites["seed"]
+	$Sprite2.material = $Sprite2.material.duplicate();
 
 func process(delta):
 	pass
@@ -26,6 +26,8 @@ func update():
 # La plante eclos
 func hatch():
 	$AnimationPlayer.play("metamorphose")
+	yield($AnimationPlayer, "animation_finished")
+	$AnimationPlayer.play("idle")
 	#frame = sprites["adult_idle"]
 
 # La plante disparais
