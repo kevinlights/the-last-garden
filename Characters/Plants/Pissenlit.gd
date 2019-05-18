@@ -44,7 +44,9 @@ func update():
 		if current_turn < turns_to_hatch:
 			longevite.set_text(str(turns_to_hatch - current_turn))
 		else:
-			longevite.set_text(str(turns_to_fade - current_turn))
+			var turnsBeforeFade : int = turns_to_fade - current_turn
+			if turnsBeforeFade != 0:
+				longevite.set_text(str(turnsBeforeFade))
 		emit_signal("updated")
 	else :
 		emit_signal("updated")
@@ -76,6 +78,7 @@ func hatch():
 
 # La plante disparais
 func fade():
+	longevite.set_text("")
 	$AnimationPlayer.play("meurt")
 	yield($AnimationPlayer, "animation_finished")
 	to_remove = true
