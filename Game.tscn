@@ -96,11 +96,9 @@ texture = SubResource( 2 )
 script = ExtResource( 8 )
 
 [node name="ui_hud" type="CanvasLayer" parent="."]
-editor/display_folded = true
 script = ExtResource( 9 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ui_hud"]
-editor/display_folded = true
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 2.86395
@@ -225,6 +223,7 @@ custom_fonts/font = SubResource( 7 )
 text = "Retour au menu"
 
 [node name="bg" type="CanvasLayer" parent="."]
+editor/display_folded = true
 layer = -5
 scale = Vector2( 0.559144, 0.570343 )
 transform = Transform2D( 0.559144, 0, 0, 0.570343, 0, 0 )

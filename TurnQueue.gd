@@ -42,7 +42,8 @@ func contain_enemy(tile : Vector2):
 	for character in get_characters():
 		if character.is_insect :
 			if tileMap.world_to_map(character.global_position) == tile:
-				return true
+				if not character.to_remove:
+					return true
 	return false
 
 # Si un insecte marche sur une plante il la detruis

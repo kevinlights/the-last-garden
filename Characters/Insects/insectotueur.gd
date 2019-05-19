@@ -123,5 +123,6 @@ func hatch():
 func fade():
 	$AnimationPlayer.play("meurt")
 	yield($AnimationPlayer, "animation_finished")
+	to_remove = true
 	get_parent().remove_child(self)
 	longevite.set_text(" ")
