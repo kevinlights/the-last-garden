@@ -12,6 +12,10 @@ func _ready():
 #func _process(delta):
 #	pass
 
+func uncorrupt():
+	if(isCorrupted):
+		isCorrupted = false
+		
 
 func corrupt():
 	if(!isCorrupted):
