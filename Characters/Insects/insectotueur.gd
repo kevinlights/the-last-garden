@@ -8,7 +8,7 @@ onready var terrain  = get_node("../../TileMap/terrain")
 onready var turnQueue : Node = get_parent()
 
 export var speed = 200
-export var turns_to_hatch : int = 2
+export var turns_to_hatch : int = 1
 
 var sprites :Dictionary = {"seed":0,"adult_bottomLeft":1,"adult_topLeft":2}
 var current_turn : int = 0

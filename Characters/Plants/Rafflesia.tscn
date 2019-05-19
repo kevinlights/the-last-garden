@@ -58,7 +58,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 resource_name = "meurt"
 tracks/0/type = "value"
 tracks/0/path = NodePath("RafflesiaSprite:material:shader_param/dissolution")
@@ -85,7 +85,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath("RafflesiaSprite:material:shader_param/dissolution")
 tracks/0/interp = 1
@@ -111,7 +111,7 @@ tracks/1/keys = {
 "values": [ 0, 1 ]
 }
 
-[sub_resource type="ShaderMaterial" id=5]
+[sub_resource type="ShaderMaterial" id=6]
 shader = ExtResource( 5 )
 shader_param/color = Vector3( 1.48, 1.46, 0.82 )
 shader_param/OCTAVES = 10
@@ -131,18 +131,16 @@ margin_left = -28.5
 margin_top = 26.6
 margin_right = 11.5
 margin_bottom = 59.6
-
 custom_fonts/font = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/idle = SubResource( 3 )
-anims/meurt = SubResource( 6 )
-anims/transform = SubResource( 4 )
+anims/meurt = SubResource( 4 )
+anims/transform = SubResource( 5 )
 
 [node name="icon" type="Sprite" parent="."]
 visible = false
-material = SubResource( 5 )
+material = SubResource( 6 )
 position = Vector2( -2.34256, -31.0305 )
 scale = Vector2( 4.67548, 2.69265 )
 texture = ExtResource( 6 )
->>>>>>> 122e3a497fde118229f7858d3c6ba61a019a0315

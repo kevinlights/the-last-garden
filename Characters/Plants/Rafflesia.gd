@@ -6,8 +6,8 @@ onready var longevite = get_node("RafflesiaSprite/Longevite")
 onready var tileMap : TileMap = get_node("../../TileMap")
 onready var turnQueue : Node = get_parent()
 
-export var turns_to_hatch : int = 2
-export var turns_to_fade : int = 7
+export var turns_to_hatch : int = 3
+export var turns_to_fade : int = 6
 export var attract_radius : int = 4
 
 var sprites : Dictionary = {"seed":0,"adult_idle":1}

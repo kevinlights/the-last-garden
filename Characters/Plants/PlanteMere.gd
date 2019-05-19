@@ -3,7 +3,7 @@ extends Character
 signal game_won()
 signal game_lost()
 
-export var beginningLevel : int = 15
+export var beginningLevel : int = 20
 
 onready var longevite = $PlanteMereSprite/Longevite
 var currentLevel : int = beginningLevel
@@ -26,7 +26,6 @@ func update():
 		emit_signal("updated")
 	else :
 		emit_signal("updated")
-		emit_signal("game_lost")
 		get_parent().remove_child(self)
 	
 func hatch():
@@ -35,5 +34,6 @@ func hatch():
 	
 func fade():
 	$AnimationPlayer.play("meurt")
+	emit_signal("game_lost")
 	yield($AnimationPlayer, "animation_finished")
 	to_remove = true

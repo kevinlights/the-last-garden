@@ -5,8 +5,8 @@ signal hatch_done_internal()
 onready var tileMap : TileMap = get_node("../../TileMap")
 onready var longevite = get_node("RonceSprite/Longevite")
 
-export var turns_to_hatch : int = 1
-export var turns_to_fade : int = 4
+export var turns_to_hatch : int = 3
+export var turns_to_fade : int = 5
 
 var sprites : Dictionary = {"seed":0,"adult":1}
 var current_turn : int = 0

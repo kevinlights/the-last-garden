@@ -10,7 +10,7 @@ onready var longevite = get_node("Sprite2/Longevite")
 var projectile_ressource = load("res://Characters/Plants/Projectile.tscn")
 
 export var turns_to_hatch : int = 2
-export var turns_to_fade : int = 4
+export var turns_to_fade : int = 7
 export var attack_radius : int = 1
 
 var sprites : Dictionary = {"icon":0,"seed":1,"adult_idle":2,"adult_wink":3}

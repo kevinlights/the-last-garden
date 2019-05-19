@@ -73,6 +73,7 @@ load_path = "res://.import/bg.png-88f66991dc3989c70cdf2ceb7cadff40.stex"
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
+spawn_insect_max_turn_step = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 562.978, 313.728 )
@@ -98,6 +99,7 @@ script = ExtResource( 5 )
 script = ExtResource( 6 )
 
 [node name="ui_navigation" type="Node" parent="."]
+editor/display_folded = true
 script = ExtResource( 7 )
 
 [node name="VisualisationPlantSkill" type="TileMap" parent="ui_navigation"]
@@ -119,6 +121,8 @@ script = ExtResource( 10 )
 script = ExtResource( 11 )
 
 [node name="PlanteDescription" type="PanelContainer" parent="ui_hud"]
+editor/display_folded = true
+visible = false
 margin_left = 12.0
 margin_top = 362.0
 margin_right = 372.0
@@ -127,6 +131,7 @@ theme = ExtResource( 12 )
 custom_styles/panel = ExtResource( 13 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ui_hud/PlanteDescription"]
+editor/display_folded = true
 margin_right = 360.0
 margin_bottom = 115.0
 
@@ -142,6 +147,24 @@ margin_top = 22.0
 margin_right = 360.0
 margin_bottom = 40.0
 text = "Lance ses pétales sur les insectes pour les tue"
+
+[node name="Cout" type="Label" parent="ui_hud/PlanteDescription/VBoxContainer"]
+margin_top = 44.0
+margin_right = 360.0
+margin_bottom = 62.0
+text = "Cout :"
+
+[node name="HatchTurns" type="Label" parent="ui_hud/PlanteDescription/VBoxContainer"]
+margin_top = 66.0
+margin_right = 360.0
+margin_bottom = 84.0
+text = "Eclosion :"
+
+[node name="DieTurns" type="Label" parent="ui_hud/PlanteDescription/VBoxContainer"]
+margin_top = 88.0
+margin_right = 360.0
+margin_bottom = 106.0
+text = "Flétrissement : "
 
 [node name="Graines" type="HBoxContainer" parent="ui_hud"]
 editor/display_folded = true
@@ -175,6 +198,7 @@ margin_bottom = 123.0
 rect_scale = Vector2( 0.4, 0.4 )
 
 [node name="EndTurnButton" type="TextureButton" parent="ui_hud"]
+editor/display_folded = true
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -283,6 +307,7 @@ rect_scale = Vector2( 0.350456, 0.350456 )
 texture = ExtResource( 19 )
 
 [node name="MessageDebut2" type="Control" parent="ui_hud"]
+editor/display_folded = true
 visible = false
 margin_right = 40.0
 margin_bottom = 40.0
@@ -296,7 +321,7 @@ margin_right = 862.786
 margin_bottom = 48.5367
 custom_fonts/font = ExtResource( 18 )
 custom_colors/font_color = Color( 0.0823529, 0.243137, 0.27451, 1 )
-text = "Utilisez les orbes pour planter des plantes et combatre les insects"
+text = "Utilisez les orbes pour planter des plantes et combattre les insects"
 
 [node name="Fleche" type="TextureRect" parent="ui_hud/MessageDebut2"]
 margin_left = 242.133
@@ -316,21 +341,21 @@ margin_bottom = 40.0
 [node name="ProtectionOeufMessage" type="Label" parent="ui_hud/MessageDebut3"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = 13.6527
-margin_top = 380.635
-margin_right = 640.653
-margin_bottom = 412.635
+margin_left = 380.651
+margin_top = 386.635
+margin_right = 1007.65
+margin_bottom = 433.635
 custom_fonts/font = ExtResource( 18 )
 custom_colors/font_color = Color( 0.0823529, 0.243137, 0.27451, 1 )
 text = "- Les plantes actionnent leurs effets quand elles éclosent
 - Vous en aurez 3 nouvelles à chaque tour"
 
 [node name="Fleche" type="TextureRect" parent="ui_hud/MessageDebut3"]
-margin_left = 190.357
-margin_top = 425.221
-margin_right = 375.357
-margin_bottom = 564.221
-rect_rotation = 90.0
+margin_left = 455.356
+margin_top = 463.221
+margin_right = 640.356
+margin_bottom = 602.221
+rect_rotation = 138.86
 rect_scale = Vector2( 0.350456, 0.350456 )
 texture = ExtResource( 19 )
 
@@ -343,19 +368,19 @@ margin_bottom = 40.0
 [node name="ProtectionOeufMessage" type="Label" parent="ui_hud/MessageDebut4"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = 346.887
-margin_top = 512.508
-margin_right = 766.887
-margin_bottom = 545.508
+margin_left = 321.887
+margin_top = 528.508
+margin_right = 743.887
+margin_bottom = 561.508
 custom_fonts/font = ExtResource( 18 )
 custom_colors/font_color = Color( 0.0823529, 0.243137, 0.27451, 1 )
-text = "A chaque tour les insects jouent en premier"
+text = "A chaque tour les insectes jouent en premier"
 
 [node name="Fleche" type="TextureRect" parent="ui_hud/MessageDebut4"]
-margin_left = 782.446
-margin_top = 496.832
-margin_right = 967.446
-margin_bottom = 635.833
+margin_left = 766.446
+margin_top = 515.832
+margin_right = 951.446
+margin_bottom = 654.833
 rect_rotation = -360.0
 rect_scale = Vector2( 0.350456, 0.350456 )
 texture = ExtResource( 19 )

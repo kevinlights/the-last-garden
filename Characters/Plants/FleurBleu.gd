@@ -7,7 +7,7 @@ onready var terrain  = get_node("../../TileMap/terrain")
 onready var longevite = get_node("FleurBleuSprite/Longevite")
 
 export var turns_to_hatch : int = 2
-export var turns_to_fade : int = 4
+export var turns_to_fade : int = 8
 
 var sprites : Dictionary = {"seed":0,"adult":1}
 var skill_directions : Array = [Vector2(1,0),Vector2(-1,0),Vector2(0,1),Vector2(0,-1)]

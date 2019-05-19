@@ -46,14 +46,14 @@ func showInitialMessage():
 	yield(get_tree().create_timer(0.5), "timeout")
 	$MessageDebut.show()
 	
-	yield(get_tree().create_timer(3), "timeout")
+	yield(get_tree().create_timer(4), "timeout")
 	$MessageDebut.hide()
 	$MessageDebut2.show()
-	yield(get_tree().create_timer(4), "timeout")
+	yield(get_tree().create_timer(5), "timeout")
 	$MessageDebut2.hide()
 	$MessageDebut3.show()
 	
-	yield(get_tree().create_timer(4), "timeout")
+	yield(get_tree().create_timer(6), "timeout")
 	$MessageDebut3.hide()
 	$MessageDebut4.show()
 	
@@ -78,21 +78,33 @@ func _on_Retour_pressed():
 func _on_PissenlitButton_mouse_entered():
 	$PlanteDescription/VBoxContainer/Titre.set_text("Pissenlit")
 	$PlanteDescription/VBoxContainer/Description.set_text("Lance ses pétales sur les insectes pour les tuer.")
+	$PlanteDescription/VBoxContainer/Cout.set_text("Cout : 1 Orbe")
+	$PlanteDescription/VBoxContainer/HatchTurns.set_text("Eclosion : 2 tours")
+	$PlanteDescription/VBoxContainer/DieTurns.set_text("Flétrissement : 7 tours")
 	$PlanteDescription.show()
 
 func _on_RafflesiaButton_mouse_entered():
 	$PlanteDescription/VBoxContainer/Titre.set_text("Rafflesia")
 	$PlanteDescription/VBoxContainer/Description.set_text("Attire les insectes vers elle.")
+	$PlanteDescription/VBoxContainer/Cout.set_text("Cout : 1 Orbe")
+	$PlanteDescription/VBoxContainer/HatchTurns.set_text("Eclosion : 3 tours")
+	$PlanteDescription/VBoxContainer/DieTurns.set_text("Flétrissement : 6 tours ")
 	$PlanteDescription.show()
 
 func _on_RoncesButton_mouse_entered():
 	$PlanteDescription/VBoxContainer/Titre.set_text("Ronces")
 	$PlanteDescription/VBoxContainer/Description.set_text("Tue les insectes qui volent sur elle.")
+	$PlanteDescription/VBoxContainer/Cout.set_text("Cout : 1 Orbe")
+	$PlanteDescription/VBoxContainer/HatchTurns.set_text("Eclosion : 3 tours")
+	$PlanteDescription/VBoxContainer/DieTurns.set_text("Flétrissement : 5 tours")
 	$PlanteDescription.show()
 
 func _on_FleurBleueButton_mouse_entered():
 	$PlanteDescription/VBoxContainer/Titre.set_text("Fleur bleue")
 	$PlanteDescription/VBoxContainer/Description.set_text("Convertit les blocs en herbe sous forme de croix.")
+	$PlanteDescription/VBoxContainer/Cout.set_text("Cout : 1 Orbe")
+	$PlanteDescription/VBoxContainer/HatchTurns.set_text("Eclosion : 2 tours")
+	$PlanteDescription/VBoxContainer/DieTurns.set_text("Flétrissement : 7 tours")
 	$PlanteDescription.show()
 
 func _on_PissenlitButton_mouse_exited():
