@@ -21,11 +21,26 @@ func _on_RafflesiaButton_pressed():
 	selected_plant = "rafflesia"
 	emit_signal("plant_selected",selected_plant)
 
+func _on_RoncesButton_pressed():
+	selected_plant = "ronces"
+	emit_signal("plant_selected",selected_plant)
+	
+func _on_FleurBleueButton2_pressed():
+	selected_plant = "fleurbleue"
+	emit_signal("plant_selected",selected_plant)
+
 func _on_EndTurnButton_pressed():
 	emit_signal("plant_selected","")
 
 func _on_Game_mana_set(mana, manamax):
 	$Graines/Mana.set_text(str(mana) + "/" + str(manamax))
+
+func showInitialMessage():
+	yield(get_tree().create_timer(0.5), "timeout")
+	$MessageDebut.show()
+	
+	yield(get_tree().create_timer(4), "timeout")
+	$MessageDebut.hide()
 
 func showVictoryScreen():
 	$EcranFinDePartie.show()

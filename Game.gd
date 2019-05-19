@@ -11,13 +11,19 @@ onready var ui_navigation : Node = $ui_navigation
 onready var plantemere_ressource = load("res://Characters/Plants/PlanteMere.tscn")
 onready var pissenlit_ressource = load("res://Characters/Plants/Pissenlit.tscn")
 onready var rafflesia_ressource = load("res://Characters/Plants/Rafflesia.tscn")
+onready var ronces_ressource = load("res://Characters/Plants/Rafflesia.tscn")
+onready var fleurbleue_ressource = load("res://Characters/Plants/Rafflesia.tscn")
 onready var insectotueur_ressource = load("res://Characters/Insects/insectotueur.tscn")
 
 export var mana_max : int = 2
 export var pissenlits_max : int = 2
 export var raflesia_max : int = 2
+export var ronces_max : int = 2
+export var fleurbleue_max : int = 2
 export var cout_mana_pissenlit : int = 1
 export var cout_mana_raflesia : int = 1
+export var cout_mana_ronces : int = 1
+export var cout_mana_fleurbleue : int = 1
 export var spawn_min : int = 1
 export var spawn_max : int = 2
 export var spawn_step : int = 1
@@ -49,10 +55,18 @@ func _ready():
 	emit_signal("mana_set", mana, mana_max)
 	nombre_plantes["pissenlit"] = pissenlits_max
 	nombre_plantes["rafflesia"] = raflesia_max
+	nombre_plantes["ronces"] = ronces_max
+	nombre_plantes["fleurbleue"] = fleurbleue_max
 	couts_plantes["pissenlit"] = cout_mana_pissenlit
 	couts_plantes["rafflesia"] = cout_mana_raflesia
+	couts_plantes["ronces"] = cout_mana_ronces
+	couts_plantes["fleurbleue"] = cout_mana_fleurbleue
 	ajouter_reine()
+	
 	insect_spawner(spawn_min,spawn_max)
+
+	$ui_hud.showInitialMessage()
+	
 	play()
 	
 func play():
@@ -96,6 +110,7 @@ func play():
 				emit_signal("mana_set", mana, mana_max)
 				nombre_plantes["pissenlit"] = pissenlits_max
 				nombre_plantes["rafflesia"] = raflesia_max
+				nombre_plantes["ronces"] = raflesia_max
 				etat_courant = ETAT.SELECT_PLANT
 				print("End turn")
 
@@ -125,6 +140,12 @@ func ajouter_character(character_name : String, tile : Vector2):
 			new_character.position = tileMap.map_to_world(tile) + Vector2(0,tileMap.cell_size.y/2)
 		"rafflesia":
 			new_character = rafflesia_ressource.instance()
+			new_character.position = tileMap.map_to_world(tile) + Vector2(0,tileMap.cell_size.y/2)
+		"ronces":
+			new_character = ronces_ressource.instance()
+			new_character.position = tileMap.map_to_world(tile) + Vector2(0,tileMap.cell_size.y/2)
+		"fleurbleue":
+			new_character = fleurbleue_ressource.instance()
 			new_character.position = tileMap.map_to_world(tile) + Vector2(0,tileMap.cell_size.y/2)
 	turnQueue.add_character(new_character)
 	
