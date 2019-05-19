@@ -18,6 +18,11 @@ export var pissenlits_max : int = 2
 export var raflesia_max : int = 2
 export var cout_mana_pissenlit : int = 1
 export var cout_mana_raflesia : int = 1
+export var spawn_min : int = 1
+export var spawn_max : int = 2
+export var spawn_step : int = 1
+export var spawn_min_turn_step : int = 1
+export var spawn_max_turn_step : int = 1
 
 var mana : int
 var nombre_plantes : Dictionary = {}
@@ -34,10 +39,12 @@ onready var queen_position : Vector2 = tileMap.map_to_world(Vector2(4,-1))
 var etat_courant = ETAT.SELECT_PLANT
 var selected_plant = null
 var selected_tile : Vector2 = Vector2(-1,-1)
+var current_wave : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
+	current_wave = 1
 	mana = mana_max
 	emit_signal("mana_set", mana, mana_max)
 	nombre_plantes["pissenlit"] = pissenlits_max
@@ -45,8 +52,9 @@ func _ready():
 	couts_plantes["pissenlit"] = cout_mana_pissenlit
 	couts_plantes["rafflesia"] = cout_mana_raflesia
 	ajouter_reine()
-	insect_spawner(3)
 	
+	insect_spawner(spawn_min,spawn_max)
+
 	$ui_hud.showInitialMessage()
 	
 	play()
@@ -81,6 +89,13 @@ func play():
 			ETAT.END_TURN:
 				turnQueue.play_turn()
 				yield(turnQueue,"turn_finished")
+				yield(get_tree().create_timer(1), "timeout")
+				if not turnQueue.as_insect():
+					current_wave += 1
+					if (current_wave % spawn_step) == 0 :
+						spawn_min += spawn_min_turn_step
+						spawn_max += spawn_max_turn_step
+					insect_spawner(spawn_min,spawn_max)
 				mana = mana_max
 				emit_signal("mana_set", mana, mana_max)
 				nombre_plantes["pissenlit"] = pissenlits_max
@@ -88,9 +103,9 @@ func play():
 				etat_courant = ETAT.SELECT_PLANT
 				print("End turn")
 
-func insect_spawner(max_nb_insect : int):
+func insect_spawner(spawn_min : int, spawn_max : int):
 	
-	var nb_insects : int = randi() % max_nb_insect + 1
+	var nb_insects : int = randi() % spawn_max + spawn_min + 1
 	
 	var enemy_spawn_postions : Array = tileMap.tile_peripheriques()
 	for i in range(nb_insects):
