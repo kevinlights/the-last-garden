@@ -1,16 +1,18 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Menu.gd" type="Script" id=1]
-[ext_resource path="res://art2d/bg.png" type="Texture" id=2]
-[ext_resource path="res://font/riffic.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://art2d/bg1.png" type="Texture" id=2]
+[ext_resource path="res://art2d/bg2.png" type="Texture" id=3]
+[ext_resource path="res://art2d/bg3.png" type="Texture" id=4]
+[ext_resource path="res://font/riffic.otf" type="DynamicFontData" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
-font_data = ExtResource( 3 )
+font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 32
-font_data = ExtResource( 3 )
+font_data = ExtResource( 5 )
 
 [node name="Menu" type="MarginContainer"]
 anchor_right = 1.0
@@ -22,13 +24,25 @@ margin_bottom = -100.0
 script = ExtResource( 1 )
 
 [node name="bg" type="Sprite" parent="."]
-position = Vector2( 270.032, 142.939 )
+position = Vector2( 493.957, 200.308 )
+scale = Vector2( 0.90923, 0.90923 )
 texture = ExtResource( 2 )
+
+[node name="bg2" type="Sprite" parent="."]
+position = Vector2( 490.255, 194.756 )
+scale = Vector2( 0.520213, 0.520213 )
+texture = ExtResource( 3 )
+region_rect = Rect2( -174.765, 5.27428, 2235.12, 1193.27 )
+
+[node name="bg3" type="Sprite" parent="."]
+position = Vector2( 484.704, 200.308 )
+scale = Vector2( 0.560274, 0.560274 )
+texture = ExtResource( 4 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_right = 964.0
 margin_bottom = 400.0
-custom_constants/separation = 30
+custom_constants/separation = 44
 
 [node name="INSECTOTUEURS" type="Label" parent="VBoxContainer"]
 margin_right = 964.0
@@ -39,32 +53,31 @@ text = "INSECTOTUEURS"
 align = 1
 
 [node name="Nouvelle Partie" type="MenuButton" parent="VBoxContainer"]
-margin_top = 73.0
+margin_top = 87.0
 margin_right = 964.0
-margin_bottom = 113.0
+margin_bottom = 127.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.247059, 0.247059, 0.247059, 1 )
 custom_colors/font_color_hover = Color( 0.482353, 0.0823529, 0.0823529, 1 )
 text = "Nouvelle partie"
 
 [node name="Regles" type="MenuButton" parent="VBoxContainer"]
-margin_top = 143.0
+margin_top = 171.0
 margin_right = 964.0
-margin_bottom = 183.0
+margin_bottom = 211.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.247059, 0.247059, 0.247059, 1 )
 custom_colors/font_color_hover = Color( 0.482353, 0.0823529, 0.0823529, 1 )
 text = "Règles"
 
 [node name="Quitter" type="MenuButton" parent="VBoxContainer"]
-margin_top = 213.0
+margin_top = 255.0
 margin_right = 964.0
-margin_bottom = 253.0
+margin_bottom = 295.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.247059, 0.247059, 0.247059, 1 )
 custom_colors/font_color_hover = Color( 0.482353, 0.0823529, 0.0823529, 1 )
 text = "Quitter"
-
 [connection signal="pressed" from="VBoxContainer/Nouvelle Partie" to="." method="_on_Nouvelle_Partie_pressed"]
 [connection signal="pressed" from="VBoxContainer/Regles" to="." method="_on_Regles_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quitter" to="." method="_on_Quitter_pressed"]
