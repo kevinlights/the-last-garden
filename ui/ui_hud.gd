@@ -32,8 +32,8 @@ func _on_FleurBleueButton2_pressed():
 func _on_EndTurnButton_pressed():
 	emit_signal("plant_selected","")
 
-func _on_Game_mana_set(mana, manamax):
-	$Graines/Mana.set_text(str(mana) + "/" + str(manamax))
+func _on_Game_mana_set(mana):
+	$Graines/Mana.set_text(str(mana))
 
 func showInitialMessage():
 	yield(get_tree().create_timer(0.5), "timeout")
