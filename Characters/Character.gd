@@ -4,6 +4,7 @@ class_name Character
 
 signal updated()
 
+var type : String = "Character"
 var is_insect : bool
 var is_raflesia : bool = false
 var is_ronce : bool = false
@@ -16,3 +17,6 @@ func _ready():
 # Play the next turn for the character
 func update():
 	emit_signal("updated")
+	
+func get_skill_zone():
+	return []

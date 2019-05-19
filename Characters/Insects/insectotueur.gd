@@ -21,6 +21,7 @@ onready var longevite = get_node("insectotueur/Longevite")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#frame = sprites["seed"]
+	type = "Insect"
 	is_insect = true
 	connect("insect_on", turnQueue, "_on_insect_on")
 	$insectotueur.frame = sprites["seed"]
@@ -135,3 +136,6 @@ func fade():
 	to_remove = true
 	get_parent().remove_child(self)
 	longevite.set_text(" ")
+	
+func get_skill_zone():
+	return [tileMap.world_to_map(movement_predictor())]

@@ -1,4 +1,4 @@
-﻿extends Character
+extends Character
 
 signal hatch_done_internal()
 
@@ -15,6 +15,7 @@ var current_turn : int = 0
 
 func _ready():
 	is_insect = false
+	type = "Rafflesia"
 	$RafflesiaSprite.frame = sprites["seed"]
 	$RafflesiaSprite.material = $RafflesiaSprite.material.duplicate()
 	longevite.set("custom_colors/font_color", Color(0,0,0.8))
@@ -60,3 +61,12 @@ func fade():
 	$AnimationPlayer.play("meurt")
 	yield($AnimationPlayer, "animation_finished")
 	to_remove = true
+	
+func get_skill_zone():
+	var result : Array = Array()
+	var current_tile : Vector2 = tileMap.world_to_map(global_position)
+
+	for tile in tileMap.get_used_cells():
+		if current_tile.distance_to(tile) <= attract_radius:
+			result.append(tile)
+	return result

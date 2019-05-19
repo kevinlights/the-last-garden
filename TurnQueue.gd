@@ -65,6 +65,13 @@ func find_closest_raflesia(tile : Vector2):
 		best = root.queen_position
 	return best
 
+func get_plant_from_pos(position : Vector2):
+	for character in get_characters():
+		if not character.to_remove:
+			if tileMap.world_to_map(character.global_position) == tileMap.world_to_map(position):
+				return character
+	return null
+
 func as_insect():
 	for character in get_characters():
 		if character.is_insect and not character.to_remove:

@@ -2,6 +2,8 @@ extends Character
 
 signal hatch_done_internal()
 
+onready var tileMap : TileMap = get_node("../../TileMap")
+
 export var turns_to_hatch : int = 1
 export var turns_to_fade : int = 4
 
@@ -10,6 +12,7 @@ var current_turn : int = 0
 
 func _ready():
 	$RonceSprite.frame = sprites["seed"]
+	type = "Ronce"
 	is_insect = false
 
 func update():
@@ -36,3 +39,7 @@ func hatch():
 
 func fade():
 	to_remove = true
+	
+
+func get_skill_zone():
+	return [tileMap.world_to_map(global_position)]

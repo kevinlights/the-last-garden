@@ -19,6 +19,7 @@ var shoot_zone : Array = [Vector2(1,0),Vector2(-1,0),Vector2(0,1),Vector2(0,-1),
 var current_turn : int = 0
 
 func _ready():
+	type = "Pissenlit"
 	is_insect = false
 	$Sprite2.frame = sprites["seed"]
 	$Sprite2.material = $Sprite2.material.duplicate();
@@ -82,3 +83,11 @@ func fade():
 	$AnimationPlayer.play("meurt")
 	yield($AnimationPlayer, "animation_finished")
 	to_remove = true
+	
+func get_skill_zone():
+	var result : Array = Array()
+	for i in range(attack_radius):
+		for offset in shoot_zone:
+			var tile : Vector2 = tileMap.world_to_map(global_position) + offset*(i+1)
+			result.append(tile)
+	return result

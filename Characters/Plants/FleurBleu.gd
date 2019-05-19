@@ -14,6 +14,7 @@ var current_turn : int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	type = "PlanteBleu"
 	$FleurBleuSprite.frame = sprites["seed"]
 	is_insect = false
 
@@ -52,3 +53,16 @@ func hatch():
 
 func fade():
 	to_remove = true
+	
+func get_skill_zone():
+	var result : Array = Array()
+	var current_tile : Vector2 
+	var i : int = 1
+	for direction in skill_directions:
+		current_tile = tileMap.world_to_map(global_position) + direction
+		i = 1
+		while current_tile in tileMap.get_used_cells():
+			result.append(current_tile)
+			current_tile = tileMap.world_to_map(global_position) + direction*i
+			i += 1
+	return result
