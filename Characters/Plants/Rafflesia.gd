@@ -52,4 +52,6 @@ func hatch():
 	
 func fade():
 	longevite.set_text("")
+	$AnimationPlayer.play("meurt")
+	yield($AnimationPlayer, "animation_finished")
 	to_remove = true
