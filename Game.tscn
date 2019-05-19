@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+﻿[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://ScreenShakeD.gd" type="Script" id=2]
@@ -17,8 +17,15 @@
 [ext_resource path="res://art2d/energy.png" type="Texture" id=15]
 [ext_resource path="res://art2d/plant_button.png" type="Texture" id=16]
 [ext_resource path="res://art2d/plant_button_hover.png" type="Texture" id=17]
-[ext_resource path="res://font/font.tres" type="DynamicFont" id=18]
-[ext_resource path="res://art2d/arrow.png" type="Texture" id=19]
+[ext_resource path="res://art2d/plant_button_focused.png" type="Texture" id=18]
+[ext_resource path="res://art2d/pissenlit.png" type="Texture" id=19]
+[ext_resource path="res://art2d/rafflesia.png" type="Texture" id=20]
+[ext_resource path="res://art2d/ronces.png" type="Texture" id=21]
+[ext_resource path="res://art2d/fleurbleue.png" type="Texture" id=22]
+[ext_resource path="res://font/font.tres" type="DynamicFont" id=23]
+[ext_resource path="res://art2d/arrow.png" type="Texture" id=24]
+[ext_resource path="res://.import/lullaby.ogg-24ec7a09ffcf16bb61ff7ec967b2a951.oggstr" type="AudioStream" id=25]
+
 
 [sub_resource type="TileSet" id=1]
 0/name = "grass"
@@ -289,7 +296,13 @@ transform = Transform2D( 0.559144, 0, 0, 0.570343, 0, 0 )
 [node name="Sprite" type="Sprite" parent="bg"]
 position = Vector2( 908.244, 521.599 )
 scale = Vector2( 1.04126, 1.06425 )
-texture = SubResource( 8 )
+
+texture = SubResource( 12 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 25 )
+autoplay = true
+
 [connection signal="mana_set" from="." to="ui_hud" method="_on_Game_mana_set"]
 [connection signal="plant_posee" from="." to="ui_hud" method="_on_Game_plant_posee"]
 [connection signal="plants_changed" from="." to="ui_hud" method="_on_Game_plants_changed"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/lullaby.ogg-24ec7a09ffcf16bb61ff7ec967b2a951.oggstr"
+
+[deps]
+
+source_file="res://sounds/lullaby.ogg"
+dest_files=[ "res://.import/lullaby.ogg-24ec7a09ffcf16bb61ff7ec967b2a951.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
