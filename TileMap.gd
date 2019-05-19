@@ -111,11 +111,15 @@ func tile_peripheriques():
 	var result : Array = Array()
 	for tile in get_used_cells():
 		if not (tile + topLeft in get_used_cells()):
-			result.append(tile + topLeft)
+			result.append(tile)
+			continue
 		if not (tile + topRight in get_used_cells()):
-			result.append(tile + topRight)
+			result.append(tile)
+			continue
 		if not (tile + bottomLeft in get_used_cells()):
-			result.append(tile + bottomLeft)
+			result.append(tile)
+			continue
 		if not (tile + bottomRight in get_used_cells()):
-			result.append(tile + bottomRight)
+			result.append(tile)
+			continue
 	return result

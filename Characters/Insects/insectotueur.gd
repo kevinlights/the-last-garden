@@ -25,6 +25,7 @@ func _ready():
 	$insectotueur.frame = sprites["seed"]
 	$insectotueur.material = $insectotueur.material.duplicate();
 	longevite.set_text(str(turns_to_hatch - current_turn))
+	terrain.getBloc(tileMap.world_to_map(position)).corrupt()
 
 func _process(delta):
 	if move_to_tile:
@@ -72,8 +73,6 @@ func movement_predictor():
 		distance = tile.distance_to(current_tile+direction)
 		distances.append([distance,current_tile+direction])
 	distances.sort_custom(self,"distance_sort")
-	print(current_tile)
-	print(distances)
 	candidat = distances.pop_front()
 	while(turnQueue.contain_enemy(candidat[1]) and not distances == []):
 		candidat = distances.pop_front()
@@ -93,59 +92,34 @@ func set_target(character : Vector2):
 	target_character = character
 
 func change_orientation(direction : Vector2):
-	var topLeft : Vector2 = Vector2(-1,0) # UP
-	var topRight : Vector2 = Vector2(0,-1) # RIGHT
-	var bottomLeft : Vector2 = Vector2(0,1) # LEFT
-	var bottomRight : Vector2 = Vector2(1,0) # DOWN
-	
-	if direction == topLeft:
-		$insectotueur.frame = sprites["adult_topLeft"]
-		$insectotueur.flip_h = false
-	if direction == topRight:
+	if direction == Vector2.UP:
 		$insectotueur.frame = sprites["adult_topLeft"]
 		$insectotueur.flip_h = true
-	if direction == bottomLeft:
-		$insectotueur.frame = sprites["adult_bottomLeft"]
+	if direction == Vector2.LEFT:
+		$insectotueur.frame = sprites["adult_topLeft"]
 		$insectotueur.flip_h = false
-	if direction == bottomRight:
+	if direction == Vector2.RIGHT:
 		$insectotueur.frame = sprites["adult_bottomLeft"]
 		$insectotueur.flip_h = true
+	if direction == Vector2.DOWN:
+		$insectotueur.frame = sprites["adult_bottomLeft"]
+		$insectotueur.flip_h = false
 
 func hatch():
-	
-	var topLeft : Vector2 = Vector2(-1,0)
-	var topRight : Vector2 = Vector2(0,-1)
-	var bottomLeft : Vector2 = Vector2(0,1)
-	var bottomRight : Vector2 = Vector2(1,0)
-	
 	var tile : Vector2 = tileMap.world_to_map(global_position)
+	var direction : Vector2
+	
+	target_tile = movement_predictor()
+	direction = tile.direction_to(tileMap.world_to_map(target_tile))
+	
 	$AnimationPlayer.play("fly")
-	if tile + topLeft in tileMap.get_used_cells():
-		target_tile = tileMap.map_to_world(tile + topLeft) + Vector2(0,tileMap.cell_size.y/2)
-		emit_signal("insect_on",tileMap.world_to_map(target_tile))
-		$insectotueur.frame = sprites["adult_topLeft"]
-		$insectotueur.flip_h = false
-		move_to_tile = true
-	elif tile + topRight in tileMap.get_used_cells():
-		target_tile = tileMap.map_to_world(tile + topRight) + Vector2(0,tileMap.cell_size.y/2)
-		emit_signal("insect_on",tileMap.world_to_map(target_tile))
-		$insectotueur.frame = sprites["adult_topLeft"]
-		$insectotueur.flip_h = true
-		move_to_tile = true
-	elif tile + bottomLeft in tileMap.get_used_cells():
-		target_tile = tileMap.map_to_world(tile + bottomLeft) + Vector2(0,tileMap.cell_size.y/2)
-		emit_signal("insect_on",tileMap.world_to_map(target_tile))
-		$insectotueur.frame = sprites["adult_bottomLeft"]
-		$insectotueur.flip_h = false
-		move_to_tile = true
-	elif tile + bottomRight in tileMap.get_used_cells():
-		target_tile = tileMap.map_to_world(tile + bottomRight) + Vector2(0,tileMap.cell_size.y/2)
-		emit_signal("insect_on",tileMap.world_to_map(target_tile))
-		$insectotueur.frame = sprites["adult_bottomLeft"]
-		$insectotueur.flip_h = true
-		move_to_tile = true
+	
+	emit_signal("insect_on",tileMap.world_to_map(target_tile))
+	change_orientation(direction)
+	move_to_tile = true
 	
 	longevite.set_text(str(""))
+	
 func fade():
 	$AnimationPlayer.play("meurt")
 	yield($AnimationPlayer, "animation_finished")
