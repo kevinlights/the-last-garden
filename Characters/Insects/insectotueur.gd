@@ -44,6 +44,8 @@ func update():
 		yield(self,"goal_reached")
 		move_to_tile = false
 	if current_turn > turns_to_hatch:
+		var potential_target = turnQueue.find_closest_raflesia(global_position)
+		target_character = potential_target
 		target_tile = movement_predictor()
 		emit_signal("insect_on",tileMap.world_to_map(target_tile))
 		change_orientation(tileMap.world_to_map(target_tile-global_position))
