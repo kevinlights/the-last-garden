@@ -14,6 +14,7 @@ func _ready():
 	connect('game_lost', get_parent().get_parent(), '_on_game_lost')
 	longevite.set("custom_colors/font_color", Color(0,0,0.8))
 	longevite.set_text(str(currentLevel))
+	$AnimationPlayer.play("idle")
 	
 func update():
 	if not to_remove:
@@ -33,4 +34,6 @@ func hatch():
 	emit_signal("game_won")
 	
 func fade():
+	$AnimationPlayer.play("meurt")
+	yield($AnimationPlayer, "animation_finished")
 	to_remove = true

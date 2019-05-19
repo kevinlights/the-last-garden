@@ -2,6 +2,7 @@ shader_type canvas_item;
 
 uniform float dissolution : hint_range(0,1);
 uniform vec4 color : hint_color;
+uniform vec2 uvnoise;
 
 vec2 hash(vec2 p) {
   p = vec2( dot(p,vec2(127.1,311.7)),
@@ -37,7 +38,7 @@ float pnoise(vec2 p,float amplitude,float frequency,float persistence, int nboct
 }
 
 void fragment(){
-	vec3 n = clamp(vec3(pnoise(UV*vec2(4,1),2,4,0.2,4)*0.5+0.5),0,1);
+	vec3 n = clamp(vec3(pnoise(UV*uvnoise,2,4,0.2,4)*0.5+0.5),0,1);
 	vec4 c = texture(TEXTURE,UV);
 	
 	float d=0.005;

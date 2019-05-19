@@ -9,12 +9,13 @@
 shader = ExtResource( 2 )
 shader_param/dissolution = 0.0
 shader_param/color = null
+shader_param/uvnoise = Vector2( 4, 2 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 30
 font_data = ExtResource( 4 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "idle"
 length = 3.0
 loop = true
@@ -43,8 +44,7 @@ tracks/1/keys = {
 "values": [ Vector2( -3.79996, -23.75 ), Vector2( -3.79996, -17.5931 ), Vector2( -3.79996, -23.75 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "transform"
+[sub_resource type="Animation" id=4]
 tracks/0/type = "value"
 tracks/0/path = NodePath("RafflesiaSprite:material:shader_param/dissolution")
 tracks/0/interp = 1
@@ -88,6 +88,5 @@ margin_bottom = 59.6
 custom_fonts/font = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/idle = SubResource( 4 )
-anims/transform = SubResource( 3 )
-
+anims/idle = SubResource( 3 )
+anims/transform = SubResource( 4 )

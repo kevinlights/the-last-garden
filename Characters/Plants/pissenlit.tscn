@@ -9,6 +9,7 @@
 shader = ExtResource( 2 )
 shader_param/dissolution = 0.0
 shader_param/color = null
+shader_param/uvnoise = Vector2( 4, 1 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 30
@@ -119,4 +120,3 @@ playback_speed = 1.5
 anims/idle = SubResource( 3 )
 anims/metamorphose = SubResource( 4 )
 anims/meurt = SubResource( 5 )
-
