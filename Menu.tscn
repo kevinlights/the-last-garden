@@ -1,29 +1,23 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Menu.gd" type="Script" id=1]
 [ext_resource path="res://art2d/bg1.png" type="Texture" id=2]
-[ext_resource path="res://bg2.shader" type="Shader" id=3]
-[ext_resource path="res://art2d/bg2.png" type="Texture" id=4]
-[ext_resource path="res://art2d/bg3.png" type="Texture" id=5]
-[ext_resource path="res://font/riffic.otf" type="DynamicFontData" id=6]
-
-[sub_resource type="ShaderMaterial" id=5]
-shader = ExtResource( 3 )
+[ext_resource path="res://art2d/bg2.png" type="Texture" id=3]
+[ext_resource path="res://art2d/bg3.png" type="Texture" id=4]
+[ext_resource path="res://font/riffic.otf" type="DynamicFontData" id=5]
 
 [sub_resource type="AtlasTexture" id=1]
-flags = 6
-atlas = ExtResource( 4 )
+flags = 4
+atlas = ExtResource( 3 )
 region = Rect2( -207.989, -85.7494, 2456.62, 1258.27 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 40
-font_data = ExtResource( 6 )
+font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 32
-outline_size = 1
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 6 )
+font_data = ExtResource( 5 )
 
 [node name="Menu" type="MarginContainer"]
 anchor_right = 1.0
@@ -40,7 +34,6 @@ scale = Vector2( 0.90923, 0.90923 )
 texture = ExtResource( 2 )
 
 [node name="bg2" type="Sprite" parent="."]
-material = SubResource( 5 )
 position = Vector2( 490.255, 194.756 )
 scale = Vector2( 0.520213, 0.520213 )
 texture = SubResource( 1 )
@@ -49,19 +42,19 @@ region_rect = Rect2( -174.765, 5.27428, 2235.12, 1193.27 )
 [node name="bg3" type="Sprite" parent="."]
 position = Vector2( 484.704, 200.308 )
 scale = Vector2( 0.560274, 0.560274 )
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchor_bottom = 0.69
+editor/display_folded = true
 margin_right = 964.0
-margin_bottom = 124.0
+margin_bottom = 400.0
 custom_constants/separation = 44
 
 [node name="INSECTOTUEURS" type="Label" parent="VBoxContainer"]
 margin_right = 964.0
 margin_bottom = 43.0
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0.623529, 0, 0.67451, 1 )
+custom_colors/font_color = Color( 0.482353, 0.0823529, 0.0823529, 1 )
 text = "INSECTOTUEURS"
 align = 1
 
@@ -70,17 +63,27 @@ margin_top = 87.0
 margin_right = 964.0
 margin_bottom = 127.0
 custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_hover = Color( 1, 0.74902, 0, 1 )
+custom_colors/font_color = Color( 0.247059, 0.247059, 0.247059, 1 )
+custom_colors/font_color_hover = Color( 0.482353, 0.0823529, 0.0823529, 1 )
 text = "Nouvelle partie"
 
-[node name="Quitter" type="MenuButton" parent="VBoxContainer"]
+[node name="Regles" type="MenuButton" parent="VBoxContainer"]
 margin_top = 171.0
 margin_right = 964.0
 margin_bottom = 211.0
 custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_hover = Color( 1, 0.74902, 0, 1 )
+custom_colors/font_color = Color( 0.247059, 0.247059, 0.247059, 1 )
+custom_colors/font_color_hover = Color( 0.482353, 0.0823529, 0.0823529, 1 )
+text = "Règles"
+
+[node name="Quitter" type="MenuButton" parent="VBoxContainer"]
+margin_top = 255.0
+margin_right = 964.0
+margin_bottom = 295.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.247059, 0.247059, 0.247059, 1 )
+custom_colors/font_color_hover = Color( 0.482353, 0.0823529, 0.0823529, 1 )
 text = "Quitter"
 [connection signal="pressed" from="VBoxContainer/Nouvelle Partie" to="." method="_on_Nouvelle_Partie_pressed"]
+[connection signal="pressed" from="VBoxContainer/Regles" to="." method="_on_Regles_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quitter" to="." method="_on_Quitter_pressed"]

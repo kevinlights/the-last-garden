@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Characters/Plants/FleurBleu.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Plants/dissolution.shader" type="Shader" id=2]
 [ext_resource path="res://art2d/fleurbleue.png" type="Texture" id=3]
+[ext_resource path="res://font/longevite_font.tres" type="DynamicFont" id=4]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
@@ -61,6 +62,13 @@ position = Vector2( 1.49081, -64.2153 )
 texture = ExtResource( 3 )
 hframes = 2
 frame = 1
+
+[node name="Longevite" type="Label" parent="FleurBleuSprite"]
+margin_left = -41.5965
+margin_top = 61.1342
+margin_right = -1.5965
+margin_bottom = 94.1342
+custom_fonts/font = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/meta = SubResource( 2 )

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Characters/Plants/Ronces.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Plants/dissolution.shader" type="Shader" id=2]
 [ext_resource path="res://art2d/ronces.png" type="Texture" id=3]
+[ext_resource path="res://font/longevite_font.tres" type="DynamicFont" id=4]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
@@ -61,6 +62,13 @@ position = Vector2( -8.17288, -17.4358 )
 texture = ExtResource( 3 )
 hframes = 2
 frame = 1
+
+[node name="Longevite" type="Label" parent="RonceSprite"]
+margin_left = -11.3445
+margin_top = 40.336
+margin_right = 28.6555
+margin_bottom = 73.336
+custom_fonts/font = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/meta = SubResource( 2 )

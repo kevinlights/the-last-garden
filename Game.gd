@@ -60,8 +60,8 @@ func _ready():
 	mana += mana_gain
 
 	emit_signal("mana_set", mana)
-	nombre_plantes["pissenlit"] = 0
-	nombre_plantes["rafflesia"] = 0
+	nombre_plantes["pissenlit"] = 1
+	nombre_plantes["rafflesia"] = 1
 	nombre_plantes["ronces"] = 1
 	nombre_plantes["fleurbleue"] = 1
 	add_plants()
