@@ -65,6 +65,12 @@ func find_closest_raflesia(tile : Vector2):
 		best = root.queen_position
 	return best
 
+func as_insect():
+	for character in get_characters():
+		if character.is_insect and not character.to_remove:
+			return true
+	return false
+
 # Si un insecte marche sur une plante il la detruis
 func _on_insect_on(position):
 	for character in get_characters():

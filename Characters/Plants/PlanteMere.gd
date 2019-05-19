@@ -3,9 +3,9 @@ extends Character
 signal game_won()
 signal game_lost()
 
+export var beginningLevel : int = 15
 
 onready var longevite = $PlanteMereSprite/Longevite
-var beginningLevel : int = 15
 var currentLevel : int = beginningLevel
 
 func _ready():
