@@ -51,8 +51,13 @@ func update():
 		change_orientation(tileMap.world_to_map(target_tile-global_position))
 		move_to_tile = true
 		yield(self,"goal_reached")
+		check_ronces()
 		move_to_tile = false
 	emit_signal("updated")
+
+func check_ronces():
+	if turnQueue.contain_ronce(global_position) :
+		fade()
 
 func go_to_target_tile(distance : float):
 	var distance_to_target = position.distance_to(target_tile)

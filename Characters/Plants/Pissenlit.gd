@@ -72,7 +72,6 @@ func hatch():
 				break
 	
 	yield(get_tree().create_timer(0.2), "timeout")
-	
 	emit_signal("hatch_done_internal")
 
 	#frame = sprites["adult_idle"]

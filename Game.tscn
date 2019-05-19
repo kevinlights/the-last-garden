@@ -103,6 +103,7 @@ script = ExtResource( 8 )
 script = ExtResource( 9 )
 
 [node name="Graines" type="HBoxContainer" parent="ui_hud"]
+editor/display_folded = true
 margin_right = 111.0
 margin_bottom = 45.0
 
@@ -161,7 +162,6 @@ texture = SubResource( 5 )
 stretch_mode = 5
 
 [node name="EndTurnButton" type="TextureButton" parent="ui_hud"]
-editor/display_folded = true
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -186,6 +186,7 @@ align = 1
 valign = 1
 
 [node name="EcranFinDePartie" type="CenterContainer" parent="ui_hud"]
+editor/display_folded = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0

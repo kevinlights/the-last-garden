@@ -6,6 +6,7 @@ signal updated()
 
 var is_insect : bool
 var is_raflesia : bool = false
+var is_ronce : bool = false
 var to_remove : bool = false
 
 # Called when the node enters the scene tree for the first time.

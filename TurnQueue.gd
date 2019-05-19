@@ -71,10 +71,17 @@ func as_insect():
 			return true
 	return false
 
+func contain_ronce(position : Vector2):
+	for character in get_characters():
+		if not character.is_insect and not character.to_remove:
+			if tileMap.world_to_map(character.global_position) == tileMap.world_to_map(position):
+				return true
+	return false
+
 # Si un insecte marche sur une plante il la detruis
 func _on_insect_on(position):
 	for character in get_characters():
-		if not character.is_insect :
+		if not character.is_insect and not character.to_remove :
 			if tileMap.world_to_map(character.global_position) == position:
 				character.fade()
 
