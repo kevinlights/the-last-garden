@@ -23,3 +23,20 @@ func _on_RafflesiaButton_pressed():
 
 func _on_EndTurnButton_pressed():
 	emit_signal("plant_selected","")
+
+func _on_Game_mana_set(mana, manamax):
+	$Graines/Mana.set_text(str(mana) + "/" + str(manamax))
+
+func showVictoryScreen():
+	$EcranFinDePartie.show()
+	$EcranFinDePartie/VBoxContainer/CenterContainer/VICTOIRE.show()
+	
+func showDefeatScreen():
+	$EcranFinDePartie.show()
+	$EcranFinDePartie/VBoxContainer/CenterContainer/DEFAITE.show()
+
+func _on_Rejouer_pressed():
+	get_tree().change_scene("res://Game.tscn")
+
+func _on_Retour_pressed():
+	get_tree().change_scene("res://Menu.tscn")

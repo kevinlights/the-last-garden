@@ -1,5 +1,7 @@
 extends Node2D
 
+signal mana_set(mana, manamax)
+
 onready var tileMap : TileMap = $TileMap
 onready var terrain = get_node("TileMap/terrain")
 onready var turnQueue : Node = $TurnQueue
@@ -44,6 +46,7 @@ func _ready():
 	randomize()
 	current_wave = 1
 	mana = mana_max
+	emit_signal("mana_set", mana, mana_max)
 	nombre_plantes["pissenlit"] = pissenlits_max
 	nombre_plantes["rafflesia"] = raflesia_max
 	couts_plantes["pissenlit"] = cout_mana_pissenlit
@@ -72,6 +75,7 @@ func play():
 						if tileMap.isTileFree(selected_tile,turnQueue.get_characers_positions()) and not terrain.getBloc(selected_tile).isCorrupted:
 							ajouter_character(selected_plant, selected_tile)
 							mana -= couts_plantes[selected_plant]
+							emit_signal("mana_set", mana, mana_max)
 							nombre_plantes[selected_plant] -= 1
 							etat_courant = ETAT.SELECT_TILE
 							print("selected tile :",selected_tile)
@@ -89,6 +93,7 @@ func play():
 						spawn_max += spawn_max_turn_step
 					insect_spawner(spawn_min,spawn_max)
 				mana = mana_max
+				emit_signal("mana_set", mana, mana_max)
 				nombre_plantes["pissenlit"] = pissenlits_max
 				nombre_plantes["rafflesia"] = raflesia_max
 				etat_courant = ETAT.SELECT_PLANT
@@ -138,15 +143,7 @@ func ajouter_reine():
 	turnQueue.add_character(new_queen)
 
 func _on_game_won():
-	$ui_hud/EcranFinDePartie.show()
-	$ui_hud/EcranFinDePartie/VBoxContainer/CenterContainer/VICTOIRE.show()
+	$ui_hud.showVictoryScreen()
 
 func _on_game_lost():
-	$ui_hud/EcranFinDePartie.show()
-	$ui_hud/EcranFinDePartie/VBoxContainer/CenterContainer/DEFAITE.show()
-
-func _on_Rejouer_pressed():
-	get_tree().change_scene("res://Game.tscn")
-
-func _on_Retour_pressed():
-	get_tree().change_scene("res://Menu.tscn")
+	$ui_hud.showDefeatScreen()
