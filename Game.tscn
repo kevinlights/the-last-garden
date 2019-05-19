@@ -1,24 +1,25 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
-[ext_resource path="res://art2d/corrupt.png" type="Texture" id=2]
-[ext_resource path="res://art2d/grass.png" type="Texture" id=3]
-[ext_resource path="res://TileMap.gd" type="Script" id=4]
-[ext_resource path="res://terrain.gd" type="Script" id=5]
-[ext_resource path="res://TurnQueue.gd" type="Script" id=6]
-[ext_resource path="res://ui/ui_navigation.gd" type="Script" id=7]
-[ext_resource path="res://ui/Mouse.gd" type="Script" id=8]
-[ext_resource path="res://ui/ui_hud.gd" type="Script" id=9]
-[ext_resource path="res://art2d/plant_button.png" type="Texture" id=10]
-[ext_resource path="res://art2d/plant_button_focused.png" type="Texture" id=11]
-[ext_resource path="res://art2d/pissenlit.png" type="Texture" id=12]
-[ext_resource path="res://art2d/rafflesia.png" type="Texture" id=13]
-[ext_resource path="res://art2d/plant_button_hover.png" type="Texture" id=14]
-[ext_resource path="res://font/riffic.otf" type="DynamicFontData" id=15]
+[ext_resource path="res://ScreenShakeD.gd" type="Script" id=2]
+[ext_resource path="res://art2d/corrupt.png" type="Texture" id=3]
+[ext_resource path="res://art2d/grass.png" type="Texture" id=4]
+[ext_resource path="res://TileMap.gd" type="Script" id=5]
+[ext_resource path="res://terrain.gd" type="Script" id=6]
+[ext_resource path="res://TurnQueue.gd" type="Script" id=7]
+[ext_resource path="res://ui/ui_navigation.gd" type="Script" id=8]
+[ext_resource path="res://ui/Mouse.gd" type="Script" id=9]
+[ext_resource path="res://ui/ui_hud.gd" type="Script" id=10]
+[ext_resource path="res://art2d/plant_button.png" type="Texture" id=11]
+[ext_resource path="res://art2d/plant_button_focused.png" type="Texture" id=12]
+[ext_resource path="res://art2d/pissenlit.png" type="Texture" id=13]
+[ext_resource path="res://art2d/rafflesia.png" type="Texture" id=14]
+[ext_resource path="res://art2d/plant_button_hover.png" type="Texture" id=15]
+[ext_resource path="res://font/riffic.otf" type="DynamicFontData" id=16]
 
 [sub_resource type="TileSet" id=1]
 0/name = "corrupt.png 0"
-0/texture = ExtResource( 2 )
+0/texture = ExtResource( 3 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 0, 224, 256 )
@@ -30,7 +31,7 @@
 
 [sub_resource type="TileSet" id=2]
 0/name = "grass"
-0/texture = ExtResource( 3 )
+0/texture = ExtResource( 4 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 0, 224, 256 )
@@ -46,27 +47,27 @@ load_path = "res://.import/selecteur_moche.png-d2888fb7ecd3ec3e26f49846e3c44cca.
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 4
-atlas = ExtResource( 12 )
+atlas = ExtResource( 13 )
 region = Rect2( 377, 7, 140, 202 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=5]
 flags = 4
-atlas = ExtResource( 13 )
+atlas = ExtResource( 14 )
 region = Rect2( 144, 4, 130, 121 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=6]
 size = 32
-font_data = ExtResource( 15 )
+font_data = ExtResource( 16 )
 
 [sub_resource type="DynamicFont" id=7]
 size = 60
-font_data = ExtResource( 15 )
+font_data = ExtResource( 16 )
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=8]
 size = 27
-font_data = ExtResource( 15 )
+font_data = ExtResource( 16 )
 
-[sub_resource type="StreamTexture" id=6]
+[sub_resource type="StreamTexture" id=9]
 flags = 4
 load_path = "res://.import/bg.png-88f66991dc3989c70cdf2ceb7cadff40.stex"
 
@@ -77,6 +78,7 @@ script = ExtResource( 1 )
 position = Vector2( 562.978, 313.728 )
 current = true
 zoom = Vector2( 2.35, 2.35 )
+script = ExtResource( 2 )
 
 [node name="BordsDown" type="TileMap" parent="."]
 z_index = -2
@@ -103,27 +105,27 @@ tile_set = SubResource( 2 )
 cell_size = Vector2( 224, 126 )
 format = 1
 tile_data = PoolIntArray( -327680, 0, 0, -327679, 0, 0, -327678, 0, 0, -327677, 0, 0, -327676, 0, 0, -327675, 0, 0, -327674, 0, 0, -327673, 0, 0, -327672, 0, 0, -262144, 0, 0, -262143, 0, 0, -262142, 0, 0, -262141, 0, 0, -262140, 0, 0, -262139, 0, 0, -262138, 0, 0, -262137, 0, 0, -262136, 0, 0, -196608, 0, 0, -196607, 0, 0, -196606, 0, 0, -196605, 0, 0, -196604, 0, 0, -196603, 0, 0, -196602, 0, 0, -196601, 0, 0, -196600, 0, 0, -131072, 0, 0, -131071, 0, 0, -131070, 0, 0, -131069, 0, 0, -131068, 0, 0, -131067, 0, 0, -131066, 0, 0, -131065, 0, 0, -131064, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0 )
-script = ExtResource( 4 )
-
-[node name="terrain" type="Node2D" parent="TileMap"]
 script = ExtResource( 5 )
 
-[node name="TurnQueue" type="Node" parent="."]
+[node name="terrain" type="Node2D" parent="TileMap"]
 script = ExtResource( 6 )
+
+[node name="TurnQueue" type="Node" parent="."]
+script = ExtResource( 7 )
 
 [node name="ui_navigation" type="Node" parent="."]
 editor/display_folded = true
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 
 [node name="Mouse" type="Sprite" parent="ui_navigation"]
 position = Vector2( 144.605, -86.8501 )
 scale = Vector2( 0.974993, 0.988049 )
 z_index = -1
 texture = SubResource( 3 )
-script = ExtResource( 8 )
+script = ExtResource( 9 )
 
 [node name="ui_hud" type="CanvasLayer" parent="."]
-script = ExtResource( 9 )
+script = ExtResource( 10 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ui_hud"]
 anchor_top = 1.0
@@ -138,8 +140,8 @@ rect_scale = Vector2( 0.6, 0.6 )
 editor/display_folded = true
 margin_right = 222.0
 margin_bottom = 222.0
-texture_normal = ExtResource( 10 )
-texture_focused = ExtResource( 11 )
+texture_normal = ExtResource( 11 )
+texture_focused = ExtResource( 12 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -156,8 +158,8 @@ editor/display_folded = true
 margin_left = 226.0
 margin_right = 448.0
 margin_bottom = 222.0
-texture_normal = ExtResource( 10 )
-texture_focused = ExtResource( 11 )
+texture_normal = ExtResource( 11 )
+texture_focused = ExtResource( 12 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -167,7 +169,7 @@ margin_left = 9.02496
 margin_top = 15.4875
 margin_right = 328.025
 margin_bottom = 201.487
-texture = SubResource( 10 )
+texture = SubResource( 5 )
 stretch_mode = 5
 
 [node name="EndTurn" type="TextureButton" parent="ui_hud"]
@@ -181,8 +183,8 @@ margin_top = -139.44
 margin_right = 64.3236
 margin_bottom = 84.5597
 rect_scale = Vector2( 0.6, 0.6 )
-texture_normal = ExtResource( 10 )
-texture_pressed = ExtResource( 14 )
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 15 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -190,7 +192,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="ui_hud/EndTurn"]
 margin_right = 224.0
 margin_bottom = 223.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "Fin de tour"
 align = 1
 valign = 1
@@ -238,14 +240,14 @@ margin_bottom = 104.0
 [node name="Rejouer" type="Button" parent="ui_hud/EcranFinDePartie/VBoxContainer/HBoxContainer"]
 margin_right = 111.0
 margin_bottom = 36.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 8 )
 text = "Rejouer"
 
 [node name="Retour" type="Button" parent="ui_hud/EcranFinDePartie/VBoxContainer/HBoxContainer"]
 margin_left = 115.0
 margin_right = 325.0
 margin_bottom = 36.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 8 )
 text = "Retour au menu"
 
 [node name="bg" type="CanvasLayer" parent="."]
@@ -256,7 +258,7 @@ transform = Transform2D( 0.559144, 0, 0, 0.570343, 0, 0 )
 [node name="Sprite" type="Sprite" parent="bg"]
 position = Vector2( 1010.34, 691.948 )
 scale = Vector2( 2.23009, 2.27932 )
-texture = SubResource( 6 )
+texture = SubResource( 9 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -264,8 +266,8 @@ __meta__ = {
 [connection signal="plant_selected" from="ui_hud" to="." method="_on_ui_hud_plant_selected"]
 [connection signal="pressed" from="ui_hud/HBoxContainer/PissenlitButton" to="ui_hud" method="on_pissenlit_selected"]
 [connection signal="pressed" from="ui_hud/HBoxContainer/RafflesiaButton" to="ui_hud" method="_on_RafflesiaButton_pressed"]
-[connection signal="pressed" from="ui_hud/EndTurn" to="ui_hud" method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EndTurn" to="." method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EndTurn" to="ui_navigation" method="_on_EndTurnButton_pressed"]
+[connection signal="pressed" from="ui_hud/EndTurn" to="ui_hud" method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EcranFinDePartie/VBoxContainer/HBoxContainer/Rejouer" to="." method="_on_Rejouer_pressed"]
 [connection signal="pressed" from="ui_hud/EcranFinDePartie/VBoxContainer/HBoxContainer/Retour" to="." method="_on_Retour_pressed"]

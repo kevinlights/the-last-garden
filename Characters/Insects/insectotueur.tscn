@@ -1,15 +1,21 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Characters/Insects/insectotueur.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Insects/shadow.png" type="Texture" id=2]
-[ext_resource path="res://art2d/insectotueur.png" type="Texture" id=3]
-[ext_resource path="res://font/riffic.otf" type="DynamicFontData" id=4]
+[ext_resource path="res://Characters/Insects/dissolution2.shader" type="Shader" id=3]
+[ext_resource path="res://art2d/insectotueur.png" type="Texture" id=4]
+[ext_resource path="res://font/riffic.otf" type="DynamicFontData" id=5]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 3 )
+shader_param/dissolution = 0.0
+shader_param/color = null
+
+[sub_resource type="DynamicFont" id=2]
 size = 30
-font_data = ExtResource( 4 )
+font_data = ExtResource( 5 )
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 length = 4.0
 loop = true
 tracks/0/type = "value"
@@ -37,6 +43,21 @@ tracks/1/keys = {
 "values": [ Vector2( -6.514, -58.4221 ), Vector2( -12.0272, -47.3956 ), Vector2( -16.6216, -50.1522 ), Vector2( -10.1797, -36.1356 ), Vector2( -6.514, -58.4221 ) ]
 }
 
+[sub_resource type="Animation" id=4]
+resource_name = "meurt"
+tracks/0/type = "value"
+tracks/0/path = NodePath("insectotueur:material:shader_param/dissolution")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
 [node name="Node2D" type="Node2D"]
 scale = Vector2( 0.8, 0.8 )
 script = ExtResource( 1 )
@@ -49,9 +70,10 @@ z_index = 1
 texture = ExtResource( 2 )
 
 [node name="insectotueur" type="Sprite" parent="."]
+material = SubResource( 1 )
 position = Vector2( 0, -28.31 )
 z_index = 2
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 offset = Vector2( 5, -20 )
 hframes = 3
 frame = 1
@@ -60,8 +82,10 @@ frame = 1
 margin_left = -40.0
 margin_top = 40.0
 margin_bottom = 67.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0.862745, 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/fly = SubResource( 2 )
+anims/fly = SubResource( 3 )
+anims/meurt = SubResource( 4 )
+

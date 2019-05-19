@@ -23,7 +23,7 @@ func _ready():
 	is_insect = true
 	connect("insect_on", turnQueue, "_on_insect_on")
 	$insectotueur.frame = sprites["seed"]
-	
+	$insectotueur.material = $insectotueur.material.duplicate();
 	longevite.set_text(str(turns_to_hatch - current_turn))
 
 func _process(delta):
@@ -122,5 +122,7 @@ func hatch():
 	
 	longevite.set_text(str(""))
 func fade():
+	$AnimationPlayer.play("meurt")
+	yield($AnimationPlayer, "animation_finished")
 	get_parent().remove_child(self)
 	longevite.set_text(" ")
