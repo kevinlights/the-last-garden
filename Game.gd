@@ -15,20 +15,26 @@ onready var ronces_ressource = load("res://Characters/Plants/Ronces.tscn")
 onready var fleurbleue_ressource = load("res://Characters/Plants/FleurBleu.tscn")
 onready var insectotueur_ressource = load("res://Characters/Insects/insectotueur.tscn")
 
-export var mana_max : int = 2
-export var pissenlits_max : int = 2
-export var raflesia_max : int = 2
-export var ronces_max : int = 2
-export var fleurbleue_max : int = 2
+# Nombre de plantes
+export var nb_plants_per_turn : int = 2
+export var pissenlit_chance : float = 0.35 #commun
+export var raflesia_chance : float = 0.20 #rare
+export var ronces_chance : float = 0.35 # commun
+export var fleurbleue_chance : float = 0.10 # epic
+
+# Couts des plantes
+export var mana_gain : int = 2
 export var cout_mana_pissenlit : int = 1
 export var cout_mana_raflesia : int = 1
 export var cout_mana_ronces : int = 1
 export var cout_mana_fleurbleue : int = 1
-export var spawn_min : int = 1
-export var spawn_max : int = 2
-export var spawn_step : int = 1
-export var spawn_min_turn_step : int = 1
-export var spawn_max_turn_step : int = 1
+
+# Parametre spawn insects
+export var spawn_insect_min : int = 1
+export var spawn_insect_max : int = 2
+export var spawn_insect_step : int = 1
+export var spawn_insect_min_turn_step : int = 1
+export var spawn_insect_max_turn_step : int = 1
 
 var mana : int
 var nombre_plantes : Dictionary = {}
@@ -51,19 +57,20 @@ var current_wave : int
 func _ready():
 	randomize()
 	current_wave = 1
-	mana = mana_max
-	emit_signal("mana_set", mana, mana_max)
-	nombre_plantes["pissenlit"] = pissenlits_max
-	nombre_plantes["rafflesia"] = raflesia_max
-	nombre_plantes["ronces"] = ronces_max
-	nombre_plantes["fleurbleue"] = fleurbleue_max
+	mana += mana_gain
+	emit_signal("mana_set", mana, 0)
+	nombre_plantes["pissenlit"] = 0
+	nombre_plantes["rafflesia"] = 0
+	nombre_plantes["ronces"] = 1
+	nombre_plantes["fleurbleue"] = 0
+	add_plants()
 	couts_plantes["pissenlit"] = cout_mana_pissenlit
 	couts_plantes["rafflesia"] = cout_mana_raflesia
 	couts_plantes["ronces"] = cout_mana_ronces
 	couts_plantes["fleurbleue"] = cout_mana_fleurbleue
 	ajouter_reine()
 	
-	insect_spawner(spawn_min,spawn_max)
+	insect_spawner(spawn_insect_min,spawn_insect_max)
 
 	$ui_hud.showInitialMessage()
 	
@@ -89,7 +96,7 @@ func play():
 						if tileMap.isTileFree(selected_tile,turnQueue.get_characers_positions()) and not terrain.getBloc(selected_tile).isCorrupted:
 							ajouter_character(selected_plant, selected_tile)
 							mana -= couts_plantes[selected_plant]
-							emit_signal("mana_set", mana, mana_max)
+							emit_signal("mana_set", mana, 0)
 							nombre_plantes[selected_plant] -= 1
 							etat_courant = ETAT.SELECT_TILE
 							print("selected tile :",selected_tile)
@@ -102,17 +109,28 @@ func play():
 				yield(get_tree().create_timer(1), "timeout")
 				if not turnQueue.as_insect():
 					current_wave += 1
-					if (current_wave % spawn_step) == 0 :
-						spawn_min += spawn_min_turn_step
-						spawn_max += spawn_max_turn_step
-					insect_spawner(spawn_min,spawn_max)
-				mana = mana_max
-				emit_signal("mana_set", mana, mana_max)
-				nombre_plantes["pissenlit"] = pissenlits_max
-				nombre_plantes["rafflesia"] = raflesia_max
-				nombre_plantes["ronces"] = raflesia_max
+					if (current_wave % spawn_insect_step) == 0 :
+						spawn_insect_min += spawn_insect_min_turn_step
+						spawn_insect_max += spawn_insect_max_turn_step
+					insect_spawner(spawn_insect_min,spawn_insect_max)
+				mana += mana_gain
+				emit_signal("mana_set", mana, 0)
+				add_plants()
 				etat_courant = ETAT.SELECT_PLANT
 				print("End turn")
+
+func add_plants():
+	var choose : float
+	for i in range(nb_plants_per_turn):
+		choose = randf()
+		if choose <= pissenlit_chance:
+			nombre_plantes["pissenlit"] += 1
+		elif choose <= raflesia_chance:
+			nombre_plantes["rafflesia"] += 1
+		elif choose <= ronces_chance:
+			nombre_plantes["ronces"] += 1
+		elif choose <= fleurbleue_chance:
+			nombre_plantes["fleurbleue"] += 1
 
 func insect_spawner(spawn_min : int, spawn_max : int):
 	

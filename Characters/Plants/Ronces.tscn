@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Characters/Plants/Ronces.gd" type="Script" id=1]
-[ext_resource path="res://art2d/pissenlit.png" type="Texture" id=2]
+[ext_resource path="res://art2d/ronces.png" type="Texture" id=2]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="RonceSprite" type="Sprite" parent="."]
-position = Vector2( 1.85519, -65.2236 )
+position = Vector2( -8.17288, -17.4358 )
 texture = ExtResource( 2 )
-hframes = 4
+hframes = 2
 frame = 1

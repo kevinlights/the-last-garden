@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://ScreenShakeD.gd" type="Script" id=2]
@@ -47,6 +47,15 @@ region = Rect2( 377, 7, 140, 202 )
 flags = 4
 atlas = ExtResource( 15 )
 region = Rect2( 144, 4, 130, 121 )
+
+[sub_resource type="StreamTexture" id=10]
+flags = 4
+load_path = "res://.import/ronces.png-09d9a2c912a889d69ed360c4ab40ed78.stex"
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = SubResource( 10 )
+region = Rect2( 210, 10, 180, 110 )
 
 [sub_resource type="DynamicFont" id=6]
 size = 32
@@ -102,7 +111,6 @@ texture = SubResource( 2 )
 script = ExtResource( 8 )
 
 [node name="ui_hud" type="CanvasLayer" parent="."]
-editor/display_folded = true
 script = ExtResource( 9 )
 
 [node name="Graines" type="HBoxContainer" parent="ui_hud"]
@@ -146,7 +154,6 @@ margin_bottom = 212.0
 texture = SubResource( 4 )
 
 [node name="RafflesiaButton" type="TextureButton" parent="ui_hud/BoutonsPlantation"]
-editor/display_folded = true
 margin_left = 226.0
 margin_right = 448.0
 margin_bottom = 222.0
@@ -172,9 +179,13 @@ margin_bottom = 222.0
 texture_normal = ExtResource( 11 )
 texture_hover = ExtResource( 12 )
 texture_focused = ExtResource( 13 )
-__meta__ = {
-"_edit_group_": true
-}
+
+[node name="TextureRect" type="TextureRect" parent="ui_hud/BoutonsPlantation/RoncesButton"]
+margin_left = 16.5457
+margin_top = 49.6373
+margin_right = 196.546
+margin_bottom = 159.637
+texture = SubResource( 11 )
 
 [node name="FleurBleueButton2" type="TextureButton" parent="ui_hud/BoutonsPlantation"]
 margin_left = 678.0
@@ -188,6 +199,7 @@ __meta__ = {
 }
 
 [node name="EndTurnButton" type="TextureButton" parent="ui_hud"]
+editor/display_folded = true
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -300,7 +312,7 @@ scale = Vector2( 0.559144, 0.570343 )
 transform = Transform2D( 0.559144, 0, 0, 0.570343, 0, 0 )
 
 [node name="Sprite" type="Sprite" parent="bg"]
-position = Vector2( 920.076, 508.643 )
+position = Vector2( 908.244, 521.599 )
 scale = Vector2( 1.04126, 1.06425 )
 texture = SubResource( 9 )
 [connection signal="mana_set" from="." to="ui_hud" method="_on_Game_mana_set"]
