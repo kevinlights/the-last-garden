@@ -56,7 +56,6 @@ func _on_Rejouer_pressed():
 func _on_Retour_pressed():
 	get_tree().change_scene("res://Menu.tscn")
 
-
 func _on_PissenlitButton_mouse_entered():
 	$PlanteDescription/VBoxContainer/Titre.set_text("Pissenlit")
 	$PlanteDescription/VBoxContainer/Description.set_text("Lance ses pétales sur les insectes pour les tuer.")
@@ -71,7 +70,6 @@ func _on_RoncesButton_mouse_entered():
 	$PlanteDescription/VBoxContainer/Titre.set_text("Ronces")
 	$PlanteDescription/VBoxContainer/Description.set_text("Tue les insectes qui volent sur elle.")
 	$PlanteDescription.show()
-
 
 func _on_FleurBleueButton_mouse_entered():
 	$PlanteDescription/VBoxContainer/Titre.set_text("Fleur bleue")

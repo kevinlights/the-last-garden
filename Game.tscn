@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://ScreenShakeD.gd" type="Script" id=2]
@@ -14,14 +14,16 @@
 [ext_resource path="res://ui/Style/theme_hover.tres" type="Theme" id=12]
 [ext_resource path="res://ui/Style/hoverstyle.tres" type="StyleBox" id=13]
 [ext_resource path="res://font/riffic.otf" type="DynamicFontData" id=14]
-[ext_resource path="res://art2d/plant_button.png" type="Texture" id=15]
-[ext_resource path="res://art2d/plant_button_hover.png" type="Texture" id=16]
-[ext_resource path="res://art2d/plant_button_focused.png" type="Texture" id=17]
-[ext_resource path="res://art2d/pissenlit.png" type="Texture" id=18]
-[ext_resource path="res://art2d/rafflesia.png" type="Texture" id=19]
-[ext_resource path="res://art2d/ronces.png" type="Texture" id=20]
-[ext_resource path="res://font/font.tres" type="DynamicFont" id=21]
-[ext_resource path="res://art2d/arrow.png" type="Texture" id=22]
+[ext_resource path="res://art2d/energy.png" type="Texture" id=15]
+[ext_resource path="res://art2d/plant_button.png" type="Texture" id=16]
+[ext_resource path="res://art2d/plant_button_hover.png" type="Texture" id=17]
+[ext_resource path="res://art2d/plant_button_focused.png" type="Texture" id=18]
+[ext_resource path="res://art2d/pissenlit.png" type="Texture" id=19]
+[ext_resource path="res://art2d/rafflesia.png" type="Texture" id=20]
+[ext_resource path="res://art2d/ronces.png" type="Texture" id=21]
+[ext_resource path="res://art2d/fleurbleue.png" type="Texture" id=22]
+[ext_resource path="res://font/font.tres" type="DynamicFont" id=23]
+[ext_resource path="res://art2d/arrow.png" type="Texture" id=24]
 
 [sub_resource type="TileSet" id=1]
 0/name = "grass"
@@ -57,18 +59,22 @@ font_data = ExtResource( 14 )
 
 [sub_resource type="AtlasTexture" id=5]
 flags = 4
-atlas = ExtResource( 18 )
+atlas = ExtResource( 19 )
 region = Rect2( 377, 7, 140, 202 )
 
 [sub_resource type="AtlasTexture" id=6]
 flags = 4
-atlas = ExtResource( 19 )
+atlas = ExtResource( 20 )
 region = Rect2( 144, 4, 130, 121 )
 
 [sub_resource type="AtlasTexture" id=7]
 flags = 4
-atlas = ExtResource( 20 )
+atlas = ExtResource( 21 )
 region = Rect2( 210, 4, 183, 118 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 22 )
+region = Rect2( 161, 1, 169, 148 )
 
 [sub_resource type="DynamicFont" id=8]
 size = 32
@@ -161,17 +167,25 @@ margin_bottom = 40.0
 text = "Lance ses pétales sur les insectes pour les tuer."
 
 [node name="Graines" type="HBoxContainer" parent="ui_hud"]
-editor/display_folded = true
-margin_right = 111.0
+margin_left = 8.67915
+margin_right = 119.679
 margin_bottom = 45.0
 
 [node name="Mana" type="Label" parent="ui_hud/Graines"]
 margin_top = 1.0
-margin_right = 68.0
+margin_right = 29.0
 margin_bottom = 44.0
 custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.223529, 0.223529, 0.223529, 1 )
-text = "2/2"
+text = "0"
+
+[node name="Energie" type="TextureRect" parent="ui_hud"]
+margin_left = 33.1682
+margin_top = -5.53242
+margin_right = 545.168
+margin_bottom = 506.468
+rect_scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 15 )
 
 [node name="BoutonsPlantation" type="HBoxContainer" parent="ui_hud"]
 anchor_top = 1.0
@@ -186,9 +200,9 @@ rect_scale = Vector2( 0.4, 0.4 )
 editor/display_folded = true
 margin_right = 222.0
 margin_bottom = 222.0
-texture_normal = ExtResource( 15 )
-texture_hover = ExtResource( 16 )
-texture_focused = ExtResource( 17 )
+texture_normal = ExtResource( 16 )
+texture_hover = ExtResource( 17 )
+texture_focused = ExtResource( 18 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -205,9 +219,9 @@ editor/display_folded = true
 margin_left = 226.0
 margin_right = 448.0
 margin_bottom = 222.0
-texture_normal = ExtResource( 15 )
-texture_hover = ExtResource( 16 )
-texture_focused = ExtResource( 17 )
+texture_normal = ExtResource( 16 )
+texture_hover = ExtResource( 17 )
+texture_focused = ExtResource( 18 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -221,13 +235,12 @@ texture = SubResource( 6 )
 stretch_mode = 5
 
 [node name="RoncesButton" type="TextureButton" parent="ui_hud/BoutonsPlantation"]
-editor/display_folded = true
 margin_left = 452.0
 margin_right = 674.0
 margin_bottom = 222.0
-texture_normal = ExtResource( 15 )
-texture_hover = ExtResource( 16 )
-texture_focused = ExtResource( 17 )
+texture_normal = ExtResource( 16 )
+texture_hover = ExtResource( 17 )
+texture_focused = ExtResource( 18 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -243,12 +256,20 @@ texture = SubResource( 7 )
 margin_left = 678.0
 margin_right = 900.0
 margin_bottom = 222.0
-texture_normal = ExtResource( 15 )
-texture_hover = ExtResource( 16 )
-texture_focused = ExtResource( 17 )
+texture_normal = ExtResource( 16 )
+texture_hover = ExtResource( 17 )
+texture_focused = ExtResource( 18 )
 __meta__ = {
 "_edit_group_": true
 }
+
+[node name="TextureRect" type="TextureRect" parent="ui_hud/BoutonsPlantation/FleurBleueButton"]
+margin_left = 21.2789
+margin_top = 25.1479
+margin_right = 341.279
+margin_bottom = 165.148
+rect_scale = Vector2( 1.13002, 1.13002 )
+texture = SubResource( 12 )
 
 [node name="EndTurnButton" type="TextureButton" parent="ui_hud"]
 editor/display_folded = true
@@ -261,8 +282,8 @@ margin_top = -139.44
 margin_right = 64.3236
 margin_bottom = 84.5597
 rect_scale = Vector2( 0.6, 0.6 )
-texture_normal = ExtResource( 15 )
-texture_hover = ExtResource( 16 )
+texture_normal = ExtResource( 16 )
+texture_hover = ExtResource( 17 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -345,7 +366,7 @@ margin_left = 253.0
 margin_top = 182.0
 margin_right = 731.0
 margin_bottom = 215.0
-custom_fonts/font = ExtResource( 21 )
+custom_fonts/font = ExtResource( 23 )
 custom_colors/font_color = Color( 0.0823529, 0.243137, 0.27451, 1 )
 text = "Protégez l'oeuf de la reine-mère !"
 
@@ -356,7 +377,7 @@ margin_right = 800.098
 margin_bottom = 391.914
 rect_rotation = 154.29
 rect_scale = Vector2( 0.350456, 0.350456 )
-texture = ExtResource( 22 )
+texture = ExtResource( 24 )
 
 [node name="bg" type="CanvasLayer" parent="."]
 layer = -5
@@ -382,7 +403,7 @@ texture = SubResource( 11 )
 [connection signal="mouse_exited" from="ui_hud/BoutonsPlantation/FleurBleueButton" to="ui_hud" method="_on_FleurBleueButton_mouse_exited"]
 [connection signal="pressed" from="ui_hud/BoutonsPlantation/FleurBleueButton" to="ui_hud" method="_on_FleurBleueButton2_pressed"]
 [connection signal="pressed" from="ui_hud/EndTurnButton" to="." method="_on_EndTurnButton_pressed"]
-[connection signal="pressed" from="ui_hud/EndTurnButton" to="ui_navigation" method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EndTurnButton" to="ui_hud" method="_on_EndTurnButton_pressed"]
+[connection signal="pressed" from="ui_hud/EndTurnButton" to="ui_navigation" method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EcranFinDePartie/VBoxContainer/HBoxContainer/Rejouer" to="ui_hud" method="_on_Rejouer_pressed"]
 [connection signal="pressed" from="ui_hud/EcranFinDePartie/VBoxContainer/HBoxContainer/Retour" to="ui_hud" method="_on_Retour_pressed"]
