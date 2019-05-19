@@ -62,7 +62,7 @@ func play():
 				selected_tile = yield(ui_navigation,"tile_selected")
 				if etat_courant != ETAT.END_TURN:
 					if nombre_plantes[selected_plant]-1 >= 0 and mana-couts_plantes[selected_plant] >= 0 :
-						if tileMap.isTileFree(selected_tile,turnQueue.get_characers_positions()) : #and not terrain.getBloc(selected_tile).isCorrupted:
+						if tileMap.isTileFree(selected_tile,turnQueue.get_characers_positions()) and not terrain.getBloc(selected_tile).isCorrupted:
 							ajouter_character(selected_plant, selected_tile)
 							mana -= couts_plantes[selected_plant]
 							nombre_plantes[selected_plant] -= 1

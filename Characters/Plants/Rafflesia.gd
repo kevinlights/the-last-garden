@@ -1,4 +1,4 @@
-extends Character
+﻿extends Character
 
 signal hatch_done_internal()
 
@@ -16,6 +16,7 @@ var current_turn : int = 0
 func _ready():
 	is_insect = false
 	$RafflesiaSprite.frame = sprites["seed"]
+	$RafflesiaSprite.material = $RafflesiaSprite.material.duplicate()
 	longevite.set("custom_colors/font_color", Color(0,0,0.8))
 	longevite.set_text(str(turns_to_hatch - current_turn))
 
@@ -46,6 +47,9 @@ func hatch():
 	longevite.set("custom_colors/font_color", Color(0.8,0,0))
 	is_raflesia = true
 	
+	$AnimationPlayer.play("transform")
+	yield($AnimationPlayer, "animation_finished")
+	$AnimationPlayer.play("idle")
 	$RafflesiaSprite.frame = sprites["adult_idle"]
 	
 	emit_signal("hatch_done_internal")
@@ -53,4 +57,6 @@ func hatch():
 func fade():
 	longevite.set_text("")
 	is_raflesia = false
+	$AnimationPlayer.play("meurt")
+	yield($AnimationPlayer, "animation_finished")
 	to_remove = true

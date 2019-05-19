@@ -14,5 +14,6 @@ func _ready():
 
 
 func corrupt():
-	isCorrupted = true
-	$AnimationPlayer.play("corrupt")
+	if(!isCorrupted):
+		isCorrupted = true
+		$AnimationPlayer.play("corrupt")

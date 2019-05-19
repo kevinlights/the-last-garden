@@ -1,19 +1,129 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Characters/Plants/Rafflesia.gd" type="Script" id=1]
-[ext_resource path="res://art2d/rafflesia.png" type="Texture" id=2]
-[ext_resource path="res://font/riffic.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://Characters/Plants/dissolution.shader" type="Shader" id=2]
+[ext_resource path="res://art2d/rafflesia.png" type="Texture" id=3]
+[ext_resource path="res://font/riffic.otf" type="DynamicFontData" id=4]
+[ext_resource path="res://Characters/Plants/fog.shader" type="Shader" id=5]
+[ext_resource path="res://icon.png" type="Texture" id=6]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 2 )
+shader_param/dissolution = 0.0
+shader_param/color = null
+shader_param/uvnoise = Vector2( 4, 2 )
+
+[sub_resource type="DynamicFont" id=2]
 size = 30
-font_data = ExtResource( 3 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "idle"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("RafflesiaSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.11349, 0.897386 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("RafflesiaSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -3.79996, -23.75 ), Vector2( -3.79996, -17.5931 ), Vector2( -3.79996, -23.75 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("icon:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "meurt"
+tracks/0/type = "value"
+tracks/0/path = NodePath("RafflesiaSprite:material:shader_param/dissolution")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("icon:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=4]
+tracks/0/type = "value"
+tracks/0/path = NodePath("RafflesiaSprite:material:shader_param/dissolution")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("RafflesiaSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 5 )
+shader_param/color = Vector3( 1.48, 1.46, 0.82 )
+shader_param/OCTAVES = 10
 
 [node name="Rafflesia" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="RafflesiaSprite" type="Sprite" parent="."]
-position = Vector2( -3.79996, -23.75 )
-texture = ExtResource( 2 )
+material = SubResource( 1 )
+position = Vector2( -3.79996, -21.2872 )
+scale = Vector2( 1.0454, 0.958954 )
+texture = ExtResource( 3 )
 hframes = 2
 
 [node name="Longevite" type="Label" parent="RafflesiaSprite"]
@@ -21,4 +131,18 @@ margin_left = -28.5
 margin_top = 26.6
 margin_right = 11.5
 margin_bottom = 59.6
-custom_fonts/font = SubResource( 1 )
+
+custom_fonts/font = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/idle = SubResource( 3 )
+anims/meurt = SubResource( 6 )
+anims/transform = SubResource( 4 )
+
+[node name="icon" type="Sprite" parent="."]
+visible = false
+material = SubResource( 5 )
+position = Vector2( -2.34256, -31.0305 )
+scale = Vector2( 4.67548, 2.69265 )
+texture = ExtResource( 6 )
+>>>>>>> 122e3a497fde118229f7858d3c6ba61a019a0315
