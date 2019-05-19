@@ -73,7 +73,7 @@ func as_insect():
 
 func contain_ronce(position : Vector2):
 	for character in get_characters():
-		if not character.is_insect and not character.to_remove:
+		if not character.is_insect and character.is_ronce and not character.to_remove:
 			if tileMap.world_to_map(character.global_position) == tileMap.world_to_map(position):
 				return true
 	return false

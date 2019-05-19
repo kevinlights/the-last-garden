@@ -15,6 +15,7 @@ var current_turn : int = 0
 var target_character : Vector2 = Vector2()
 var target_tile : Vector2 = Vector2()
 var move_to_tile : bool = false
+var ronce_die : bool = false
 onready var longevite = get_node("insectotueur/Longevite")
 
 # Called when the node enters the scene tree for the first time.
@@ -42,22 +43,22 @@ func update():
 	if current_turn == turns_to_hatch:
 		hatch()
 		yield(self,"goal_reached")
+		if ronce_die:
+			fade()
 		move_to_tile = false
 	if current_turn > turns_to_hatch:
 		var potential_target = turnQueue.find_closest_raflesia(global_position)
 		target_character = potential_target
 		target_tile = movement_predictor()
+		ronce_die = turnQueue.contain_ronce(target_tile)
 		emit_signal("insect_on",tileMap.world_to_map(target_tile))
 		change_orientation(tileMap.world_to_map(target_tile-global_position))
 		move_to_tile = true
 		yield(self,"goal_reached")
-		check_ronces()
+		if ronce_die:
+			fade()
 		move_to_tile = false
 	emit_signal("updated")
-
-func check_ronces():
-	if turnQueue.contain_ronce(global_position) :
-		fade()
 
 func go_to_target_tile(distance : float):
 	var distance_to_target = position.distance_to(target_tile)
@@ -117,6 +118,7 @@ func hatch():
 	var direction : Vector2
 	
 	target_tile = movement_predictor()
+	ronce_die = turnQueue.contain_ronce(target_tile)
 	direction = tile.direction_to(tileMap.world_to_map(target_tile))
 	
 	$AnimationPlayer.play("fly")

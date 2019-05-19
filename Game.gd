@@ -11,8 +11,8 @@ onready var ui_navigation : Node = $ui_navigation
 onready var plantemere_ressource = load("res://Characters/Plants/PlanteMere.tscn")
 onready var pissenlit_ressource = load("res://Characters/Plants/Pissenlit.tscn")
 onready var rafflesia_ressource = load("res://Characters/Plants/Rafflesia.tscn")
-onready var ronces_ressource = load("res://Characters/Plants/Rafflesia.tscn")
-onready var fleurbleue_ressource = load("res://Characters/Plants/Rafflesia.tscn")
+onready var ronces_ressource = load("res://Characters/Plants/Ronces.tscn")
+onready var fleurbleue_ressource = load("res://Characters/Plants/FleurBleu.tscn")
 onready var insectotueur_ressource = load("res://Characters/Insects/insectotueur.tscn")
 
 export var mana_max : int = 2
@@ -44,7 +44,7 @@ onready var queen_position : Vector2 = tileMap.map_to_world(Vector2(4,-1))
 
 var etat_courant = ETAT.SELECT_PLANT
 var selected_plant = null
-var selected_tile : Vector2 = Vector2(-1,-1)
+var selected_tile : Vector2 = Vector2(-100,-100)
 var current_wave : int
 
 # Called when the node enters the scene tree for the first time.

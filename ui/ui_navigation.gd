@@ -22,7 +22,7 @@ func _unhandled_input(event):
 	if event is InputEventMouseButton:
 		if event.is_pressed() and event.button_index == BUTTON_LEFT:
 			if selecting_tile:
-				var tile : Vector2 = tileMap.world_to_map(mouse.global_position) if mouse.visible else Vector2(-1,-1)
+				var tile : Vector2 = tileMap.world_to_map(mouse.global_position) if mouse.visible else Vector2(-100,-100)
 				emit_signal("tile_selected",tile)
 				get_tree().set_input_as_handled()
 

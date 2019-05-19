@@ -102,6 +102,7 @@ texture = SubResource( 2 )
 script = ExtResource( 8 )
 
 [node name="ui_hud" type="CanvasLayer" parent="."]
+editor/display_folded = true
 script = ExtResource( 9 )
 
 [node name="Graines" type="HBoxContainer" parent="ui_hud"]
@@ -308,8 +309,8 @@ texture = SubResource( 9 )
 [connection signal="pressed" from="ui_hud/BoutonsPlantation/RafflesiaButton" to="ui_hud" method="_on_RafflesiaButton_pressed"]
 [connection signal="pressed" from="ui_hud/BoutonsPlantation/RoncesButton" to="ui_hud" method="_on_RoncesButton_pressed"]
 [connection signal="pressed" from="ui_hud/BoutonsPlantation/FleurBleueButton2" to="ui_hud" method="_on_FleurBleueButton2_pressed"]
-[connection signal="pressed" from="ui_hud/EndTurnButton" to="ui_hud" method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EndTurnButton" to="." method="_on_EndTurnButton_pressed"]
+[connection signal="pressed" from="ui_hud/EndTurnButton" to="ui_hud" method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EndTurnButton" to="ui_navigation" method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EcranFinDePartie/VBoxContainer/HBoxContainer/Rejouer" to="ui_hud" method="_on_Rejouer_pressed"]
 [connection signal="pressed" from="ui_hud/EcranFinDePartie/VBoxContainer/HBoxContainer/Retour" to="ui_hud" method="_on_Retour_pressed"]
