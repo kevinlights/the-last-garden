@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://ScreenShakeD.gd" type="Script" id=2]
@@ -15,6 +15,8 @@
 [ext_resource path="res://art2d/pissenlit.png" type="Texture" id=13]
 [ext_resource path="res://art2d/rafflesia.png" type="Texture" id=14]
 [ext_resource path="res://art2d/plant_button_hover.png" type="Texture" id=15]
+[ext_resource path="res://font/font.tres" type="DynamicFont" id=16]
+[ext_resource path="res://art2d/arrow.png" type="Texture" id=17]
 
 [sub_resource type="TileSet" id=1]
 0/name = "grass"
@@ -186,11 +188,13 @@ align = 1
 valign = 1
 
 [node name="EcranFinDePartie" type="CenterContainer" parent="ui_hud"]
+editor/display_folded = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ui_hud/EcranFinDePartie"]
+editor/display_folded = true
 margin_left = 349.0
 margin_top = 280.0
 margin_right = 674.0
@@ -199,13 +203,13 @@ margin_bottom = 320.0
 [node name="CenterContainer" type="CenterContainer" parent="ui_hud/EcranFinDePartie/VBoxContainer"]
 editor/display_folded = true
 margin_right = 325.0
-margin_bottom = 64.0
 
 [node name="VICTOIRE" type="Label" parent="ui_hud/EcranFinDePartie/VBoxContainer/CenterContainer"]
 visible = false
 margin_left = 22.0
+margin_top = -32.0
 margin_right = 303.0
-margin_bottom = 64.0
+margin_bottom = 32.0
 custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0.921569, 0.835294, 0.286275, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -214,17 +218,18 @@ text = "VICTOIRE"
 [node name="DEFAITE" type="Label" parent="ui_hud/EcranFinDePartie/VBoxContainer/CenterContainer"]
 visible = false
 margin_left = 37.0
+margin_top = -32.0
 margin_right = 287.0
-margin_bottom = 64.0
+margin_bottom = 32.0
 custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0.92549, 0.278431, 0.192157, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "DEFAITE"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ui_hud/EcranFinDePartie/VBoxContainer"]
-margin_top = 68.0
+margin_top = 4.0
 margin_right = 325.0
-margin_bottom = 104.0
+margin_bottom = 40.0
 
 [node name="Rejouer" type="Button" parent="ui_hud/EcranFinDePartie/VBoxContainer/HBoxContainer"]
 margin_right = 111.0
@@ -238,6 +243,31 @@ margin_right = 325.0
 margin_bottom = 36.0
 custom_fonts/font = SubResource( 8 )
 text = "Retour au menu"
+
+[node name="MessageDebut" type="Control" parent="ui_hud"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="ProtectionOeufMessage" type="Label" parent="ui_hud/MessageDebut"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 253.0
+margin_top = 182.0
+margin_right = 731.0
+margin_bottom = 215.0
+custom_fonts/font = ExtResource( 16 )
+custom_colors/font_color = Color( 0.0823529, 0.243137, 0.27451, 1 )
+text = "Protégez l'oeuf de la reine-mère !"
+
+[node name="Fleche" type="TextureRect" parent="ui_hud/MessageDebut"]
+margin_left = 615.098
+margin_top = 252.914
+margin_right = 800.098
+margin_bottom = 391.914
+rect_rotation = 154.29
+rect_scale = Vector2( 0.350456, 0.350456 )
+texture = ExtResource( 17 )
 
 [node name="bg" type="CanvasLayer" parent="."]
 layer = -5

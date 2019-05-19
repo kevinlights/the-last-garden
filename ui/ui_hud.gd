@@ -27,6 +27,13 @@ func _on_EndTurnButton_pressed():
 func _on_Game_mana_set(mana, manamax):
 	$Graines/Mana.set_text(str(mana) + "/" + str(manamax))
 
+func showInitialMessage():
+	yield(get_tree().create_timer(0.5), "timeout")
+	$MessageDebut.show()
+	
+	yield(get_tree().create_timer(4), "timeout")
+	$MessageDebut.hide()
+
 func showVictoryScreen():
 	$EcranFinDePartie.show()
 	$EcranFinDePartie/VBoxContainer/CenterContainer/VICTOIRE.show()
