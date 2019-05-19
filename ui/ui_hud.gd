@@ -56,22 +56,36 @@ func _on_Rejouer_pressed():
 func _on_Retour_pressed():
 	get_tree().change_scene("res://Menu.tscn")
 
-func _on_PissenlitButton_focus_entered():
+
+func _on_PissenlitButton_mouse_entered():
 	$PlanteDescription/VBoxContainer/Titre.set_text("Pissenlit")
 	$PlanteDescription/VBoxContainer/Description.set_text("Lance ses pétales sur les insectes pour les tuer.")
 	$PlanteDescription.show()
 
-func _on_RafflesiaButton_focus_entered():
+func _on_RafflesiaButton_mouse_entered():
 	$PlanteDescription/VBoxContainer/Titre.set_text("Rafflesia")
 	$PlanteDescription/VBoxContainer/Description.set_text("Attire les insectes vers elle.")
 	$PlanteDescription.show()
 
-func _on_RoncesButton_focus_entered():
+func _on_RoncesButton_mouse_entered():
 	$PlanteDescription/VBoxContainer/Titre.set_text("Ronces")
 	$PlanteDescription/VBoxContainer/Description.set_text("Tue les insectes qui volent sur elle.")
 	$PlanteDescription.show()
 
-func _on_FleurBleueButton_focus_entered():
+
+func _on_FleurBleueButton_mouse_entered():
 	$PlanteDescription/VBoxContainer/Titre.set_text("Fleur bleue")
 	$PlanteDescription/VBoxContainer/Description.set_text("Convertit les blocs en herbe sous forme de croix.")
 	$PlanteDescription.show()
+
+func _on_PissenlitButton_mouse_exited():
+	$PlanteDescription.hide()
+
+func _on_RafflesiaButton_mouse_exited():
+	$PlanteDescription.hide()
+
+func _on_RoncesButton_mouse_exited():
+	$PlanteDescription.hide()
+
+func _on_FleurBleueButton_mouse_exited():
+	$PlanteDescription.hide()

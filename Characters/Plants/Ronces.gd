@@ -5,7 +5,7 @@ signal hatch_done_internal()
 export var turns_to_hatch : int = 1
 export var turns_to_fade : int = 4
 
-var sprites : Dictionary = {"seed":1,"adult":2}
+var sprites : Dictionary = {"seed":0,"adult":1}
 var current_turn : int = 0
 
 func _ready():
