@@ -1,6 +1,6 @@
 extends Node2D
 
-signal mana_set(mana, manamax)
+signal mana_set(mana)
 
 onready var tileMap : TileMap = $TileMap
 onready var terrain = get_node("TileMap/terrain")
@@ -58,9 +58,10 @@ func _ready():
 	randomize()
 	current_wave = 1
 	mana += mana_gain
-	emit_signal("mana_set", mana, 0)
-	nombre_plantes["pissenlit"] = 1
-	nombre_plantes["rafflesia"] = 1
+
+	emit_signal("mana_set", mana)
+	nombre_plantes["pissenlit"] = 0
+	nombre_plantes["rafflesia"] = 0
 	nombre_plantes["ronces"] = 1
 	nombre_plantes["fleurbleue"] = 1
 	add_plants()
@@ -96,7 +97,7 @@ func play():
 						if tileMap.isTileFree(selected_tile,turnQueue.get_characers_positions()) and not terrain.getBloc(selected_tile).isCorrupted:
 							ajouter_character(selected_plant, selected_tile)
 							mana -= couts_plantes[selected_plant]
-							emit_signal("mana_set", mana, 0)
+							emit_signal("mana_set", mana)
 							nombre_plantes[selected_plant] -= 1
 							etat_courant = ETAT.SELECT_TILE
 							print("selected tile :",selected_tile)
@@ -114,7 +115,7 @@ func play():
 						spawn_insect_max += spawn_insect_max_turn_step
 					insect_spawner(spawn_insect_min,spawn_insect_max)
 				mana += mana_gain
-				emit_signal("mana_set", mana, 0)
+				emit_signal("mana_set", mana)
 				add_plants()
 				etat_courant = ETAT.SELECT_PLANT
 				print("End turn")
