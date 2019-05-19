@@ -6,10 +6,20 @@ onready var turnQueue : Node = $TurnQueue
 onready var ui_hud : CanvasLayer = $ui_hud
 onready var ui_navigation : Node = $ui_navigation
 
-var plantemere_ressource = load("res://Characters/Plants/PlanteMere.tscn")
-var pissenlit_ressource = load("res://Characters/Plants/Pissenlit.tscn")
-var rafflesia_ressource = load("res://Characters/Plants/Rafflesia.tscn")
-var insectotueur_ressource = load("res://Characters/Insects/insectotueur.tscn")
+onready var plantemere_ressource = load("res://Characters/Plants/PlanteMere.tscn")
+onready var pissenlit_ressource = load("res://Characters/Plants/Pissenlit.tscn")
+onready var rafflesia_ressource = load("res://Characters/Plants/Rafflesia.tscn")
+onready var insectotueur_ressource = load("res://Characters/Insects/insectotueur.tscn")
+
+export var mana_max : int = 2
+export var pissenlits_max : int = 2
+export var raflesia_max : int = 2
+export var cout_mana_pissenlit : int = 1
+export var cout_mana_raflesia : int = 1
+
+var mana : int
+var nombre_plantes : Dictionary = {}
+var couts_plantes : Dictionary = {}
 
 enum ETAT {
 	SELECT_PLANT,
@@ -25,10 +35,15 @@ var selected_tile : Vector2 = Vector2(-1,-1)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	play()
 	randomize()
+	mana = mana_max
+	nombre_plantes["pissenlit"] = pissenlits_max
+	nombre_plantes["rafflesia"] = raflesia_max
+	couts_plantes["pissenlit"] = cout_mana_pissenlit
+	couts_plantes["rafflesia"] = cout_mana_raflesia
 	ajouter_reine()
 	insect_spawner(15)
+	play()
 	
 func play():
 	while true:
@@ -46,16 +61,22 @@ func play():
 				ui_navigation.select_tile()
 				selected_tile = yield(ui_navigation,"tile_selected")
 				if etat_courant != ETAT.END_TURN:
-					if tileMap.isTileFree(selected_tile,turnQueue.get_characers_positions()) : #and not terrain.getBloc(selected_tile).isCorrupted:
-						ajouter_character(selected_plant, selected_tile)
-						etat_courant = ETAT.SELECT_PLANT
-						print("selected tile :",selected_tile)
+					if nombre_plantes[selected_plant]-1 >= 0 and mana-couts_plantes[selected_plant] >= 0 :
+						if tileMap.isTileFree(selected_tile,turnQueue.get_characers_positions()) : #and not terrain.getBloc(selected_tile).isCorrupted:
+							ajouter_character(selected_plant, selected_tile)
+							mana -= couts_plantes[selected_plant]
+							nombre_plantes[selected_plant] -= 1
+							etat_courant = ETAT.SELECT_TILE
+							print("selected tile :",selected_tile)
 					else :
 						etat_courant = ETAT.SELECT_TILE
 
 			ETAT.END_TURN:
 				turnQueue.play_turn()
 				yield(turnQueue,"turn_finished")
+				mana = mana_max
+				nombre_plantes["pissenlit"] = pissenlits_max
+				nombre_plantes["rafflesia"] = raflesia_max
 				etat_courant = ETAT.SELECT_PLANT
 				print("End turn")
 
@@ -109,7 +130,7 @@ func _on_game_won():
 func _on_game_lost():
 	$ui_hud/EcranFinDePartie.show()
 	$ui_hud/EcranFinDePartie/VBoxContainer/CenterContainer/DEFAITE.show()
-	
+
 func _on_Rejouer_pressed():
 	get_tree().change_scene("res://Game.tscn")
 

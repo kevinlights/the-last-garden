@@ -60,7 +60,7 @@ func hatch():
 	$AnimationPlayer.play("idle")
 
 	longevite.set("custom_colors/font_color", Color(0.8,0,0))
-	
+	yield(get_tree().create_timer(0.2), "timeout")
 	for i in range(attack_radius):
 		for offset in shoot_zone:
 			var tile : Vector2 = tileMap.world_to_map(global_position) + offset*(i+1)
@@ -70,6 +70,8 @@ func hatch():
 				new_projectile.launch(position, tileMap.map_to_world(tile) + Vector2(0,tileMap.cell_size.y/2))
 				yield(new_projectile, "projectile_done")
 				break
+	
+	yield(get_tree().create_timer(0.2), "timeout")
 	
 	emit_signal("hatch_done_internal")
 

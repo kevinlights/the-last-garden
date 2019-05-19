@@ -8,4 +8,3 @@ position = Vector2( 358.145, -81.8388 )
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
-
