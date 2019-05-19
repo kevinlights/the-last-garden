@@ -58,11 +58,12 @@ func _ready():
 	randomize()
 	current_wave = 1
 	mana += mana_gain
+
 	emit_signal("mana_set", mana)
 	nombre_plantes["pissenlit"] = 0
 	nombre_plantes["rafflesia"] = 0
 	nombre_plantes["ronces"] = 1
-	nombre_plantes["fleurbleue"] = 0
+	nombre_plantes["fleurbleue"] = 1
 	add_plants()
 	couts_plantes["pissenlit"] = cout_mana_pissenlit
 	couts_plantes["rafflesia"] = cout_mana_raflesia
