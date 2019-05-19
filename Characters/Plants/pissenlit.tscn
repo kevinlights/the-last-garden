@@ -119,4 +119,3 @@ playback_speed = 1.5
 anims/idle = SubResource( 3 )
 anims/metamorphose = SubResource( 4 )
 anims/meurt = SubResource( 5 )
-

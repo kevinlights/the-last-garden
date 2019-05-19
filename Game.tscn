@@ -110,7 +110,7 @@ script = ExtResource( 5 )
 [node name="terrain" type="Node2D" parent="TileMap"]
 script = ExtResource( 6 )
 
-[node name="TurnQueue" type="Node" parent="."]
+[node name="TurnQueue" type="YSort" parent="."]
 script = ExtResource( 7 )
 
 [node name="ui_navigation" type="Node" parent="."]
@@ -125,9 +125,11 @@ texture = SubResource( 3 )
 script = ExtResource( 9 )
 
 [node name="ui_hud" type="CanvasLayer" parent="."]
+editor/display_folded = true
 script = ExtResource( 10 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ui_hud"]
+editor/display_folded = true
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 2.86395
@@ -198,6 +200,7 @@ align = 1
 valign = 1
 
 [node name="EcranFinDePartie" type="CenterContainer" parent="ui_hud"]
+editor/display_folded = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -259,12 +262,11 @@ transform = Transform2D( 0.559144, 0, 0, 0.570343, 0, 0 )
 position = Vector2( 920.076, 508.643 )
 scale = Vector2( 1.04126, 1.06425 )
 texture = SubResource( 9 )
-
 [connection signal="plant_selected" from="ui_hud" to="." method="_on_ui_hud_plant_selected"]
 [connection signal="pressed" from="ui_hud/HBoxContainer/PissenlitButton" to="ui_hud" method="on_pissenlit_selected"]
 [connection signal="pressed" from="ui_hud/HBoxContainer/RafflesiaButton" to="ui_hud" method="_on_RafflesiaButton_pressed"]
 [connection signal="pressed" from="ui_hud/EndTurn" to="." method="_on_EndTurnButton_pressed"]
-[connection signal="pressed" from="ui_hud/EndTurn" to="ui_navigation" method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EndTurn" to="ui_hud" method="_on_EndTurnButton_pressed"]
+[connection signal="pressed" from="ui_hud/EndTurn" to="ui_navigation" method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EcranFinDePartie/VBoxContainer/HBoxContainer/Rejouer" to="." method="_on_Rejouer_pressed"]
 [connection signal="pressed" from="ui_hud/EcranFinDePartie/VBoxContainer/HBoxContainer/Retour" to="." method="_on_Retour_pressed"]

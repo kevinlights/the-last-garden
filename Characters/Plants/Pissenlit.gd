@@ -17,7 +17,6 @@ var sprites : Dictionary = {"icon":0,"seed":1,"adult_idle":2,"adult_wink":3}
 var shoot_zone : Array = [Vector2(1,0),Vector2(-1,0),Vector2(0,1),Vector2(0,-1),   # radius = 1 
 						  Vector2(1,1),Vector2(-1,-1),Vector2(-1,1),Vector2(1,-1)] # radius = 2 (diagonals)
 var current_turn : int = 0
-var to_remove : int = false
 
 func _ready():
 	is_insect = false

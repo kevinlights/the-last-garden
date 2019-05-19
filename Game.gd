@@ -28,7 +28,7 @@ func _ready():
 	play()
 	randomize()
 	ajouter_reine()
-	insect_spawner(3)
+	insect_spawner(15)
 	
 func play():
 	while true:
@@ -46,7 +46,7 @@ func play():
 				ui_navigation.select_tile()
 				selected_tile = yield(ui_navigation,"tile_selected")
 				if etat_courant != ETAT.END_TURN:
-					if tileMap.isTileFree(selected_tile,turnQueue.get_characers_positions()) and not terrain.getBloc(selected_tile).isCorrupted:
+					if tileMap.isTileFree(selected_tile,turnQueue.get_characers_positions()) : #and not terrain.getBloc(selected_tile).isCorrupted:
 						ajouter_character(selected_plant, selected_tile)
 						etat_courant = ETAT.SELECT_PLANT
 						print("selected tile :",selected_tile)

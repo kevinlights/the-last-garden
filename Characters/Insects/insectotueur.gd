@@ -43,9 +43,7 @@ func update():
 		yield(self,"goal_reached")
 		move_to_tile = false
 	if current_turn > turns_to_hatch:
-		# maj tileMap
-		var path = tileMap.get_astar_path(global_position, target_character)
-		target_tile = path[1]
+		target_tile = movement_predictor()
 		emit_signal("insect_on",tileMap.world_to_map(target_tile))
 		change_orientation(tileMap.world_to_map(target_tile-global_position))
 		move_to_tile = true
@@ -64,14 +62,41 @@ func go_to_target_tile(distance : float):
 		terrain.getBloc(tileMap.world_to_map(position)).corrupt()
 		emit_signal("goal_reached")
 
+func movement_predictor():
+	var current_tile : Vector2 = tileMap.world_to_map(global_position)
+	var tile : Vector2 = tileMap.world_to_map(target_character)
+	var distances : Array = Array()
+	var candidat : Array
+	var distance : int
+	for direction in [Vector2.UP,Vector2.DOWN,Vector2.LEFT,Vector2.RIGHT]:
+		distance = tile.distance_to(current_tile+direction)
+		distances.append([distance,current_tile+direction])
+	distances.sort_custom(self,"distance_sort")
+	print(current_tile)
+	print(distances)
+	candidat = distances.pop_front()
+	while(turnQueue.contain_enemy(candidat[1]) and not distances == []):
+		candidat = distances.pop_front()
+	
+	if ((turnQueue.contain_enemy(candidat[1]) and distances == []) or candidat[0] > tile.distance_to(current_tile)):
+		candidat = [-1,current_tile]
+	
+	if not (candidat[1] in tileMap.get_used_cells()):
+		candidat = [-1,current_tile]
+	
+	return tileMap.map_to_world(candidat[1]) + Vector2(0,tileMap.cell_size.y/2)
+
+func distance_sort(a : Array, b : Array) -> bool:
+	return a[0] < b[0]
+
 func set_target(character : Vector2):
 	target_character = character
 
 func change_orientation(direction : Vector2):
-	var topLeft : Vector2 = Vector2(-1,0)
-	var topRight : Vector2 = Vector2(0,-1)
-	var bottomLeft : Vector2 = Vector2(0,1)
-	var bottomRight : Vector2 = Vector2(1,0)
+	var topLeft : Vector2 = Vector2(-1,0) # UP
+	var topRight : Vector2 = Vector2(0,-1) # RIGHT
+	var bottomLeft : Vector2 = Vector2(0,1) # LEFT
+	var bottomRight : Vector2 = Vector2(1,0) # DOWN
 	
 	if direction == topLeft:
 		$insectotueur.frame = sprites["adult_topLeft"]

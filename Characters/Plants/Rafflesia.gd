@@ -10,7 +10,6 @@ export var attract_radius : int = 4
 
 var sprites : Dictionary = {"seed":0,"adult_idle":1}
 var current_turn : int = 0
-var to_remove : int = false
 
 func _ready():
 	is_insect = false

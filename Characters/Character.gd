@@ -5,6 +5,7 @@ class_name Character
 signal updated()
 
 var is_insect : bool
+var to_remove : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

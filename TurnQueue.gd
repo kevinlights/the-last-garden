@@ -34,7 +34,8 @@ func get_characters():
 func get_characers_positions():
 	var positions : Array = Array()
 	for character in get_characters():
-		positions.append(character.global_position)
+		if not character.to_remove:
+			positions.append(character.global_position)
 	return positions
 
 func contain_enemy(tile : Vector2):

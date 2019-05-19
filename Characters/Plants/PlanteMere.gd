@@ -8,8 +8,6 @@ onready var longevite = $PlanteMereSprite/Longevite
 var beginningLevel : int = 15
 var currentLevel : int = beginningLevel
 
-var to_remove : int = false
-
 func _ready():
 	is_insect = false
 	connect('game_won', get_parent().get_parent(), '_on_game_won')
