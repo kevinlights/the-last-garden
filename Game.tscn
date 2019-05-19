@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://ScreenShakeD.gd" type="Script" id=2]
@@ -9,14 +9,16 @@
 [ext_resource path="res://ui/ui_navigation.gd" type="Script" id=7]
 [ext_resource path="res://ui/Mouse.gd" type="Script" id=8]
 [ext_resource path="res://ui/ui_hud.gd" type="Script" id=9]
-[ext_resource path="res://font/riffic.otf" type="DynamicFontData" id=10]
-[ext_resource path="res://art2d/plant_button.png" type="Texture" id=11]
-[ext_resource path="res://art2d/plant_button_hover.png" type="Texture" id=12]
-[ext_resource path="res://art2d/plant_button_focused.png" type="Texture" id=13]
-[ext_resource path="res://art2d/pissenlit.png" type="Texture" id=14]
-[ext_resource path="res://art2d/rafflesia.png" type="Texture" id=15]
-[ext_resource path="res://font/font.tres" type="DynamicFont" id=16]
-[ext_resource path="res://art2d/arrow.png" type="Texture" id=17]
+[ext_resource path="res://ui/Style/theme_hover.tres" type="Theme" id=10]
+[ext_resource path="res://ui/Style/hoverstyle.tres" type="StyleBox" id=11]
+[ext_resource path="res://font/riffic.otf" type="DynamicFontData" id=12]
+[ext_resource path="res://art2d/plant_button.png" type="Texture" id=13]
+[ext_resource path="res://art2d/plant_button_hover.png" type="Texture" id=14]
+[ext_resource path="res://art2d/plant_button_focused.png" type="Texture" id=15]
+[ext_resource path="res://art2d/pissenlit.png" type="Texture" id=16]
+[ext_resource path="res://art2d/rafflesia.png" type="Texture" id=17]
+[ext_resource path="res://font/font.tres" type="DynamicFont" id=18]
+[ext_resource path="res://art2d/arrow.png" type="Texture" id=19]
 
 [sub_resource type="TileSet" id=1]
 0/name = "grass"
@@ -36,29 +38,29 @@ load_path = "res://.import/selecteur_moche.png-d2888fb7ecd3ec3e26f49846e3c44cca.
 
 [sub_resource type="DynamicFont" id=3]
 size = 40
-font_data = ExtResource( 10 )
+font_data = ExtResource( 12 )
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 4
-atlas = ExtResource( 14 )
+atlas = ExtResource( 16 )
 region = Rect2( 377, 7, 140, 202 )
 
 [sub_resource type="AtlasTexture" id=5]
 flags = 4
-atlas = ExtResource( 15 )
+atlas = ExtResource( 17 )
 region = Rect2( 144, 4, 130, 121 )
 
 [sub_resource type="DynamicFont" id=6]
 size = 32
-font_data = ExtResource( 10 )
+font_data = ExtResource( 12 )
 
 [sub_resource type="DynamicFont" id=7]
 size = 60
-font_data = ExtResource( 10 )
+font_data = ExtResource( 12 )
 
 [sub_resource type="DynamicFont" id=8]
 size = 27
-font_data = ExtResource( 10 )
+font_data = ExtResource( 12 )
 
 [sub_resource type="StreamTexture" id=9]
 flags = 4
@@ -104,6 +106,32 @@ script = ExtResource( 8 )
 [node name="ui_hud" type="CanvasLayer" parent="."]
 script = ExtResource( 9 )
 
+[node name="PlanteDescription" type="PanelContainer" parent="ui_hud"]
+visible = false
+margin_left = 12.0
+margin_top = 449.0
+margin_right = 372.0
+margin_bottom = 599.0
+theme = ExtResource( 10 )
+custom_styles/panel = ExtResource( 11 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ui_hud/PlanteDescription"]
+margin_right = 360.0
+margin_bottom = 150.0
+
+[node name="Titre" type="Label" parent="ui_hud/PlanteDescription/VBoxContainer"]
+margin_right = 360.0
+margin_bottom = 18.0
+text = "Pissenlit"
+align = 1
+uppercase = true
+
+[node name="Description" type="Label" parent="ui_hud/PlanteDescription/VBoxContainer"]
+margin_top = 22.0
+margin_right = 360.0
+margin_bottom = 40.0
+text = "Lance ses pétales sur les insectes pour les tuer."
+
 [node name="Graines" type="HBoxContainer" parent="ui_hud"]
 editor/display_folded = true
 margin_right = 111.0
@@ -130,9 +158,9 @@ rect_scale = Vector2( 0.4, 0.4 )
 editor/display_folded = true
 margin_right = 222.0
 margin_bottom = 222.0
-texture_normal = ExtResource( 11 )
-texture_hover = ExtResource( 12 )
-texture_focused = ExtResource( 13 )
+texture_normal = ExtResource( 13 )
+texture_hover = ExtResource( 14 )
+texture_focused = ExtResource( 15 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -149,9 +177,9 @@ editor/display_folded = true
 margin_left = 226.0
 margin_right = 448.0
 margin_bottom = 222.0
-texture_normal = ExtResource( 11 )
-texture_hover = ExtResource( 12 )
-texture_focused = ExtResource( 13 )
+texture_normal = ExtResource( 13 )
+texture_hover = ExtResource( 14 )
+texture_focused = ExtResource( 15 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -168,20 +196,20 @@ stretch_mode = 5
 margin_left = 452.0
 margin_right = 674.0
 margin_bottom = 222.0
-texture_normal = ExtResource( 11 )
-texture_hover = ExtResource( 12 )
-texture_focused = ExtResource( 13 )
+texture_normal = ExtResource( 13 )
+texture_hover = ExtResource( 14 )
+texture_focused = ExtResource( 15 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="FleurBleueButton2" type="TextureButton" parent="ui_hud/BoutonsPlantation"]
+[node name="FleurBleueButton" type="TextureButton" parent="ui_hud/BoutonsPlantation"]
 margin_left = 678.0
 margin_right = 900.0
 margin_bottom = 222.0
-texture_normal = ExtResource( 11 )
-texture_hover = ExtResource( 12 )
-texture_focused = ExtResource( 13 )
+texture_normal = ExtResource( 13 )
+texture_hover = ExtResource( 14 )
+texture_focused = ExtResource( 15 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -196,8 +224,8 @@ margin_top = -139.44
 margin_right = 64.3236
 margin_bottom = 84.5597
 rect_scale = Vector2( 0.6, 0.6 )
-texture_normal = ExtResource( 11 )
-texture_hover = ExtResource( 12 )
+texture_normal = ExtResource( 13 )
+texture_hover = ExtResource( 14 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -280,7 +308,7 @@ margin_left = 253.0
 margin_top = 182.0
 margin_right = 731.0
 margin_bottom = 215.0
-custom_fonts/font = ExtResource( 16 )
+custom_fonts/font = ExtResource( 18 )
 custom_colors/font_color = Color( 0.0823529, 0.243137, 0.27451, 1 )
 text = "Protégez l'oeuf de la reine-mère !"
 
@@ -291,7 +319,7 @@ margin_right = 800.098
 margin_bottom = 391.914
 rect_rotation = 154.29
 rect_scale = Vector2( 0.350456, 0.350456 )
-texture = ExtResource( 17 )
+texture = ExtResource( 19 )
 
 [node name="bg" type="CanvasLayer" parent="."]
 layer = -5
@@ -299,15 +327,19 @@ scale = Vector2( 0.559144, 0.570343 )
 transform = Transform2D( 0.559144, 0, 0, 0.570343, 0, 0 )
 
 [node name="Sprite" type="Sprite" parent="bg"]
-position = Vector2( 920.076, 508.643 )
+position = Vector2( 939.893, 493.101 )
 scale = Vector2( 1.04126, 1.06425 )
 texture = SubResource( 9 )
 [connection signal="mana_set" from="." to="ui_hud" method="_on_Game_mana_set"]
 [connection signal="plant_selected" from="ui_hud" to="." method="_on_ui_hud_plant_selected"]
+[connection signal="focus_entered" from="ui_hud/BoutonsPlantation/PissenlitButton" to="ui_hud" method="_on_PissenlitButton_focus_entered"]
 [connection signal="pressed" from="ui_hud/BoutonsPlantation/PissenlitButton" to="ui_hud" method="on_pissenlit_selected"]
+[connection signal="focus_entered" from="ui_hud/BoutonsPlantation/RafflesiaButton" to="ui_hud" method="_on_RafflesiaButton_focus_entered"]
 [connection signal="pressed" from="ui_hud/BoutonsPlantation/RafflesiaButton" to="ui_hud" method="_on_RafflesiaButton_pressed"]
+[connection signal="focus_entered" from="ui_hud/BoutonsPlantation/RoncesButton" to="ui_hud" method="_on_RoncesButton_focus_entered"]
 [connection signal="pressed" from="ui_hud/BoutonsPlantation/RoncesButton" to="ui_hud" method="_on_RoncesButton_pressed"]
-[connection signal="pressed" from="ui_hud/BoutonsPlantation/FleurBleueButton2" to="ui_hud" method="_on_FleurBleueButton2_pressed"]
+[connection signal="focus_entered" from="ui_hud/BoutonsPlantation/FleurBleueButton" to="ui_hud" method="_on_FleurBleueButton_focus_entered"]
+[connection signal="pressed" from="ui_hud/BoutonsPlantation/FleurBleueButton" to="ui_hud" method="_on_FleurBleueButton2_pressed"]
 [connection signal="pressed" from="ui_hud/EndTurnButton" to="." method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EndTurnButton" to="ui_navigation" method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EndTurnButton" to="ui_hud" method="_on_EndTurnButton_pressed"]
