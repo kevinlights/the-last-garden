@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/symphony - 01 Sky Island.ogg-083e742e79516a14fd63ef3079f03a92.oggstr"
+
+[deps]
+
+source_file="res://sounds/symphony - 01 Sky Island.ogg"
+dest_files=[ "res://.import/symphony - 01 Sky Island.ogg-083e742e79516a14fd63ef3079f03a92.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
