@@ -8,7 +8,7 @@ onready var terrain  = get_node("../../TileMap/terrain")
 export var turns_to_hatch : int = 2
 export var turns_to_fade : int = 4
 
-var sprites : Dictionary = {"seed":1,"adult":2}
+var sprites : Dictionary = {"seed":0,"adult":1}
 var skill_directions : Array = [Vector2(1,0),Vector2(-1,0),Vector2(0,1),Vector2(0,-1)]
 var current_turn : int = 0
 
@@ -17,6 +17,7 @@ func _ready():
 	type = "PlanteBleu"
 	$FleurBleuSprite.frame = sprites["seed"]
 	is_insect = false
+	$FleurBleuSprite.material = $FleurBleuSprite.material.duplicate();
 
 # Play the next turn for the character
 func update():
@@ -36,7 +37,8 @@ func update():
 
 func hatch():
 	yield(get_tree().create_timer(0.2), "timeout")
-	
+	$AnimationPlayer.play("meta")
+	yield($AnimationPlayer, "animation_finished")
 	$FleurBleuSprite.frame = sprites["adult"]
 	
 	var current_tile : Vector2 
@@ -52,6 +54,8 @@ func hatch():
 	emit_signal("hatch_done_internal")
 
 func fade():
+	$AnimationPlayer.play("meurt")
+	yield($AnimationPlayer, "animation_finished")
 	to_remove = true
 	
 func get_skill_zone():

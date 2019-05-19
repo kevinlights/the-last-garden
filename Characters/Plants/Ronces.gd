@@ -14,6 +14,7 @@ func _ready():
 	$RonceSprite.frame = sprites["seed"]
 	type = "Ronce"
 	is_insect = false
+	$RonceSprite.material = $RonceSprite.material.duplicate();
 
 func update():
 	yield(get_tree().create_timer(0.2), "timeout")
@@ -32,12 +33,16 @@ func update():
 		get_parent().remove_child(self)
 
 func hatch():
+	$AnimationPlayer.play("meta")
 	yield(get_tree().create_timer(0.2), "timeout")
-	$RonceSprite.frame = sprites["adult"]
+	#$RonceSprite.frame = sprites["adult"]
 	is_ronce = true
 	emit_signal("hatch_done_internal")
 
 func fade():
+	yield(get_tree().create_timer(0.5), "timeout")
+	$AnimationPlayer.play("meurt")
+	yield($AnimationPlayer, "animation_finished")
 	to_remove = true
 	
 
