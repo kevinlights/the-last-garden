@@ -21,6 +21,14 @@ func _on_RafflesiaButton_pressed():
 	selected_plant = "rafflesia"
 	emit_signal("plant_selected",selected_plant)
 
+func _on_RoncesButton_pressed():
+	selected_plant = "ronces"
+	emit_signal("plant_selected",selected_plant)
+	
+func _on_FleurBleueButton2_pressed():
+	selected_plant = "fleurbleue"
+	emit_signal("plant_selected",selected_plant)
+
 func _on_EndTurnButton_pressed():
 	emit_signal("plant_selected","")
 

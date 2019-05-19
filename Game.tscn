@@ -11,10 +11,10 @@
 [ext_resource path="res://ui/ui_hud.gd" type="Script" id=9]
 [ext_resource path="res://font/riffic.otf" type="DynamicFontData" id=10]
 [ext_resource path="res://art2d/plant_button.png" type="Texture" id=11]
-[ext_resource path="res://art2d/plant_button_focused.png" type="Texture" id=12]
-[ext_resource path="res://art2d/pissenlit.png" type="Texture" id=13]
-[ext_resource path="res://art2d/rafflesia.png" type="Texture" id=14]
-[ext_resource path="res://art2d/plant_button_hover.png" type="Texture" id=15]
+[ext_resource path="res://art2d/plant_button_hover.png" type="Texture" id=12]
+[ext_resource path="res://art2d/plant_button_focused.png" type="Texture" id=13]
+[ext_resource path="res://art2d/pissenlit.png" type="Texture" id=14]
+[ext_resource path="res://art2d/rafflesia.png" type="Texture" id=15]
 [ext_resource path="res://font/font.tres" type="DynamicFont" id=16]
 [ext_resource path="res://art2d/arrow.png" type="Texture" id=17]
 
@@ -40,12 +40,12 @@ font_data = ExtResource( 10 )
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 4
-atlas = ExtResource( 13 )
+atlas = ExtResource( 14 )
 region = Rect2( 377, 7, 140, 202 )
 
 [sub_resource type="AtlasTexture" id=5]
 flags = 4
-atlas = ExtResource( 14 )
+atlas = ExtResource( 15 )
 region = Rect2( 144, 4, 130, 121 )
 
 [sub_resource type="DynamicFont" id=6]
@@ -117,7 +117,6 @@ custom_colors/font_color = Color( 0.223529, 0.223529, 0.223529, 1 )
 text = "2/2"
 
 [node name="BoutonsPlantation" type="HBoxContainer" parent="ui_hud"]
-editor/display_folded = true
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 2.86395
@@ -131,7 +130,8 @@ editor/display_folded = true
 margin_right = 222.0
 margin_bottom = 222.0
 texture_normal = ExtResource( 11 )
-texture_focused = ExtResource( 12 )
+texture_hover = ExtResource( 12 )
+texture_focused = ExtResource( 13 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -149,7 +149,8 @@ margin_left = 226.0
 margin_right = 448.0
 margin_bottom = 222.0
 texture_normal = ExtResource( 11 )
-texture_focused = ExtResource( 12 )
+texture_hover = ExtResource( 12 )
+texture_focused = ExtResource( 13 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -161,6 +162,28 @@ margin_right = 328.025
 margin_bottom = 201.487
 texture = SubResource( 5 )
 stretch_mode = 5
+
+[node name="RoncesButton" type="TextureButton" parent="ui_hud/BoutonsPlantation"]
+margin_left = 452.0
+margin_right = 674.0
+margin_bottom = 222.0
+texture_normal = ExtResource( 11 )
+texture_hover = ExtResource( 12 )
+texture_focused = ExtResource( 13 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="FleurBleueButton2" type="TextureButton" parent="ui_hud/BoutonsPlantation"]
+margin_left = 678.0
+margin_right = 900.0
+margin_bottom = 222.0
+texture_normal = ExtResource( 11 )
+texture_hover = ExtResource( 12 )
+texture_focused = ExtResource( 13 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="EndTurnButton" type="TextureButton" parent="ui_hud"]
 editor/display_folded = true
@@ -174,7 +197,7 @@ margin_right = 64.3236
 margin_bottom = 84.5597
 rect_scale = Vector2( 0.6, 0.6 )
 texture_normal = ExtResource( 11 )
-texture_pressed = ExtResource( 15 )
+texture_hover = ExtResource( 12 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -245,6 +268,7 @@ custom_fonts/font = SubResource( 8 )
 text = "Retour au menu"
 
 [node name="MessageDebut" type="Control" parent="ui_hud"]
+editor/display_folded = true
 visible = false
 margin_right = 40.0
 margin_bottom = 40.0
@@ -282,6 +306,8 @@ texture = SubResource( 9 )
 [connection signal="plant_selected" from="ui_hud" to="." method="_on_ui_hud_plant_selected"]
 [connection signal="pressed" from="ui_hud/BoutonsPlantation/PissenlitButton" to="ui_hud" method="on_pissenlit_selected"]
 [connection signal="pressed" from="ui_hud/BoutonsPlantation/RafflesiaButton" to="ui_hud" method="_on_RafflesiaButton_pressed"]
+[connection signal="pressed" from="ui_hud/BoutonsPlantation/RoncesButton" to="ui_hud" method="_on_RoncesButton_pressed"]
+[connection signal="pressed" from="ui_hud/BoutonsPlantation/FleurBleueButton2" to="ui_hud" method="_on_FleurBleueButton2_pressed"]
 [connection signal="pressed" from="ui_hud/EndTurnButton" to="ui_hud" method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EndTurnButton" to="." method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EndTurnButton" to="ui_navigation" method="_on_EndTurnButton_pressed"]
