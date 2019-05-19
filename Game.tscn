@@ -237,7 +237,7 @@ texture = SubResource( 8 )
 [connection signal="pressed" from="ui_hud/HBoxContainer/PissenlitButton" to="ui_hud" method="on_pissenlit_selected"]
 [connection signal="pressed" from="ui_hud/HBoxContainer/RafflesiaButton" to="ui_hud" method="_on_RafflesiaButton_pressed"]
 [connection signal="pressed" from="ui_hud/EndTurn" to="." method="_on_EndTurnButton_pressed"]
-[connection signal="pressed" from="ui_hud/EndTurn" to="ui_navigation" method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EndTurn" to="ui_hud" method="_on_EndTurnButton_pressed"]
+[connection signal="pressed" from="ui_hud/EndTurn" to="ui_navigation" method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EcranFinDePartie/VBoxContainer/HBoxContainer/Rejouer" to="." method="_on_Rejouer_pressed"]
 [connection signal="pressed" from="ui_hud/EcranFinDePartie/VBoxContainer/HBoxContainer/Retour" to="." method="_on_Retour_pressed"]
