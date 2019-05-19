@@ -77,7 +77,7 @@ func _on_Retour_pressed():
 
 func _on_PissenlitButton_mouse_entered():
 	$PlanteDescription/VBoxContainer/Titre.set_text("Pissenlit")
-	$PlanteDescription/VBoxContainer/Description.set_text("Lance ses pétales sur les insectes pour les tuer.")
+	$PlanteDescription/VBoxContainer/Description.set_text("A l'éclosion, lance ses pétales sur les insectes pour les tuer.")
 	$PlanteDescription/VBoxContainer/Cout.set_text("Cout : 1 Orbe")
 	$PlanteDescription/VBoxContainer/HatchTurns.set_text("Eclosion : 2 tours")
 	$PlanteDescription/VBoxContainer/DieTurns.set_text("Flétrissement : 7 tours")
@@ -101,7 +101,7 @@ func _on_RoncesButton_mouse_entered():
 
 func _on_FleurBleueButton_mouse_entered():
 	$PlanteDescription/VBoxContainer/Titre.set_text("Fleur bleue")
-	$PlanteDescription/VBoxContainer/Description.set_text("Convertit les blocs en herbe sous forme de croix.")
+	$PlanteDescription/VBoxContainer/Description.set_text("A l'éclosion, convertit les blocs en herbe sous forme de croix.")
 	$PlanteDescription/VBoxContainer/Cout.set_text("Cout : 1 Orbe")
 	$PlanteDescription/VBoxContainer/HatchTurns.set_text("Eclosion : 2 tours")
 	$PlanteDescription/VBoxContainer/DieTurns.set_text("Flétrissement : 7 tours")
