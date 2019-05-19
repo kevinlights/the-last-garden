@@ -4,6 +4,7 @@ signal hatch_done_internal()
 
 onready var tileMap : TileMap = get_node("../../TileMap")
 onready var terrain  = get_node("../../TileMap/terrain")
+onready var longevite = get_node("FleurBleuSprite/Longevite")
 
 export var turns_to_hatch : int = 2
 export var turns_to_fade : int = 4
@@ -18,6 +19,8 @@ func _ready():
 	$FleurBleuSprite.frame = sprites["seed"]
 	is_insect = false
 	$FleurBleuSprite.material = $FleurBleuSprite.material.duplicate();
+	longevite.set("custom_colors/font_color", Color(0,0,0.8))
+	longevite.set_text(str(turns_to_hatch - current_turn))
 
 # Play the next turn for the character
 func update():
@@ -29,7 +32,14 @@ func update():
 			yield(self, "hatch_done_internal")
 		if current_turn == turns_to_fade:
 			fade()
-			
+		
+		#Update le label de longévité
+		if current_turn < turns_to_hatch:
+			longevite.set_text(str(turns_to_hatch - current_turn))
+		else:
+			var turnsBeforeFade : int = turns_to_fade - current_turn
+			if turnsBeforeFade != 0:
+				longevite.set_text(str(turnsBeforeFade))
 		emit_signal("updated")
 	else :
 		emit_signal("updated")
@@ -40,6 +50,8 @@ func hatch():
 	$AnimationPlayer.play("meta")
 	yield($AnimationPlayer, "animation_finished")
 	$FleurBleuSprite.frame = sprites["adult"]
+	
+	longevite.set("custom_colors/font_color", Color(0.8,0,0))
 	
 	var current_tile : Vector2 
 	var i : int = 1
@@ -54,6 +66,7 @@ func hatch():
 	emit_signal("hatch_done_internal")
 
 func fade():
+	longevite.set_text("")
 	$AnimationPlayer.play("meurt")
 	yield($AnimationPlayer, "animation_finished")
 	to_remove = true
