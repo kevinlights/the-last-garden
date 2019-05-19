@@ -42,7 +42,7 @@ func _ready():
 	couts_plantes["pissenlit"] = cout_mana_pissenlit
 	couts_plantes["rafflesia"] = cout_mana_raflesia
 	ajouter_reine()
-	insect_spawner(15)
+	insect_spawner(3)
 	play()
 	
 func play():

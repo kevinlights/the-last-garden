@@ -3,6 +3,7 @@ extends Node
 signal turn_finished()
 
 onready var tileMap : TileMap = get_node("../TileMap")
+onready var root : Node2D = get_parent()
 
 var turn_number : int = 0
 
@@ -45,6 +46,24 @@ func contain_enemy(tile : Vector2):
 				if not character.to_remove:
 					return true
 	return false
+
+func attract_to_in_set( attract_radius : int, cible : Vector2):
+	for character in get_characters():
+		if character.is_insect :
+			if tileMap.world_to_map(character.global_position).distance_to(tileMap.world_to_map(cible)) <= attract_radius:
+				if not character.to_remove:
+					character.set_target(cible) #WORLD
+
+func find_closest_raflesia(tile : Vector2):
+	var best : Vector2 = Vector2(90000,90000)
+	for character in get_characters():
+		if character.is_raflesia :
+			if tileMap.world_to_map(character.global_position).distance_to(tileMap.world_to_map(tile)) <= character.attract_radius:
+				if tileMap.world_to_map(character.global_position).distance_to(tileMap.world_to_map(tile)) < tileMap.world_to_map(best).distance_to(tileMap.world_to_map(tile)):
+					best =  character.global_position
+	if best == Vector2(90000,90000):
+		best = root.queen_position
+	return best
 
 # Si un insecte marche sur une plante il la detruis
 func _on_insect_on(position):

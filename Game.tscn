@@ -96,6 +96,7 @@ texture = SubResource( 3 )
 script = ExtResource( 8 )
 
 [node name="ui_hud" type="CanvasLayer" parent="."]
+editor/display_folded = true
 script = ExtResource( 9 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ui_hud"]

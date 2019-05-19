@@ -3,8 +3,10 @@ extends Character
 signal hatch_done_internal()
 
 onready var longevite = get_node("RafflesiaSprite/Longevite")
+onready var tileMap : TileMap = get_node("../../TileMap")
+onready var turnQueue : Node = get_parent()
 
-export var turns_to_hatch : int = 3
+export var turns_to_hatch : int = 2
 export var turns_to_fade : int = 7
 export var attract_radius : int = 4
 
@@ -42,6 +44,7 @@ func update():
 	
 func hatch():
 	longevite.set("custom_colors/font_color", Color(0.8,0,0))
+	is_raflesia = true
 	
 	$RafflesiaSprite.frame = sprites["adult_idle"]
 	
@@ -49,4 +52,5 @@ func hatch():
 	
 func fade():
 	longevite.set_text("")
+	is_raflesia = false
 	to_remove = true
