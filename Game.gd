@@ -25,7 +25,7 @@ export var ronces_chance : float = 0.90 # commun
 export var fleurbleue_chance : float = 1 # epic
 
 # Couts des plantes
-export var mana_gain : int = 2
+export var mana_max : int = 2
 export var cout_mana_pissenlit : int = 1
 export var cout_mana_raflesia : int = 1
 export var cout_mana_ronces : int = 1
@@ -59,7 +59,7 @@ var current_wave : int
 func _ready():
 	randomize()
 	current_wave = 1
-	mana += mana_gain
+	mana = mana_max
 
 	emit_signal("mana_set", mana)
 	
@@ -112,7 +112,7 @@ func play():
 						spawn_insect_min += spawn_insect_min_turn_step
 						spawn_insect_max += spawn_insect_max_turn_step
 					insect_spawner(spawn_insect_min,spawn_insect_max)
-				mana += mana_gain
+				mana = mana_max
 				emit_signal("mana_set", mana)
 				add_plants()
 				etat_courant = ETAT.SELECT_PLANT

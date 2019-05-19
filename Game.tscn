@@ -146,6 +146,7 @@ margin_bottom = 40.0
 text = "Lance ses pétales sur les insectes pour les tue"
 
 [node name="Graines" type="HBoxContainer" parent="ui_hud"]
+editor/display_folded = true
 margin_left = 8.67915
 margin_right = 119.679
 margin_bottom = 45.0
@@ -159,10 +160,10 @@ custom_colors/font_color = Color( 0.223529, 0.223529, 0.223529, 1 )
 text = "0"
 
 [node name="Energie" type="TextureRect" parent="ui_hud"]
-margin_left = 33.1682
-margin_top = -5.53242
-margin_right = 545.168
-margin_bottom = 506.468
+margin_left = 81.6033
+margin_top = -7.20256
+margin_right = 593.603
+margin_bottom = 504.798
 rect_scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 15 )
 
@@ -176,6 +177,7 @@ margin_bottom = 132.583
 rect_scale = Vector2( 0.4, 0.4 )
 
 [node name="EndTurnButton" type="TextureButton" parent="ui_hud"]
+editor/display_folded = true
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -265,20 +267,98 @@ margin_bottom = 40.0
 [node name="ProtectionOeufMessage" type="Label" parent="ui_hud/MessageDebut"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = 253.0
-margin_top = 182.0
-margin_right = 731.0
-margin_bottom = 215.0
+margin_left = 334.681
+margin_top = 130.33
+margin_right = 647.681
+margin_bottom = 163.33
 custom_fonts/font = ExtResource( 18 )
 custom_colors/font_color = Color( 0.0823529, 0.243137, 0.27451, 1 )
-text = "Protégez l'oeuf de la reine-mè"
+text = "Protégez l'oeuf de la reine-mère"
 
 [node name="Fleche" type="TextureRect" parent="ui_hud/MessageDebut"]
-margin_left = 615.098
-margin_top = 252.914
-margin_right = 800.098
-margin_bottom = 391.914
-rect_rotation = 154.29
+margin_left = 531.899
+margin_top = 164.329
+margin_right = 716.899
+margin_bottom = 303.329
+rect_rotation = 90.0
+rect_scale = Vector2( 0.350456, 0.350456 )
+texture = ExtResource( 19 )
+
+[node name="MessageDebut2" type="Control" parent="ui_hud"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="ProtectionOeufMessage" type="Label" parent="ui_hud/MessageDebut2"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 235.786
+margin_top = 16.5367
+margin_right = 862.786
+margin_bottom = 48.5367
+custom_fonts/font = ExtResource( 18 )
+custom_colors/font_color = Color( 0.0823529, 0.243137, 0.27451, 1 )
+text = "Utilisez les orbes pour planter des plantes et combatre les insects"
+
+[node name="Fleche" type="TextureRect" parent="ui_hud/MessageDebut2"]
+margin_left = 242.133
+margin_top = 49.4313
+margin_right = 427.133
+margin_bottom = 188.431
+rect_rotation = -180.0
+rect_scale = Vector2( 0.350456, 0.350456 )
+texture = ExtResource( 19 )
+
+[node name="MessageDebut3" type="Control" parent="ui_hud"]
+editor/display_folded = true
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="ProtectionOeufMessage" type="Label" parent="ui_hud/MessageDebut3"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 13.6527
+margin_top = 380.635
+margin_right = 640.653
+margin_bottom = 412.635
+custom_fonts/font = ExtResource( 18 )
+custom_colors/font_color = Color( 0.0823529, 0.243137, 0.27451, 1 )
+text = "- Les plantes actionnent leurs effets quand elles éclosent
+- Vous en aurez 3 nouvelles à chaque tour"
+
+[node name="Fleche" type="TextureRect" parent="ui_hud/MessageDebut3"]
+margin_left = 190.357
+margin_top = 425.221
+margin_right = 375.357
+margin_bottom = 564.221
+rect_rotation = 90.0
+rect_scale = Vector2( 0.350456, 0.350456 )
+texture = ExtResource( 19 )
+
+[node name="MessageDebut4" type="Control" parent="ui_hud"]
+editor/display_folded = true
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="ProtectionOeufMessage" type="Label" parent="ui_hud/MessageDebut4"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 346.887
+margin_top = 512.508
+margin_right = 766.887
+margin_bottom = 545.508
+custom_fonts/font = ExtResource( 18 )
+custom_colors/font_color = Color( 0.0823529, 0.243137, 0.27451, 1 )
+text = "A chaque tour les insects jouent en premier"
+
+[node name="Fleche" type="TextureRect" parent="ui_hud/MessageDebut4"]
+margin_left = 782.446
+margin_top = 496.832
+margin_right = 967.446
+margin_bottom = 635.833
+rect_rotation = -360.0
 rect_scale = Vector2( 0.350456, 0.350456 )
 texture = ExtResource( 19 )
 
@@ -293,6 +373,7 @@ scale = Vector2( 1.04126, 1.06425 )
 texture = SubResource( 8 )
 
 [node name="Sounds" type="Node" parent="."]
+editor/display_folded = true
 script = ExtResource( 20 )
 
 [node name="Musique" type="AudioStreamPlayer" parent="Sounds"]
@@ -307,8 +388,8 @@ stream = ExtResource( 22 )
 [connection signal="plant_posee" from="." to="Sounds" method="_on_Game_plant_posee"]
 [connection signal="plants_changed" from="." to="ui_hud" method="_on_Game_plants_changed"]
 [connection signal="plant_selected" from="ui_hud" to="." method="_on_ui_hud_plant_selected"]
-[connection signal="pressed" from="ui_hud/EndTurnButton" to="ui_navigation" method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EndTurnButton" to="ui_hud" method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EndTurnButton" to="." method="_on_EndTurnButton_pressed"]
+[connection signal="pressed" from="ui_hud/EndTurnButton" to="ui_navigation" method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EcranFinDePartie/VBoxContainer/HBoxContainer/Rejouer" to="ui_hud" method="_on_Rejouer_pressed"]
 [connection signal="pressed" from="ui_hud/EcranFinDePartie/VBoxContainer/HBoxContainer/Retour" to="ui_hud" method="_on_Retour_pressed"]

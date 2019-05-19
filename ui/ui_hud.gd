@@ -40,14 +40,26 @@ func _on_EndTurnButton_pressed():
 	emit_signal("plant_selected","")
 
 func _on_Game_mana_set(mana):
-	$Graines/Mana.set_text(str(mana))
+	$Graines/Mana.set_text(str(mana)+"/2")
 
 func showInitialMessage():
 	yield(get_tree().create_timer(0.5), "timeout")
 	$MessageDebut.show()
 	
-	yield(get_tree().create_timer(4), "timeout")
+	yield(get_tree().create_timer(3), "timeout")
 	$MessageDebut.hide()
+	$MessageDebut2.show()
+	yield(get_tree().create_timer(4), "timeout")
+	$MessageDebut2.hide()
+	$MessageDebut3.show()
+	
+	yield(get_tree().create_timer(4), "timeout")
+	$MessageDebut3.hide()
+	$MessageDebut4.show()
+	
+	yield(get_tree().create_timer(4), "timeout")
+	$MessageDebut4.hide()
+	
 
 func showVictoryScreen():
 	$EcranFinDePartie.show()
