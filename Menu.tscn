@@ -12,7 +12,7 @@
 shader = ExtResource( 3 )
 
 [sub_resource type="AtlasTexture" id=2]
-flags = 4
+flags = 6
 atlas = ExtResource( 4 )
 region = Rect2( -207.989, -85.7494, 2456.62, 1258.27 )
 
@@ -85,6 +85,7 @@ text = "Quitter"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
+volume_db = -20.0
 autoplay = true
 [connection signal="pressed" from="VBoxContainer/Nouvelle Partie" to="." method="_on_Nouvelle_Partie_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quitter" to="." method="_on_Quitter_pressed"]

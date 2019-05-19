@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://ScreenShakeD.gd" type="Script" id=2]
@@ -19,7 +19,9 @@
 [ext_resource path="res://art2d/plant_button_hover.png" type="Texture" id=17]
 [ext_resource path="res://font/font.tres" type="DynamicFont" id=18]
 [ext_resource path="res://art2d/arrow.png" type="Texture" id=19]
-[ext_resource path="res://.import/lullaby.ogg-24ec7a09ffcf16bb61ff7ec967b2a951.oggstr" type="AudioStream" id=20]
+[ext_resource path="res://Sounds.gd" type="Script" id=20]
+[ext_resource path="res://.import/lullaby.ogg-24ec7a09ffcf16bb61ff7ec967b2a951.oggstr" type="AudioStream" id=21]
+[ext_resource path="res://sounds/mud02.ogg" type="AudioStream" id=22]
 
 [sub_resource type="TileSet" id=1]
 0/name = "grass"
@@ -53,19 +55,19 @@ load_path = "res://.import/selecteur_moche.png-d2888fb7ecd3ec3e26f49846e3c44cca.
 size = 40
 font_data = ExtResource( 14 )
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=5]
 size = 32
 font_data = ExtResource( 14 )
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=6]
 size = 60
 font_data = ExtResource( 14 )
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=7]
 size = 27
 font_data = ExtResource( 14 )
 
-[sub_resource type="StreamTexture" id=12]
+[sub_resource type="StreamTexture" id=8]
 flags = 4
 load_path = "res://.import/bg.png-88f66991dc3989c70cdf2ceb7cadff40.stex"
 
@@ -192,7 +194,7 @@ __meta__ = {
 [node name="Fin de tour" type="Label" parent="ui_hud/EndTurnButton"]
 margin_right = 224.0
 margin_bottom = 223.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 5 )
 text = "Fin de tour"
 align = 1
 valign = 1
@@ -220,7 +222,7 @@ margin_left = 22.0
 margin_top = -32.0
 margin_right = 303.0
 margin_bottom = 32.0
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.921569, 0.835294, 0.286275, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "VICTOIRE"
@@ -231,7 +233,7 @@ margin_left = 37.0
 margin_top = -32.0
 margin_right = 287.0
 margin_bottom = 32.0
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.92549, 0.278431, 0.192157, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "DEFAITE"
@@ -244,14 +246,14 @@ margin_bottom = 40.0
 [node name="Rejouer" type="Button" parent="ui_hud/EcranFinDePartie/VBoxContainer/HBoxContainer"]
 margin_right = 111.0
 margin_bottom = 36.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 7 )
 text = "Rejouer"
 
 [node name="Retour" type="Button" parent="ui_hud/EcranFinDePartie/VBoxContainer/HBoxContainer"]
 margin_left = 115.0
 margin_right = 325.0
 margin_bottom = 36.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 7 )
 text = "Retour au menu"
 
 [node name="MessageDebut" type="Control" parent="ui_hud"]
@@ -288,17 +290,25 @@ transform = Transform2D( 0.559144, 0, 0, 0.570343, 0, 0 )
 [node name="Sprite" type="Sprite" parent="bg"]
 position = Vector2( 908.244, 521.599 )
 scale = Vector2( 1.04126, 1.06425 )
-texture = SubResource( 12 )
+texture = SubResource( 8 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 20 )
+[node name="Sounds" type="Node" parent="."]
+script = ExtResource( 20 )
+
+[node name="Musique" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 21 )
+volume_db = -20.0
 autoplay = true
+
+[node name="SonPlantage" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 22 )
 [connection signal="mana_set" from="." to="ui_hud" method="_on_Game_mana_set"]
 [connection signal="plant_posee" from="." to="ui_hud" method="_on_Game_plant_posee"]
+[connection signal="plant_posee" from="." to="Sounds" method="_on_Game_plant_posee"]
 [connection signal="plants_changed" from="." to="ui_hud" method="_on_Game_plants_changed"]
 [connection signal="plant_selected" from="ui_hud" to="." method="_on_ui_hud_plant_selected"]
-[connection signal="pressed" from="ui_hud/EndTurnButton" to="." method="_on_EndTurnButton_pressed"]
-[connection signal="pressed" from="ui_hud/EndTurnButton" to="ui_hud" method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EndTurnButton" to="ui_navigation" method="_on_EndTurnButton_pressed"]
+[connection signal="pressed" from="ui_hud/EndTurnButton" to="ui_hud" method="_on_EndTurnButton_pressed"]
+[connection signal="pressed" from="ui_hud/EndTurnButton" to="." method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EcranFinDePartie/VBoxContainer/HBoxContainer/Rejouer" to="ui_hud" method="_on_Rejouer_pressed"]
 [connection signal="pressed" from="ui_hud/EcranFinDePartie/VBoxContainer/HBoxContainer/Retour" to="ui_hud" method="_on_Retour_pressed"]
