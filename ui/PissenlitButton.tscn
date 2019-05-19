@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://art2d/plant_button.png" type="Texture" id=1]
+[ext_resource path="res://art2d/plant_button_hover.png" type="Texture" id=2]
+[ext_resource path="res://art2d/plant_button_focused.png" type="Texture" id=3]
+[ext_resource path="res://ui/PissenlitButton.gd" type="Script" id=4]
+[ext_resource path="res://art2d/pissenlit.png" type="Texture" id=5]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 377, 7, 140, 202 )
+
+[node name="PissenlitButton" type="TextureButton"]
+editor/display_folded = true
+margin_right = 222.0
+margin_bottom = 222.0
+texture_normal = ExtResource( 1 )
+texture_hover = ExtResource( 2 )
+texture_focused = ExtResource( 3 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 40.0
+margin_top = 8.0
+margin_right = 180.0
+margin_bottom = 212.0
+texture = SubResource( 1 )

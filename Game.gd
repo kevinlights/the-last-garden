@@ -1,6 +1,8 @@
 extends Node2D
 
 signal mana_set(mana)
+signal plants_changed(slots)
+signal plant_posee(slot)
 
 onready var tileMap : TileMap = $TileMap
 onready var terrain = get_node("TileMap/terrain")
@@ -16,11 +18,11 @@ onready var fleurbleue_ressource = load("res://Characters/Plants/FleurBleu.tscn"
 onready var insectotueur_ressource = load("res://Characters/Insects/insectotueur.tscn")
 
 # Nombre de plantes
-export var nb_plants_per_turn : int = 2
+export var nb_plants_per_turn : int = 3
 export var pissenlit_chance : float = 0.35 #commun
-export var raflesia_chance : float = 0.20 #rare
-export var ronces_chance : float = 0.35 # commun
-export var fleurbleue_chance : float = 0.10 # epic
+export var raflesia_chance : float = 0.55 #rare
+export var ronces_chance : float = 0.90 # commun
+export var fleurbleue_chance : float = 1 # epic
 
 # Couts des plantes
 export var mana_gain : int = 2
@@ -37,7 +39,7 @@ export var spawn_insect_min_turn_step : int = 1
 export var spawn_insect_max_turn_step : int = 1
 
 var mana : int
-var nombre_plantes : Dictionary = {}
+var slots : Array = Array()
 var couts_plantes : Dictionary = {}
 
 enum ETAT {
@@ -60,10 +62,7 @@ func _ready():
 	mana += mana_gain
 
 	emit_signal("mana_set", mana)
-	nombre_plantes["pissenlit"] = 1
-	nombre_plantes["rafflesia"] = 1
-	nombre_plantes["ronces"] = 1
-	nombre_plantes["fleurbleue"] = 1
+	
 	add_plants()
 	couts_plantes["pissenlit"] = cout_mana_pissenlit
 	couts_plantes["rafflesia"] = cout_mana_raflesia
@@ -93,12 +92,11 @@ func play():
 				ui_navigation.select_tile()
 				selected_tile = yield(ui_navigation,"tile_selected")
 				if etat_courant != ETAT.END_TURN:
-					if nombre_plantes[selected_plant]-1 >= 0 and mana-couts_plantes[selected_plant] >= 0 :
+					if mana-couts_plantes[selected_plant] >= 0 :
 						if tileMap.isTileFree(selected_tile,turnQueue.get_characers_positions()) and not terrain.getBloc(selected_tile).isCorrupted:
 							ajouter_character(selected_plant, selected_tile)
 							mana -= couts_plantes[selected_plant]
 							emit_signal("mana_set", mana)
-							nombre_plantes[selected_plant] -= 1
 							etat_courant = ETAT.SELECT_TILE
 							print("selected tile :",selected_tile)
 					else :
@@ -122,16 +120,18 @@ func play():
 
 func add_plants():
 	var choose : float
+	slots = []
 	for i in range(nb_plants_per_turn):
 		choose = randf()
 		if choose <= pissenlit_chance:
-			nombre_plantes["pissenlit"] += 1
+			slots.append("pissenlit") 
 		elif choose <= raflesia_chance:
-			nombre_plantes["rafflesia"] += 1
+			slots.append("rafflesia")
 		elif choose <= ronces_chance:
-			nombre_plantes["ronces"] += 1
+			slots.append("ronces")
 		elif choose <= fleurbleue_chance:
-			nombre_plantes["fleurbleue"] += 1
+			slots.append("fleurbleue")
+	emit_signal("plants_changed",slots)
 
 func insect_spawner(spawn_min : int, spawn_max : int):
 	
@@ -167,6 +167,8 @@ func ajouter_character(character_name : String, tile : Vector2):
 			new_character = fleurbleue_ressource.instance()
 			new_character.position = tileMap.map_to_world(tile) + Vector2(0,tileMap.cell_size.y/2)
 	turnQueue.add_character(new_character)
+	emit_signal("plant_posee",slots.find(character_name))
+	slots.remove(slots.find(character_name))
 	
 func ajouter_instect(instect_name : String, tile : Vector2, cible : Vector2):
 	var new_instect

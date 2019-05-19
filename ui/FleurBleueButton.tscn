@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://art2d/plant_button.png" type="Texture" id=1]
+[ext_resource path="res://art2d/plant_button_hover.png" type="Texture" id=2]
+[ext_resource path="res://art2d/plant_button_focused.png" type="Texture" id=3]
+[ext_resource path="res://ui/FleurBleueButton.gd" type="Script" id=4]
+[ext_resource path="res://art2d/fleurbleue.png" type="Texture" id=5]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 161, 1, 169, 148 )
+
+[node name="FleurBleueButton" type="TextureButton"]
+editor/display_folded = true
+margin_left = 678.0
+margin_right = 900.0
+margin_bottom = 222.0
+texture_normal = ExtResource( 1 )
+texture_hover = ExtResource( 2 )
+texture_focused = ExtResource( 3 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 21.2789
+margin_top = 25.1479
+margin_right = 341.279
+margin_bottom = 165.148
+rect_scale = Vector2( 1.13002, 1.13002 )
+texture = SubResource( 1 )

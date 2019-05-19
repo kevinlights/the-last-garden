@@ -7,19 +7,19 @@
 [ext_resource path="res://art2d/bg3.png" type="Texture" id=5]
 [ext_resource path="res://font/riffic.otf" type="DynamicFontData" id=6]
 
-[sub_resource type="ShaderMaterial" id=4]
+[sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 3 )
 
-[sub_resource type="AtlasTexture" id=1]
-flags = 6
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( -207.989, -85.7494, 2456.62, 1258.27 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 40
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=4]
 size = 32
 outline_size = 1
 outline_color = Color( 0.541176, 0.541176, 0.541176, 1 )
@@ -40,10 +40,10 @@ scale = Vector2( 0.90923, 0.90923 )
 texture = ExtResource( 2 )
 
 [node name="bg2" type="Sprite" parent="."]
-material = SubResource( 4 )
+material = SubResource( 1 )
 position = Vector2( 490.255, 194.756 )
 scale = Vector2( 0.520213, 0.520213 )
-texture = SubResource( 1 )
+texture = SubResource( 2 )
 region_rect = Rect2( -174.765, 5.27428, 2235.12, 1193.27 )
 
 [node name="bg3" type="Sprite" parent="."]
@@ -59,7 +59,7 @@ custom_constants/separation = 44
 [node name="INSECTOTUEURS" type="Label" parent="VBoxContainer"]
 margin_right = 964.0
 margin_bottom = 43.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.870588, 0.337255, 1, 1 )
 text = "INSECTOTUEURS"
 align = 1
@@ -68,7 +68,7 @@ align = 1
 margin_top = 87.0
 margin_right = 964.0
 margin_bottom = 127.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 0.717647, 0, 1 )
 text = "Nouvelle partie"
@@ -77,7 +77,7 @@ text = "Nouvelle partie"
 margin_top = 171.0
 margin_right = 964.0
 margin_bottom = 211.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 0.717647, 0, 1 )
 text = "Quitter"

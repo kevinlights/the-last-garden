@@ -5,6 +5,13 @@ signal plant_selected(plant)
 var plant_selected : bool = false
 var selected_plant = null
 
+onready var boutonsPlantation : HBoxContainer = $BoutonsPlantation
+
+onready var pissenlitButton_ressource = load("res://ui/PissenlitButton.tscn")
+onready var rafflesiaButton_ressource = load("res://ui/RafflesiaButton.tscn")
+onready var roncesButton_ressource = load("res://ui/RoncesButton.tscn")
+onready var fleurBleueButtonButton_ressource = load("res://ui/FleurBleueButton.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -87,3 +94,23 @@ func _on_RoncesButton_mouse_exited():
 
 func _on_FleurBleueButton_mouse_exited():
 	$PlanteDescription.hide()
+
+func _on_Game_plants_changed(slots):
+	for child in boutonsPlantation.get_children():
+		boutonsPlantation.remove_child(child)
+	var new_button
+	for plant in slots:
+		match plant:
+			"pissenlit":
+				new_button = pissenlitButton_ressource.instance()
+			"rafflesia":
+				new_button = rafflesiaButton_ressource.instance()
+			"ronces":
+				new_button = roncesButton_ressource.instance()
+			"fleurbleue":
+				new_button = fleurBleueButtonButton_ressource.instance()
+		boutonsPlantation.add_child(new_button)
+
+
+func _on_Game_plant_posee(slot):
+	boutonsPlantation.remove_child(boutonsPlantation.get_children()[slot])
