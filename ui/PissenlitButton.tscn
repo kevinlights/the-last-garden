@@ -12,7 +12,6 @@ atlas = ExtResource( 5 )
 region = Rect2( 377, 7, 140, 202 )
 
 [node name="PissenlitButton" type="TextureButton"]
-editor/display_folded = true
 margin_right = 222.0
 margin_bottom = 222.0
 texture_normal = ExtResource( 1 )
@@ -24,8 +23,8 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_left = 40.0
-margin_top = 8.0
-margin_right = 180.0
-margin_bottom = 212.0
+margin_left = 55.0
+margin_top = 25.0
+margin_right = 206.0
+margin_bottom = 227.0
 texture = SubResource( 1 )

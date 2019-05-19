@@ -12,7 +12,6 @@ atlas = ExtResource( 5 )
 region = Rect2( 161, 1, 169, 148 )
 
 [node name="FleurBleueButton" type="TextureButton"]
-editor/display_folded = true
 margin_left = 678.0
 margin_right = 900.0
 margin_bottom = 222.0
@@ -25,9 +24,9 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_left = 21.2789
-margin_top = 25.1479
-margin_right = 341.279
-margin_bottom = 165.148
+margin_left = 39.0
+margin_top = 25.0
+margin_right = 208.0
+margin_bottom = 187.0
 rect_scale = Vector2( 1.13002, 1.13002 )
 texture = SubResource( 1 )

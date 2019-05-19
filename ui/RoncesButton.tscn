@@ -12,7 +12,6 @@ atlas = ExtResource( 5 )
 region = Rect2( 210, 4, 183, 118 )
 
 [node name="RoncesButton" type="TextureButton"]
-editor/display_folded = true
 margin_left = 452.0
 margin_right = 674.0
 margin_bottom = 222.0
@@ -25,8 +24,8 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_left = 15.6795
-margin_top = 43.9027
-margin_right = 275.68
-margin_bottom = 262.903
+margin_left = 35.0
+margin_top = 76.0
+margin_right = 226.0
+margin_bottom = 213.0
 texture = SubResource( 1 )

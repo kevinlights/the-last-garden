@@ -12,7 +12,6 @@ atlas = ExtResource( 5 )
 region = Rect2( 144, 4, 130, 121 )
 
 [node name="RafflesiaButton" type="TextureButton"]
-editor/display_folded = true
 margin_left = 226.0
 margin_right = 448.0
 margin_bottom = 222.0
@@ -25,9 +24,9 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_left = 9.02496
-margin_top = 15.4875
-margin_right = 328.025
-margin_bottom = 201.487
+margin_left = 41.0
+margin_top = 59.0
+margin_right = 215.0
+margin_bottom = 221.0
 texture = SubResource( 1 )
 stretch_mode = 5
