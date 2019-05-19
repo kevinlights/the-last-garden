@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://art2d/corrupt.png" type="Texture" id=2]
@@ -12,8 +12,9 @@
 [ext_resource path="res://art2d/plant_button.png" type="Texture" id=10]
 [ext_resource path="res://art2d/plant_button_focused.png" type="Texture" id=11]
 [ext_resource path="res://art2d/pissenlit.png" type="Texture" id=12]
-[ext_resource path="res://art2d/plant_button_hover.png" type="Texture" id=13]
-[ext_resource path="res://font/riffic.otf" type="DynamicFontData" id=14]
+[ext_resource path="res://art2d/rafflesia.png" type="Texture" id=13]
+[ext_resource path="res://art2d/plant_button_hover.png" type="Texture" id=14]
+[ext_resource path="res://font/riffic.otf" type="DynamicFontData" id=15]
 
 [sub_resource type="TileSet" id=1]
 0/name = "corrupt.png 0"
@@ -48,17 +49,22 @@ flags = 4
 atlas = ExtResource( 12 )
 region = Rect2( 377, 7, 140, 202 )
 
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 13 )
+region = Rect2( 144, 4, 130, 121 )
+
 [sub_resource type="DynamicFont" id=5]
 size = 32
-font_data = ExtResource( 14 )
+font_data = ExtResource( 15 )
 
 [sub_resource type="DynamicFont" id=7]
 size = 60
-font_data = ExtResource( 14 )
+font_data = ExtResource( 15 )
 
 [sub_resource type="DynamicFont" id=9]
 size = 27
-font_data = ExtResource( 14 )
+font_data = ExtResource( 15 )
 
 [sub_resource type="StreamTexture" id=6]
 flags = 4
@@ -119,27 +125,50 @@ script = ExtResource( 8 )
 [node name="ui_hud" type="CanvasLayer" parent="."]
 script = ExtResource( 9 )
 
-[node name="PissenlitButton" type="TextureButton" parent="ui_hud"]
-editor/display_folded = true
+[node name="HBoxContainer" type="HBoxContainer" parent="ui_hud"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 34.8156
-margin_top = -136.267
-margin_right = 256.816
-margin_bottom = 85.7331
+margin_left = 2.86395
+margin_top = -134.65
+margin_right = 224.864
+margin_bottom = 87.3503
 rect_scale = Vector2( 0.6, 0.6 )
+
+[node name="PissenlitButton" type="TextureButton" parent="ui_hud/HBoxContainer"]
+editor/display_folded = true
+margin_right = 222.0
+margin_bottom = 222.0
 texture_normal = ExtResource( 10 )
 texture_focused = ExtResource( 11 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="TextureRect" type="TextureRect" parent="ui_hud/PissenlitButton"]
+[node name="TextureRect" type="TextureRect" parent="ui_hud/HBoxContainer/PissenlitButton"]
 margin_left = 40.0
-margin_top = 10.0
+margin_top = 8.0
 margin_right = 180.0
 margin_bottom = 212.0
 texture = SubResource( 4 )
+
+[node name="RafflesiaButton" type="TextureButton" parent="ui_hud/HBoxContainer"]
+editor/display_folded = true
+margin_left = 226.0
+margin_right = 448.0
+margin_bottom = 222.0
+texture_normal = ExtResource( 10 )
+texture_focused = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="ui_hud/HBoxContainer/RafflesiaButton"]
+margin_left = 9.02496
+margin_top = 15.4875
+margin_right = 328.025
+margin_bottom = 201.487
+texture = SubResource( 10 )
+stretch_mode = 5
 
 [node name="EndTurn" type="TextureButton" parent="ui_hud"]
 editor/display_folded = true
@@ -153,7 +182,7 @@ margin_right = 64.3236
 margin_bottom = 84.5597
 rect_scale = Vector2( 0.6, 0.6 )
 texture_normal = ExtResource( 10 )
-texture_pressed = ExtResource( 13 )
+texture_pressed = ExtResource( 14 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -225,12 +254,16 @@ scale = Vector2( 0.559144, 0.570343 )
 transform = Transform2D( 0.559144, 0, 0, 0.570343, 0, 0 )
 
 [node name="Sprite" type="Sprite" parent="bg"]
-position = Vector2( 1005.22, 538.794 )
+position = Vector2( 1010.34, 691.948 )
 scale = Vector2( 2.23009, 2.27932 )
 texture = SubResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [connection signal="plant_selected" from="ui_hud" to="." method="_on_ui_hud_plant_selected"]
-[connection signal="pressed" from="ui_hud/PissenlitButton" to="ui_hud" method="on_pissenlit_selected"]
+[connection signal="pressed" from="ui_hud/HBoxContainer/PissenlitButton" to="ui_hud" method="on_pissenlit_selected"]
+[connection signal="pressed" from="ui_hud/HBoxContainer/RafflesiaButton" to="ui_hud" method="_on_RafflesiaButton_pressed"]
 [connection signal="pressed" from="ui_hud/EndTurn" to="ui_hud" method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EndTurn" to="." method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EndTurn" to="ui_navigation" method="_on_EndTurnButton_pressed"]

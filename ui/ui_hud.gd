@@ -17,5 +17,9 @@ func on_pissenlit_selected():
 	selected_plant = "pissenlit"
 	emit_signal("plant_selected",selected_plant)
 
+func _on_RafflesiaButton_pressed():
+	selected_plant = "rafflesia"
+	emit_signal("plant_selected",selected_plant)
+
 func _on_EndTurnButton_pressed():
 	emit_signal("plant_selected","")

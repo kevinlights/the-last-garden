@@ -6,9 +6,10 @@ onready var turnQueue : Node = $TurnQueue
 onready var ui_hud : CanvasLayer = $ui_hud
 onready var ui_navigation : Node = $ui_navigation
 
-var pissenlit_ressource = load("res://Characters/Plants/Pissenlit.tscn")
-var insectotueur_ressource = load("res://Characters/Insects/insectotueur.tscn")
 var plantemere_ressource = load("res://Characters/Plants/PlanteMere.tscn")
+var pissenlit_ressource = load("res://Characters/Plants/Pissenlit.tscn")
+var rafflesia_ressource = load("res://Characters/Plants/Rafflesia.tscn")
+var insectotueur_ressource = load("res://Characters/Insects/insectotueur.tscn")
 
 enum ETAT {
 	SELECT_PLANT,
@@ -82,6 +83,9 @@ func ajouter_character(character_name : String, tile : Vector2):
 		"pissenlit":
 			new_character = pissenlit_ressource.instance()
 			new_character.position = tileMap.map_to_world(tile) + Vector2(0,tileMap.cell_size.y/2)
+		"rafflesia":
+			new_character = rafflesia_ressource.instance()
+			new_character.position = tileMap.map_to_world(tile) + Vector2(0,tileMap.cell_size.y/2)
 	turnQueue.add_character(new_character)
 	
 func ajouter_instect(instect_name : String, tile : Vector2, cible : Vector2):
@@ -111,4 +115,3 @@ func _on_Rejouer_pressed():
 
 func _on_Retour_pressed():
 	get_tree().change_scene("res://Menu.tscn")
-
