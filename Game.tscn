@@ -102,7 +102,6 @@ texture = SubResource( 2 )
 script = ExtResource( 8 )
 
 [node name="ui_hud" type="CanvasLayer" parent="."]
-editor/display_folded = true
 script = ExtResource( 9 )
 
 [node name="Graines" type="HBoxContainer" parent="ui_hud"]
@@ -122,10 +121,10 @@ text = "2/2"
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 2.86395
-margin_top = -134.65
-margin_right = 224.864
-margin_bottom = 87.3503
-rect_scale = Vector2( 0.6, 0.6 )
+margin_top = -89.4175
+margin_right = 902.864
+margin_bottom = 132.583
+rect_scale = Vector2( 0.4, 0.4 )
 
 [node name="PissenlitButton" type="TextureButton" parent="ui_hud/BoutonsPlantation"]
 editor/display_folded = true
@@ -310,7 +309,7 @@ texture = SubResource( 9 )
 [connection signal="pressed" from="ui_hud/BoutonsPlantation/RoncesButton" to="ui_hud" method="_on_RoncesButton_pressed"]
 [connection signal="pressed" from="ui_hud/BoutonsPlantation/FleurBleueButton2" to="ui_hud" method="_on_FleurBleueButton2_pressed"]
 [connection signal="pressed" from="ui_hud/EndTurnButton" to="." method="_on_EndTurnButton_pressed"]
-[connection signal="pressed" from="ui_hud/EndTurnButton" to="ui_hud" method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EndTurnButton" to="ui_navigation" method="_on_EndTurnButton_pressed"]
+[connection signal="pressed" from="ui_hud/EndTurnButton" to="ui_hud" method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EcranFinDePartie/VBoxContainer/HBoxContainer/Rejouer" to="ui_hud" method="_on_Rejouer_pressed"]
 [connection signal="pressed" from="ui_hud/EcranFinDePartie/VBoxContainer/HBoxContainer/Retour" to="ui_hud" method="_on_Retour_pressed"]
