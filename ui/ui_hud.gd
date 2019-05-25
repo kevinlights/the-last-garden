@@ -16,7 +16,7 @@ onready var fleurBleueButtonButton_ressource = load("res://ui/FleurBleueButton.t
 func _ready():
 	pass # Replace with function body.
 
-# TODO : Connecter au bouttons
+# TODO : Connecter aux boutons
 func select_plant():
 	yield(self,"plant_selected")
 	
@@ -78,46 +78,54 @@ func _on_Retour_pressed():
 func _on_PissenlitButton_mouse_entered():
 	$PlanteDescription/VBoxContainer/Titre.set_text("Pissenlit")
 	$PlanteDescription/VBoxContainer/Description.set_text("A l'éclosion: lance un pétale explosif sur un insecte.")
-	$PlanteDescription/VBoxContainer/Cout.set_text("Cout : 1 Orbe")
+	$PlanteDescription/VBoxContainer/Cout.set_text("Cout : 1")
 	$PlanteDescription/VBoxContainer/HatchTurns.set_text("Eclosion : 2 tours")
 	$PlanteDescription/VBoxContainer/DieTurns.set_text("Flétrissement : 7 tours")
 	$PlanteDescription.show()
+	$EnergiePlanteDescription.show();
 
 func _on_RafflesiaButton_mouse_entered():
 	$PlanteDescription/VBoxContainer/Titre.set_text("Rafflesia")
 	$PlanteDescription/VBoxContainer/Description.set_text("Attire les insectes vers elle.")
-	$PlanteDescription/VBoxContainer/Cout.set_text("Cout : 1 Orbe")
+	$PlanteDescription/VBoxContainer/Cout.set_text("Cout : 1")
 	$PlanteDescription/VBoxContainer/HatchTurns.set_text("Eclosion : 3 tours")
 	$PlanteDescription/VBoxContainer/DieTurns.set_text("Flétrissement : 6 tours ")
 	$PlanteDescription.show()
+	$EnergiePlanteDescription.show();
 
 func _on_RoncesButton_mouse_entered():
 	$PlanteDescription/VBoxContainer/Titre.set_text("Ronces")
 	$PlanteDescription/VBoxContainer/Description.set_text("Tue les insectes qui volent sur elle.")
-	$PlanteDescription/VBoxContainer/Cout.set_text("Cout : 1 Orbe")
+	$PlanteDescription/VBoxContainer/Cout.set_text("Cout : 1")
 	$PlanteDescription/VBoxContainer/HatchTurns.set_text("Eclosion : 3 tours")
 	$PlanteDescription/VBoxContainer/DieTurns.set_text("Flétrissement : 5 tours")
 	$PlanteDescription.show()
+	$EnergiePlanteDescription.show();
 
 func _on_FleurBleueButton_mouse_entered():
 	$PlanteDescription/VBoxContainer/Titre.set_text("Fleur bleue")
 	$PlanteDescription/VBoxContainer/Description.set_text("A l'éclosion: transforme des blocs en herbe pour pouvoir planter à nouveau.")
-	$PlanteDescription/VBoxContainer/Cout.set_text("Cout : 1 Orbe")
+	$PlanteDescription/VBoxContainer/Cout.set_text("Cout : 1")
 	$PlanteDescription/VBoxContainer/HatchTurns.set_text("Eclosion : 2 tours")
 	$PlanteDescription/VBoxContainer/DieTurns.set_text("Flétrissement : 7 tours")
 	$PlanteDescription.show()
+	$EnergiePlanteDescription.show();
 
 func _on_PissenlitButton_mouse_exited():
 	$PlanteDescription.hide()
+	$EnergiePlanteDescription.hide();
 
 func _on_RafflesiaButton_mouse_exited():
 	$PlanteDescription.hide()
+	$EnergiePlanteDescription.hide();
 
 func _on_RoncesButton_mouse_exited():
 	$PlanteDescription.hide()
+	$EnergiePlanteDescription.hide();
 
 func _on_FleurBleueButton_mouse_exited():
 	$PlanteDescription.hide()
+	$EnergiePlanteDescription.hide();
 
 func _on_Game_plants_changed(slots):
 	for child in boutonsPlantation.get_children():
