@@ -2,6 +2,7 @@ extends Character
 
 signal hatch_done_internal()
 
+onready var sprite : Sprite = $RonceSprite
 onready var tileMap : TileMap = get_node("../../TileMap")
 onready var longevite = get_node("RonceSprite/Longevite")
 

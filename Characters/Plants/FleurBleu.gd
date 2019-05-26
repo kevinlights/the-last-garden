@@ -2,6 +2,7 @@ extends Character
 
 signal hatch_done_internal()
 
+onready var sprite : Sprite = $FleurBleuSprite
 onready var tileMap : TileMap = get_node("../../TileMap")
 onready var terrain  = get_node("../../TileMap/terrain")
 onready var longevite = get_node("FleurBleuSprite/Longevite")

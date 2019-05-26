@@ -2,6 +2,7 @@ extends Character
 
 signal hatch_done_internal()
 
+onready var sprite : Sprite = $RafflesiaSprite
 onready var longevite = get_node("RafflesiaSprite/Longevite")
 onready var tileMap : TileMap = get_node("../../TileMap")
 onready var turnQueue : Node = get_parent()

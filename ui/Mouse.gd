@@ -52,16 +52,23 @@ func _on_ui_hud_plant_selected(plant):
 		"pissenlit":
 			selected_plant = pissenlit_ressource.instance()
 			selected_plant.position = global_position
+			get_parent().add_child(selected_plant)
+			selected_plant.sprite.modulate = Color(1, 1, 1, 0.5)
 		"rafflesia":
 			selected_plant = rafflesia_ressource.instance()
 			selected_plant.position = global_position
+			get_parent().add_child(selected_plant)
+			selected_plant.sprite.modulate = Color(1, 1, 1, 0.5)
 		"ronces":
 			selected_plant = ronces_ressource.instance()
 			selected_plant.position = global_position
+			get_parent().add_child(selected_plant)
+			selected_plant.sprite.modulate = Color(1, 1, 1, 0.5)
 		"fleurbleue":
 			selected_plant = fleurbleue_ressource.instance()
 			selected_plant.position = global_position
-	get_parent().add_child(selected_plant)
+			get_parent().add_child(selected_plant)
+			selected_plant.sprite.modulate = Color(1, 1, 1, 0.5)
 
 
 func _on_EndTurnButton_pressed():

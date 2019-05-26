@@ -2,6 +2,7 @@ extends Character
 
 signal hatch_done_internal()
 
+onready var sprite : Sprite = $Sprite2
 onready var tileMap : TileMap = get_node("../../TileMap")
 onready var turnQueue : Node = get_parent()
 onready var root : Node2D = get_parent().get_parent()
@@ -83,7 +84,7 @@ func fade():
 	$AnimationPlayer.play("meurt")
 	yield($AnimationPlayer, "animation_finished")
 	to_remove = true
-	
+
 func get_skill_zone():
 	var result : Array = Array()
 	for i in range(attack_radius):
