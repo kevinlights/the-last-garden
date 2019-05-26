@@ -20,6 +20,7 @@ string_thorn_bush_withering,Flétrissement : 5 tours,Withering : 5 turns,Sechrè
 string_lily_flower_name,Lys bleu,Blue lily,Yon bèl ti flè,Lilio
 string_lily_flower_description,A l'éclosion: transforme des blocs en herbe pour pouvoir planter à nouveau.,Upon bloom: change blocks to grass so they become plantable again.,Nan koule: transfòme blòk nan zèb pou yo ka plante ankò.,Kiam florado: ŝangas blokojn en herbo do oni povas planti denove
 string_lily_flower_cost,Coût : 1,Cost : 1,Pri : 1,Kosto: 1
+string_lily_flower_blooming,Eclosion : 2 tours,Blooming : 2 turns,Eklizyon : 2 nap,Florado: 2 vicoj
 string_lily_flower_withering,Flétrissement : 7 tours,Withering : 7 turns,Sechrès: 7 jij,Velki: 7 vicoj
 string_victory,VICTOIRE,VICTORY,VIKTWA,Venko
 string_defeat,DEFAITE,DEFEAT,DEFET,Malvenko
