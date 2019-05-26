@@ -37,6 +37,8 @@ export var spawn_insect_max : int = 2
 export var spawn_insect_step : int = 1
 export var spawn_insect_min_turn_step : int = 1
 export var spawn_insect_max_turn_step : int = 1
+export var next_wave_turn_step : int = 2
+export var next_wave_hatch_step : int = 2
 
 var mana : int
 var slots : Array = Array()
@@ -54,6 +56,8 @@ var etat_courant = ETAT.SELECT_PLANT
 var selected_plant = null
 var selected_tile : Vector2 = Vector2(-100,-100)
 var current_wave : int
+var next_wave_turn : int = next_wave_turn_step
+var next_wave_hatch : int = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -106,8 +110,17 @@ func play():
 				turnQueue.play_turn()
 				yield(turnQueue,"turn_finished")
 				yield(get_tree().create_timer(1), "timeout")
-				if not turnQueue.as_insect():
+				if (not turnQueue.as_insect() and turnQueue.turn_number >= next_wave_turn):
 					current_wave += 1
+					next_wave_turn = 1
+					if (current_wave % spawn_insect_step) == 0 :
+						spawn_insect_min += spawn_insect_min_turn_step
+						spawn_insect_max += spawn_insect_max_turn_step
+					insect_spawner(spawn_insect_min,spawn_insect_max)
+					next_wave_turn = turnQueue.turn_number + next_wave_turn_step + next_wave_hatch
+				if turnQueue.turn_number >= next_wave_turn:
+					current_wave += 1
+					next_wave_turn = turnQueue.turn_number + next_wave_turn_step + next_wave_hatch
 					if (current_wave % spawn_insect_step) == 0 :
 						spawn_insect_min += spawn_insect_min_turn_step
 						spawn_insect_max += spawn_insect_max_turn_step
@@ -142,6 +155,7 @@ func insect_spawner(spawn_min : int, spawn_max : int):
 		var test_spawn = randi() % enemy_spawn_postions.size()
 		ajouter_instect("insectotueur", enemy_spawn_postions[test_spawn],queen_position)
 		enemy_spawn_postions.remove(test_spawn)
+	next_wave_hatch += next_wave_hatch_step
 
 func _on_EndTurnButton_pressed():
 	etat_courant = ETAT.END_TURN
@@ -176,6 +190,7 @@ func ajouter_instect(instect_name : String, tile : Vector2, cible : Vector2):
 		"insectotueur":
 			new_instect = insectotueur_ressource.instance()
 			new_instect.position = tileMap.map_to_world(tile) + Vector2(0,tileMap.cell_size.y/2)
+			new_instect.turns_to_hatch = next_wave_hatch
 			new_instect.set_target(cible)
 	turnQueue.add_character(new_instect)
 	

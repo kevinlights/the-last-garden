@@ -22,7 +22,8 @@ onready var longevite = get_node("insectotueur/Longevite")
 func _ready():
 	#frame = sprites["seed"]
 	type = "Insect"
-	is_insect = true
+	is_insect = false
+	is_insect_unhatched = true
 	connect("insect_on", turnQueue, "_on_insect_on")
 	$insectotueur.frame = sprites["seed"]
 	$insectotueur.material = $insectotueur.material.duplicate();
@@ -83,10 +84,10 @@ func movement_predictor():
 		distances.append([distance,current_tile+direction])
 	distances.sort_custom(self,"distance_sort")
 	candidat = distances.pop_front()
-	while(turnQueue.contain_enemy(candidat[1]) and not distances == []):
+	while(turnQueue.contain_enemy_unhatched(candidat[1]) and not distances == []):
 		candidat = distances.pop_front()
 	
-	if ((turnQueue.contain_enemy(candidat[1]) and distances == []) or candidat[0] > tile.distance_to(current_tile)):
+	if ((turnQueue.contain_enemy_unhatched(candidat[1]) and distances == []) or candidat[0] > tile.distance_to(current_tile)):
 		candidat = [-1,current_tile]
 	
 	if not (candidat[1] in tileMap.get_used_cells()):
@@ -117,6 +118,8 @@ func change_orientation(direction : Vector2):
 func hatch():
 	var tile : Vector2 = tileMap.world_to_map(global_position)
 	var direction : Vector2
+	
+	is_insect = true
 	
 	target_tile = movement_predictor()
 	ronce_die = turnQueue.contain_ronce(target_tile)
