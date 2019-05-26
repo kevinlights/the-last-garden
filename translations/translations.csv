@@ -1,0 +1,37 @@
+id,fr,en,ht_HT,eo
+string_new_game,Nouvelle partie,New game,Nouvo pati,Nova ludo
+string_quit,Quitter,Quit,Kite,Forlasi
+string_options,Options,Settings,Opsyon,Opcioj
+string_daisy_name,Pâquerette,Daisy,Daisy,Lekanteto
+string_daisy_description,A l'éclosion: lance un pétale explosif sur un insecte.,Upon bloom: throws an explosive petal on an insect.,Nan koule: jete yon petal eksplozif sou yon ensèk.,Kiam florado: ĵetas eksplodeman petalon al insekto
+string_daisy_cost,Coût : 1,Cost : 1,Pri : 1,Kosto
+string_daisy_blooming,Eclosion : 2 tours,Blooming : 2 turns,Eklizyon : 2 nap,Florado: 2 vicoj
+string_daisy_withering,Flétrissement : 7 tours,Withering : 7 turns,Sechrès: 7 jij,Velki: 7 vicoj
+string_rafflesia_name,Rafflesia,Rafflesia,Rafflesia,Raflezio
+string_rafflesia_description,Attire les insectes vers elle.,Attract insects to itself.,Atire ensèk pou li.,Altiras la insektojn al ĝi
+string_rafflesia_cost,Coût : 1,Cost : 1,Pri : 1,Kosto: 1
+string_rafflesia_blooming,Eclosion : 3 tours,Blooming : 3 turns,Eklizyon : 3 nap,Florado: 3 vicoj
+string_rafflesia_withering,Flétrissement : 6 tours,Withering : 6 turns,Sechrès: 6 jij,Velki: 6 vicoj
+string_thorn_bush_name,Ronces,Thorn bush,Touf raje,Rubusoj
+string_thorn_bush_description,Tue un insecte qui vole sur elles.,Upon bloom : kill an insect that fly on it.,Touye yon ensèk ki tap vole sou yo.,Mortigas flugantan insekton super ĝi
+string_thorn_bush_cost,Coût : 1,Cost : 1,Pri : 1,Kosto: 1
+string_thorn_bush_blooming,Eclosion : 3 tours,Blooming : 3 turns,Eklizyon : 3 nap,Florado: 3 vicoj
+string_thorn_bush_withering,Flétrissement : 5 tours,Withering : 5 turns,Sechrès: 5 jij,Velki: 5 vicoj
+string_lily_flower_name,Lys bleu,Blue lily,Yon bèl ti flè,Lilio
+string_lily_flower_description,A l'éclosion: transforme des blocs en herbe pour pouvoir planter à nouveau.,Upon bloom: change blocks to grass so they become plantable again.,Nan koule: transfòme blòk nan zèb pou yo ka plante ankò.,Kiam florado: ŝangas blokojn en herbo do oni povas planti denove
+string_lily_flower_cost,Coût : 1,Cost : 1,Pri : 1,Kosto: 1
+string_lily_flower_withering,Flétrissement : 7 tours,Withering : 7 turns,Sechrès: 7 jij,Velki: 7 vicoj
+string_victory,VICTOIRE,VICTORY,VIKTWA,Venko
+string_defeat,DEFAITE,DEFEAT,DEFET,Malvenko
+string_rejouer,Rejouer,Replay,Reparèt,Refari la ludon
+string_retour,Retour,Quit,Retounen,Nuligi
+string_tuto1,Protégez l'oeuf de la reine-mère,Protect the egg of the queen-mother,Pwoteje ze a nan manman larenn lan,Protektu la ovon de la reĝina patrino
+string_tuto2,Utilisez les orbes pour planter des fleurs et combattre les insectes,Use orbs to plant flower and fight insects,Sèvi ak orb yo pou plante flè ak batay ensèk,Uzu la orbon por planti florojn kaj batali la insektojn
+string_tuto3,- Les plantes actionnent leurs effets quand elles éclosent,- Plants use their effect when they bloom,- Plant yo aktive efè yo lè yo kale,- La plantoj aktivigi iliajn efektojn kiam ili flori
+string_tuto4,- Vous en aurez 3 nouvelles à chaque tour,- You will have 3 new flowers each turn,- Ou pral jwenn 3 nouvo chak vire,- Vi havos 3 pli da ĝin ĉiuvice
+string_tuto5,"A chaque tour, les insectes jouent en premier","Each turn, insects play first","Nan chak vire, ensèk yo jwe premye",Ĉiuvice ludas la insektoj unue
+string_language,Langue:,Language:,Lang :,Lingvo :
+string_sound_level,Niveau du son :,Sound level :,Nivo son:,Sonoran laŭtecon
+string_end_turn,Fin de tour,End turn,Fen vire,Fini la vicon
+string_confirm,Confirmer,Confirm,Konfime,Akcepti
+string_cancel,Annuler,Cancel,Anile,Nuligi

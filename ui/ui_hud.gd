@@ -14,8 +14,18 @@ onready var fleurBleueButtonButton_ressource = load("res://ui/FleurBleueButton.t
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	$MessageDebut/ProtectionOeufMessage.set_text(tr("string_tuto1"))
+	$MessageDebut2/ProtectionOeufMessage.set_text(tr("string_tuto2"))
+	$MessageDebut3/ProtectionOeufMessage.set_text(tr("string_tuto3") + "\n" +  tr("string_tuto4"))
+	$MessageDebut4/ProtectionOeufMessage.set_text(tr("string_tuto5"))
+	
+	$"EndTurnButton/Fin de tour".set_text(tr("string_end_turn"))
+	
+	$EcranFinDePartie/VBoxContainer/CenterContainer/VICTOIRE.set_text("string_victory")
+	$EcranFinDePartie/VBoxContainer/CenterContainer/DEFAITE.set_text("string_defeat")
+	$EcranFinDePartie/VBoxContainer/HBoxContainer/Rejouer.set_text("string_rejouer")
+	$EcranFinDePartie/VBoxContainer/HBoxContainer/Retour.set_text("string_retour")
+	
 # TODO : Connecter aux boutons
 func select_plant():
 	yield(self,"plant_selected")
@@ -76,38 +86,38 @@ func _on_Retour_pressed():
 	get_tree().change_scene("res://Menu.tscn")
 
 func _on_PissenlitButton_mouse_entered():
-	$PlanteDescription/VBoxContainer/Titre.set_text("Pissenlit")
-	$PlanteDescription/VBoxContainer/Description.set_text("A l'éclosion: lance un pétale explosif sur un insecte.")
-	$PlanteDescription/VBoxContainer/Cout.set_text("Cout : 1")
-	$PlanteDescription/VBoxContainer/HatchTurns.set_text("Eclosion : 2 tours")
-	$PlanteDescription/VBoxContainer/DieTurns.set_text("Flétrissement : 7 tours")
+	$PlanteDescription/VBoxContainer/Titre.set_text(tr("string_daisy_name"))
+	$PlanteDescription/VBoxContainer/Description.set_text(tr("string_daisy_description"))
+	$PlanteDescription/VBoxContainer/Cout.set_text(tr("string_daisy_cost"))
+	$PlanteDescription/VBoxContainer/HatchTurns.set_text(tr("string_daisy_blooming"))
+	$PlanteDescription/VBoxContainer/DieTurns.set_text(tr("string_daisy_withering"))
 	$PlanteDescription.show()
 	$EnergiePlanteDescription.show();
 
 func _on_RafflesiaButton_mouse_entered():
-	$PlanteDescription/VBoxContainer/Titre.set_text("Rafflesia")
-	$PlanteDescription/VBoxContainer/Description.set_text("Attire les insectes vers elle.")
-	$PlanteDescription/VBoxContainer/Cout.set_text("Cout : 1")
-	$PlanteDescription/VBoxContainer/HatchTurns.set_text("Eclosion : 3 tours")
-	$PlanteDescription/VBoxContainer/DieTurns.set_text("Flétrissement : 6 tours ")
+	$PlanteDescription/VBoxContainer/Titre.set_text(tr("string_rafflesia_name"))
+	$PlanteDescription/VBoxContainer/Description.set_text(tr("string_rafflesia_description"))
+	$PlanteDescription/VBoxContainer/Cout.set_text(tr("string_rafflesia_cost"))
+	$PlanteDescription/VBoxContainer/HatchTurns.set_text(tr("string_rafflesia_blooming"))
+	$PlanteDescription/VBoxContainer/DieTurns.set_text(tr("string_rafflesia_withering"))
 	$PlanteDescription.show()
 	$EnergiePlanteDescription.show();
 
 func _on_RoncesButton_mouse_entered():
-	$PlanteDescription/VBoxContainer/Titre.set_text("Ronces")
-	$PlanteDescription/VBoxContainer/Description.set_text("Tue les insectes qui volent sur elle.")
-	$PlanteDescription/VBoxContainer/Cout.set_text("Cout : 1")
-	$PlanteDescription/VBoxContainer/HatchTurns.set_text("Eclosion : 3 tours")
-	$PlanteDescription/VBoxContainer/DieTurns.set_text("Flétrissement : 5 tours")
+	$PlanteDescription/VBoxContainer/Titre.set_text(tr("string_thorn_bush_name"))
+	$PlanteDescription/VBoxContainer/Description.set_text(tr("string_thorn_bush_description"))
+	$PlanteDescription/VBoxContainer/Cout.set_text(tr("string_thorn_bush_cost"))
+	$PlanteDescription/VBoxContainer/HatchTurns.set_text(tr("string_thorn_bush_blooming"))
+	$PlanteDescription/VBoxContainer/DieTurns.set_text(tr("string_thorn_bush_withering"))
 	$PlanteDescription.show()
 	$EnergiePlanteDescription.show();
 
 func _on_FleurBleueButton_mouse_entered():
-	$PlanteDescription/VBoxContainer/Titre.set_text("Fleur bleue")
-	$PlanteDescription/VBoxContainer/Description.set_text("A l'éclosion: transforme des blocs en herbe pour pouvoir planter à nouveau.")
-	$PlanteDescription/VBoxContainer/Cout.set_text("Cout : 1")
-	$PlanteDescription/VBoxContainer/HatchTurns.set_text("Eclosion : 2 tours")
-	$PlanteDescription/VBoxContainer/DieTurns.set_text("Flétrissement : 7 tours")
+	$PlanteDescription/VBoxContainer/Titre.set_text(tr("string_lily_flower_name"))
+	$PlanteDescription/VBoxContainer/Description.set_text(tr("string_lily_flower_description"))
+	$PlanteDescription/VBoxContainer/Cout.set_text(tr("string_lily_flower_cost"))
+	$PlanteDescription/VBoxContainer/HatchTurns.set_text(tr("string_lily_flower_blooming"))
+	$PlanteDescription/VBoxContainer/DieTurns.set_text(tr("string_lily_flower_withering"))
 	$PlanteDescription.show()
 	$EnergiePlanteDescription.show();
 
