@@ -82,7 +82,6 @@ zoom = Vector2( 2.6, 2.6 )
 script = ExtResource( 2 )
 
 [node name="TileMap" type="TileMap" parent="."]
-editor/display_folded = true
 position = Vector2( 1, 0 )
 z_index = -3
 mode = 1
@@ -99,7 +98,6 @@ script = ExtResource( 5 )
 script = ExtResource( 6 )
 
 [node name="ui_navigation" type="Node" parent="."]
-editor/display_folded = true
 script = ExtResource( 7 )
 
 [node name="VisualisationPlantSkill" type="TileMap" parent="ui_navigation"]
@@ -121,6 +119,7 @@ script = ExtResource( 10 )
 script = ExtResource( 11 )
 
 [node name="PlanteDescription" type="PanelContainer" parent="ui_hud"]
+editor/display_folded = true
 visible = false
 margin_left = 12.0
 margin_top = 362.0
@@ -130,6 +129,7 @@ theme = ExtResource( 12 )
 custom_styles/panel = ExtResource( 13 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ui_hud/PlanteDescription"]
+editor/display_folded = true
 margin_right = 360.0
 margin_bottom = 115.0
 
@@ -394,6 +394,7 @@ rect_scale = Vector2( 0.350456, 0.350456 )
 texture = ExtResource( 19 )
 
 [node name="bg" type="CanvasLayer" parent="."]
+editor/display_folded = true
 layer = -5
 scale = Vector2( 0.559144, 0.570343 )
 transform = Transform2D( 0.559144, 0, 0, 0.570343, 0, 0 )
@@ -415,12 +416,14 @@ autoplay = true
 [node name="SonPlantage" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 22 )
 [connection signal="mana_set" from="." to="ui_hud" method="_on_Game_mana_set"]
-[connection signal="plant_posee" from="." to="Sounds" method="_on_Game_plant_posee"]
 [connection signal="plant_posee" from="." to="ui_hud" method="_on_Game_plant_posee"]
+[connection signal="plant_posee" from="." to="Sounds" method="_on_Game_plant_posee"]
 [connection signal="plants_changed" from="." to="ui_hud" method="_on_Game_plants_changed"]
+[connection signal="plant_selected" from="ui_hud" to="ui_navigation/Mouse" method="_on_ui_hud_plant_selected"]
 [connection signal="plant_selected" from="ui_hud" to="." method="_on_ui_hud_plant_selected"]
-[connection signal="pressed" from="ui_hud/EndTurnButton" to="ui_navigation" method="_on_EndTurnButton_pressed"]
+[connection signal="pressed" from="ui_hud/EndTurnButton" to="ui_navigation/Mouse" method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EndTurnButton" to="." method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EndTurnButton" to="ui_hud" method="_on_EndTurnButton_pressed"]
+[connection signal="pressed" from="ui_hud/EndTurnButton" to="ui_navigation" method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EcranFinDePartie/VBoxContainer/HBoxContainer/Rejouer" to="ui_hud" method="_on_Rejouer_pressed"]
 [connection signal="pressed" from="ui_hud/EcranFinDePartie/VBoxContainer/HBoxContainer/Retour" to="ui_hud" method="_on_Retour_pressed"]

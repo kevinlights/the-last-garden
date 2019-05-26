@@ -123,3 +123,7 @@ func tile_peripheriques():
 			result.append(tile)
 			continue
 	return result
+	
+
+func getCorruptedTiles():
+	return $terrain.getCorruptedTiles()

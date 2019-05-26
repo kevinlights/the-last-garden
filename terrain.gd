@@ -18,6 +18,10 @@ func _ready():
 		
 func getBloc(v):
 	return d[v]
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+
+func getCorruptedTiles():
+	var res : Array = Array()
+	for v in get_parent().get_used_cells():
+		if d[v].isCorrupted:
+			res.append(v)
+	return res
