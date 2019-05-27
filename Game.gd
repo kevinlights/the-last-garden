@@ -200,7 +200,11 @@ func ajouter_reine():
 	turnQueue.add_character(new_queen)
 
 func _on_game_won():
+	$Sounds/Musique.stop()
+	$Sounds/MusiqueVictoire.play()
 	$ui_hud.showVictoryScreen()
 
 func _on_game_lost():
+	$Sounds/Musique.stop()
+	$Sounds/MusiqueDefaite.play()
 	$ui_hud.showDefeatScreen()

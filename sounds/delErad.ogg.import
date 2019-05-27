@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/delErad.ogg-f46f1075ca2e371415e1b5a2cff0e8af.oggstr"
+
+[deps]
+
+source_file="res://sounds/delErad.ogg"
+dest_files=[ "res://.import/delErad.ogg-f46f1075ca2e371415e1b5a2cff0e8af.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
