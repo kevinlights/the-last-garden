@@ -118,7 +118,6 @@ texture = SubResource( 3 )
 script = ExtResource( 10 )
 
 [node name="ui_hud" type="CanvasLayer" parent="."]
-editor/display_folded = true
 script = ExtResource( 11 )
 
 [node name="PlanteDescription" type="PanelContainer" parent="ui_hud"]
@@ -239,20 +238,20 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ui_hud/EcranFinDePartie"]
-margin_left = 349.0
+margin_left = 327.0
 margin_top = 280.0
-margin_right = 674.0
+margin_right = 697.0
 margin_bottom = 320.0
 
 [node name="CenterContainer" type="CenterContainer" parent="ui_hud/EcranFinDePartie/VBoxContainer"]
-margin_right = 325.0
-margin_bottom = 64.0
+margin_right = 370.0
 
 [node name="VICTOIRE" type="Label" parent="ui_hud/EcranFinDePartie/VBoxContainer/CenterContainer"]
 visible = false
-margin_left = 22.0
-margin_right = 303.0
-margin_bottom = 64.0
+margin_left = 44.0
+margin_top = -32.0
+margin_right = 325.0
+margin_bottom = 32.0
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.921569, 0.835294, 0.286275, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -260,31 +259,35 @@ text = "VICTOIRE"
 
 [node name="DEFAITE" type="Label" parent="ui_hud/EcranFinDePartie/VBoxContainer/CenterContainer"]
 visible = false
-margin_left = 37.0
-margin_right = 287.0
-margin_bottom = 64.0
+margin_left = 60.0
+margin_top = -32.0
+margin_right = 310.0
+margin_bottom = 32.0
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.92549, 0.278431, 0.192157, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "DEFAITE"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ui_hud/EcranFinDePartie/VBoxContainer"]
-margin_top = 68.0
-margin_right = 325.0
-margin_bottom = 104.0
+margin_top = 4.0
+margin_right = 370.0
+margin_bottom = 40.0
+custom_constants/separation = 10
 
 [node name="Rejouer" type="Button" parent="ui_hud/EcranFinDePartie/VBoxContainer/HBoxContainer"]
-margin_right = 111.0
+margin_right = 180.0
 margin_bottom = 36.0
+rect_min_size = Vector2( 180, 0 )
 custom_fonts/font = SubResource( 7 )
 text = "Rejouer"
 
 [node name="Retour" type="Button" parent="ui_hud/EcranFinDePartie/VBoxContainer/HBoxContainer"]
-margin_left = 115.0
-margin_right = 325.0
+margin_left = 190.0
+margin_right = 370.0
 margin_bottom = 36.0
+rect_min_size = Vector2( 180, 0 )
 custom_fonts/font = SubResource( 7 )
-text = "Retour au menu"
+text = "Retour"
 
 [node name="MessageDebut" type="Control" parent="ui_hud"]
 editor/display_folded = true

@@ -3,7 +3,7 @@ extends Character
 signal game_won()
 signal game_lost()
 
-export var beginningLevel : int = 20
+export var beginningLevel : int = 1
 
 onready var longevite = $PlanteMereSprite/Longevite
 var currentLevel : int = beginningLevel
