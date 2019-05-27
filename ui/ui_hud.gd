@@ -153,6 +153,8 @@ func _on_Game_plants_changed(slots):
 				new_button = fleurBleueButtonButton_ressource.instance()
 		boutonsPlantation.add_child(new_button)
 
-
 func _on_Game_plant_posee(slot):
 	boutonsPlantation.remove_child(boutonsPlantation.get_children()[slot])
+	plant_selected = false
+	selected_plant = null
+	$EcranFinDePartie/VBoxContainer/HBoxContainer/Rejouer.grab_focus()

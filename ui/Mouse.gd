@@ -45,7 +45,6 @@ func _process(delta):
 			selected_plant.visible = false
 		visible = false
 
-
 func _on_ui_hud_plant_selected(plant):
 	get_parent().remove_child(selected_plant)
 	match plant:
@@ -70,8 +69,17 @@ func _on_ui_hud_plant_selected(plant):
 			get_parent().add_child(selected_plant)
 			selected_plant.sprite.modulate = Color(1, 1, 1, 0.5)
 
-
 func _on_EndTurnButton_pressed():
+	get_parent().remove_child(selected_plant)
+	visible = false
+	selected_plant = null
+
+func _on_Game_plant_posee(slot):
+	get_parent().remove_child(selected_plant)
+	visible = false
+	selected_plant = null
+
+func _on_Game_plants_changed(slots):
 	get_parent().remove_child(selected_plant)
 	visible = false
 	selected_plant = null

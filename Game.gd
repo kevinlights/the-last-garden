@@ -101,7 +101,7 @@ func play():
 							ajouter_character(selected_plant, selected_tile)
 							mana -= couts_plantes[selected_plant]
 							emit_signal("mana_set", mana)
-							etat_courant = ETAT.SELECT_TILE
+							etat_courant = ETAT.SELECT_PLANT
 							print("selected tile :",selected_tile)
 					else :
 						etat_courant = ETAT.SELECT_TILE
