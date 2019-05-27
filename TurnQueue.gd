@@ -106,3 +106,8 @@ func _on_projectile_done(position):
 		if character.is_insect :
 			if tileMap.world_to_map(character.global_position) == tileMap.world_to_map(position):
 				character.fade()
+				
+func kill_all_insect():
+	for character in get_characters():
+		if character.is_insect or character.is_insect_unhatched:
+				character.fade()

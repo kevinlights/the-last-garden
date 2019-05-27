@@ -7,6 +7,9 @@ export var beginningLevel : int = 20
 
 onready var longevite = $PlanteMereSprite/Longevite
 var currentLevel : int = beginningLevel
+onready var tm = get_tree().get_root().get_node("Game/TileMap")
+onready var terrain = get_tree().get_root().get_node("Game/TileMap/terrain")
+onready var tq = get_tree().get_root().get_node("Game/TurnQueue")
 
 func _ready():
 	is_insect = false
@@ -29,6 +32,13 @@ func update():
 		get_parent().remove_child(self)
 	
 func hatch():
+		
+	$AnimationPlayer.play("eclosion")
+	tq.kill_all_insect()
+	for v in tm.get_used_cells():
+		terrain.getBloc(v).uncorrupt()
+	
+	yield($AnimationPlayer, "animation_finished")
 	longevite.set_text("")
 	emit_signal("game_won")
 	
