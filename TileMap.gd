@@ -122,6 +122,7 @@ func tile_peripheriques():
 		if not (tile + bottomRight in get_used_cells()):
 			result.append(tile)
 			continue
+	
 	return result
 	
 

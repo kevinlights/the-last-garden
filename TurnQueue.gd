@@ -20,7 +20,7 @@ func play_turn():
 	emit_signal("turn_finished")
 
 func caracter_priority_sort(a : Character, b : Character) -> bool:
-	return a.is_insect
+	return a.is_insect or a.is_insect_unhatched
 
 #Ajoute un character au jeu
 func add_character(character):
@@ -37,6 +37,13 @@ func get_characers_positions():
 	for character in get_characters():
 		if not character.to_remove:
 			positions.append(character.global_position)
+	return positions
+
+func get_characers_tiles():
+	var positions : Array = Array()
+	for character in get_characters():
+		if not character.to_remove:
+			positions.append(tileMap.world_to_map(character.global_position))
 	return positions
 
 func contain_enemy(tile : Vector2):
@@ -111,3 +118,8 @@ func kill_all_insect():
 	for character in get_characters():
 		if character.is_insect or character.is_insect_unhatched:
 				character.fade()
+				
+func delete_occupied_tiles(enemy_spawn_postions : Array):
+	for occupied in get_characers_tiles():
+		if occupied in enemy_spawn_postions:
+			enemy_spawn_postions.remove(enemy_spawn_postions.find(occupied))

@@ -151,6 +151,7 @@ func insect_spawner(spawn_min : int, spawn_max : int):
 	var nb_insects : int = randi() % spawn_max + spawn_min + 1
 	
 	var enemy_spawn_postions : Array = tileMap.tile_peripheriques()
+	turnQueue.delete_occupied_tiles(enemy_spawn_postions)
 	for i in range(nb_insects):
 		var test_spawn = randi() % enemy_spawn_postions.size()
 		ajouter_instect("insectotueur", enemy_spawn_postions[test_spawn],queen_position)
