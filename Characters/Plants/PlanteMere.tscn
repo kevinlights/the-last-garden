@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Characters/Plants/PlanteMere.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Plants/dissolution.shader" type="Shader" id=2]
 [ext_resource path="res://art2d/mere2.png" type="Texture" id=3]
 [ext_resource path="res://font/riffic.otf" type="DynamicFontData" id=4]
+[ext_resource path="res://Itsmagic.tscn" type="PackedScene" id=5]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
@@ -41,6 +42,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 0, 1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Itsmagic:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -80,6 +93,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [ 0 ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Itsmagic:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=5]
 tracks/0/type = "value"
@@ -116,3 +141,7 @@ text = "0"
 anims/eclosion = SubResource( 3 )
 anims/idle = SubResource( 4 )
 anims/meurt = SubResource( 5 )
+
+[node name="Itsmagic" parent="." instance=ExtResource( 5 )]
+visible = false
+position = Vector2( -7.86346, 40.7834 )
