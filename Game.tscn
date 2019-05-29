@@ -309,14 +309,14 @@ margin_bottom = 161.854
 [node name="Message" type="Label" parent="ui_hud/MessageDebut/Panel"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -213.826
-margin_top = 6.52985
-margin_right = 213.174
-margin_bottom = 43.5298
+margin_left = -218.158
+margin_top = 7.0
+margin_right = 223.842
+margin_bottom = 44.0
 custom_fonts/font = ExtResource( 18 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Protégez l'oeuf de la reine-mère
-Si elle meurt vous avez perdu, si elle éclos vous avez gagner"
+Si un insecte la dévore, vous perdez. Si elle éclot, vous gagnez"
 align = 1
 
 [node name="Button" type="Button" parent="ui_hud/MessageDebut/Panel"]
@@ -340,33 +340,34 @@ rect_scale = Vector2( 0.350456, 0.350456 )
 texture = ExtResource( 19 )
 
 [node name="MessageDebut2" type="Control" parent="ui_hud"]
+editor/display_folded = true
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="Panel" type="Panel" parent="ui_hud/MessageDebut2"]
 margin_left = 118.0
 margin_top = 43.0
-margin_right = 675.0
-margin_bottom = 111.0
+margin_right = 747.0
+margin_bottom = 130.0
 
 [node name="Message" type="Label" parent="ui_hud/MessageDebut2/Panel"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -242.909
-margin_top = 10.487
-margin_right = 238.091
-margin_bottom = 27.487
+margin_left = 28.436
+margin_top = 12.0
+margin_right = 614.436
+margin_bottom = 49.0
 custom_fonts/font = ExtResource( 18 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "Utilisez les orbes pour planter des plantes et combattre les insectes"
+text = "- Utilisez les orbes pour planter des plantes qui serviront à combattre les insectes
+- Votre nombre d'orbes reviens à son maximum au début de chaque tour"
 
 [node name="Button" type="Button" parent="ui_hud/MessageDebut2/Panel"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -320.739
-margin_top = 38.1852
-margin_right = -231.739
-margin_bottom = 58.1852
+margin_left = -352.481
+margin_top = 54.3511
+margin_right = -263.481
+margin_bottom = 74.3511
 text = "Ok"
 
 [node name="Fleche" type="TextureRect" parent="ui_hud/MessageDebut2"]
@@ -385,26 +386,28 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="Panel" type="Panel" parent="ui_hud/MessageDebut3"]
-margin_left = 443.0
-margin_top = 403.0
-margin_right = 894.0
-margin_bottom = 490.0
+margin_left = 448.0
+margin_top = 383.0
+margin_right = 982.0
+margin_bottom = 505.0
 
 [node name="Message" type="Label" parent="ui_hud/MessageDebut3/Panel"]
 margin_left = 15.0
 margin_top = 11.0
-margin_right = 430.0
-margin_bottom = 48.0
+margin_right = 517.0
+margin_bottom = 88.0
 custom_fonts/font = ExtResource( 18 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "- Les plantes actionnent leurs effets quand elles éclosent
-- Vous en aurez 3 nouvelles à chaque tour"
+text = "- Lorsque vous plantez une plante, elle apparaît à l'état de bougeon
+- Quand elle éclot elle déclanche son effet
+- Elle reste ensuite sur le champ de battaille jusqu'à son flétrissement
+- Vous receverez 3 plantes aléatoires au début de chaque tour"
 
 [node name="Button" type="Button" parent="ui_hud/MessageDebut3/Panel"]
-margin_left = 182.32
-margin_top = 55.9134
-margin_right = 271.32
-margin_bottom = 75.9134
+margin_left = 224.202
+margin_top = 94.1953
+margin_right = 313.202
+margin_bottom = 114.195
 text = "Ok"
 
 [node name="Fleche" type="TextureRect" parent="ui_hud/MessageDebut3"]
@@ -423,34 +426,34 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="Panel" type="Panel" parent="ui_hud/MessageDebut4"]
-margin_left = 447.202
-margin_top = 428.677
-margin_right = 846.202
-margin_bottom = 499.677
+margin_left = 448.059
+margin_top = 398.027
+margin_right = 850.059
+margin_bottom = 502.027
 
 [node name="Message" type="Label" parent="ui_hud/MessageDebut4/Panel"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -161.991
-margin_top = 12.5029
-margin_right = 163.009
-margin_bottom = 29.5029
+margin_left = 25.0
+margin_top = 9.0
+margin_right = 378.0
+margin_bottom = 66.0
 custom_fonts/font = ExtResource( 18 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "A chaque tour, les insectes jouent en premier"
+text = "- A la fin d'un tour, les insectes jouent en premier
+- Les insectes transforment l'herbe en métal,
+- Il est impossible de planter sur le métal"
 
 [node name="Button" type="Button" parent="ui_hud/MessageDebut4/Panel"]
-margin_left = 156.891
-margin_top = 40.4011
-margin_right = 245.891
-margin_bottom = 60.4011
+margin_left = 162.485
+margin_top = 76.0323
+margin_right = 251.485
+margin_bottom = 96.0323
 text = "Ok"
 
 [node name="Fleche" type="TextureRect" parent="ui_hud/MessageDebut4"]
-margin_left = 870.6
-margin_top = 428.299
-margin_right = 1055.6
-margin_bottom = 567.3
+margin_left = 878.63
+margin_top = 418.317
+margin_right = 1063.63
+margin_bottom = 557.318
 rect_rotation = 45.0
 rect_scale = Vector2( 0.350456, 0.350456 )
 texture = ExtResource( 19 )
@@ -461,7 +464,6 @@ scale = Vector2( 0.559144, 0.570343 )
 transform = Transform2D( 0.559144, 0, 0, 0.570343, 0, 0 )
 
 [node name="Sprite" type="Sprite" parent="bg"]
-visible = false
 position = Vector2( 909.943, 519.554 )
 scale = Vector2( 1.04126, 1.06425 )
 texture = SubResource( 8 )
@@ -486,16 +488,16 @@ volume_db = -20.0
 [node name="SonPlantage" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 24 )
 [connection signal="mana_set" from="." to="ui_hud" method="_on_Game_mana_set"]
-[connection signal="plant_posee" from="." to="ui_navigation/Mouse" method="_on_Game_plant_posee"]
 [connection signal="plant_posee" from="." to="ui_hud" method="_on_Game_plant_posee"]
+[connection signal="plant_posee" from="." to="ui_navigation/Mouse" method="_on_Game_plant_posee"]
 [connection signal="plant_posee" from="." to="Sounds" method="_on_Game_plant_posee"]
-[connection signal="plants_changed" from="." to="ui_navigation/Mouse" method="_on_Game_plants_changed"]
 [connection signal="plants_changed" from="." to="ui_hud" method="_on_Game_plants_changed"]
+[connection signal="plants_changed" from="." to="ui_navigation/Mouse" method="_on_Game_plants_changed"]
 [connection signal="plant_selected" from="ui_hud" to="." method="_on_ui_hud_plant_selected"]
 [connection signal="plant_selected" from="ui_hud" to="ui_navigation/Mouse" method="_on_ui_hud_plant_selected"]
+[connection signal="pressed" from="ui_hud/EndTurnButton" to="ui_hud" method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EndTurnButton" to="." method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EndTurnButton" to="ui_navigation/Mouse" method="_on_EndTurnButton_pressed"]
-[connection signal="pressed" from="ui_hud/EndTurnButton" to="ui_hud" method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EndTurnButton" to="ui_navigation" method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EcranFinDePartie/VBoxContainer/HBoxContainer/Rejouer" to="ui_hud" method="_on_Rejouer_pressed"]
 [connection signal="pressed" from="ui_hud/EcranFinDePartie/VBoxContainer/HBoxContainer/Retour" to="ui_hud" method="_on_Retour_pressed"]

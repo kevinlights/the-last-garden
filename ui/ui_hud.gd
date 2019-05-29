@@ -14,10 +14,10 @@ onready var fleurBleueButtonButton_ressource = load("res://ui/FleurBleueButton.t
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$MessageDebut/Panel/Message.set_text(tr("string_tuto1"))
-	$MessageDebut2/Panel/Message.set_text(tr("string_tuto2"))
-	$MessageDebut3/Panel/Message.set_text(tr("string_tuto3") + "\n" +  tr("string_tuto4"))
-	$MessageDebut4/Panel/Message.set_text(tr("string_tuto5"))
+	$MessageDebut/Panel/Message.set_text(tr("string_tuto1.1")+"\n"+tr("string_tuto1.2"))
+	$MessageDebut2/Panel/Message.set_text(tr("string_tuto2.1")+"\n"+tr("string_tuto2.2"))
+	$MessageDebut3/Panel/Message.set_text(tr("string_tuto3.1")+"\n"+tr("string_tuto3.2")+"\n"+tr("string_tuto3.3")+"\n"+tr("string_tuto3.4"))
+	$MessageDebut4/Panel/Message.set_text(tr("string_tuto4.1")+"\n"+tr("string_tuto4.2")+"\n"+tr("string_tuto4.3"))
 	
 	$"EndTurnButton/Fin de tour".set_text(tr("string_end_turn"))
 	

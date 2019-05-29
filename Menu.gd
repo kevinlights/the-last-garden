@@ -3,20 +3,19 @@ extends MarginContainer
 func _ready():
 	global.display_tutorial = true
 	update_strings()
-	get_parent().get_node("Langue").select(1)
+	get_parent().get_node("Langue").select(0)
 	match TranslationServer.get_locale():
 		"fr":
 			get_parent().get_node("Langue").select(0)
 		"en":
 			get_parent().get_node("Langue").select(1)
-		"ht_HT":
-			get_parent().get_node("Langue").select(2)
 		"eo":
-			get_parent().get_node("Langue").select(3)
+			get_parent().get_node("Langue").select(2)
 	
 func update_strings():
-	$"VBoxContainer/Nouvelle Partie".set_text(tr("string_new_game"))
+	$"VBoxContainer/VBoxContainer/Nouvelle Partie".set_text(tr("string_new_game"))
 	$"VBoxContainer/Quitter".set_text(tr("string_quit"))
+	$VBoxContainer/VBoxContainer/DisableTuto.set_text(tr("string_notuto"))
 	
 func _on_Nouvelle_Partie_pressed():
 	get_tree().change_scene("res://Game.tscn")
@@ -30,9 +29,7 @@ func _on_Langue_item_selected(ID):
 			TranslationServer.set_locale("fr")
 		1:
 			TranslationServer.set_locale("en")
-		2: 
-			TranslationServer.set_locale("ht_HT")
-		3:
+		2:
 			TranslationServer.set_locale("eo")
 	update_strings()
 

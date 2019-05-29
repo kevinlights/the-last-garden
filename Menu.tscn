@@ -80,14 +80,29 @@ custom_colors/font_color = Color( 0.870588, 0.337255, 1, 1 )
 text = "INSECTOTUEURS"
 align = 1
 
-[node name="Nouvelle Partie" type="MenuButton" parent="Menu/VBoxContainer"]
-margin_top = 250.0
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/VBoxContainer"]
+margin_top = 220.0
 margin_right = 964.0
 margin_bottom = 290.0
+
+[node name="Nouvelle Partie" type="MenuButton" parent="Menu/VBoxContainer/VBoxContainer"]
+margin_right = 964.0
+margin_bottom = 40.0
 custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 0.717647, 0, 1 )
 text = "Nouvelle partie"
+
+[node name="DisableTuto" type="CheckBox" parent="Menu/VBoxContainer/VBoxContainer"]
+margin_left = 376.0
+margin_top = 44.0
+margin_right = 588.0
+margin_bottom = 70.0
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.717647, 0, 1 )
+text = "Désactiver le didactitiel"
 
 [node name="Quitter" type="MenuButton" parent="Menu/VBoxContainer"]
 margin_top = 360.0
@@ -108,16 +123,6 @@ position = Vector2( 467.891, 23.9427 )
 scale = Vector2( 0.307274, 0.307274 )
 texture = ExtResource( 8 )
 
-[node name="DisableTuto" type="CheckBox" parent="."]
-margin_left = 412.0
-margin_top = 390.0
-margin_right = 610.0
-margin_bottom = 414.0
-custom_fonts/font = SubResource( 6 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_hover = Color( 1, 0.717647, 0, 1 )
-text = "Désactiver le didactitiel"
-
 [node name="Langue" type="OptionButton" parent="."]
 margin_left = 866.255
 margin_top = 12.2647
@@ -125,9 +130,9 @@ margin_right = 996.255
 margin_bottom = 32.2647
 rect_min_size = Vector2( 140, 0 )
 text = "Français"
-items = [ "Français", null, false, -1, null, "English", null, false, -1, null, "Créole haïtien", null, false, -1, null, "Esperanto", null, false, -1, null ]
+items = [ "Français", null, false, -1, null, "English", null, false, -1, null, "Esperanto", null, false, -1, null ]
 selected = 0
-[connection signal="pressed" from="Menu/VBoxContainer/Nouvelle Partie" to="Menu" method="_on_Nouvelle_Partie_pressed"]
+[connection signal="pressed" from="Menu/VBoxContainer/VBoxContainer/Nouvelle Partie" to="Menu" method="_on_Nouvelle_Partie_pressed"]
+[connection signal="toggled" from="Menu/VBoxContainer/VBoxContainer/DisableTuto" to="Menu" method="_on_DisableTuto_toggled"]
 [connection signal="pressed" from="Menu/VBoxContainer/Quitter" to="Menu" method="_on_Quitter_pressed"]
-[connection signal="toggled" from="DisableTuto" to="Menu" method="_on_DisableTuto_toggled"]
 [connection signal="item_selected" from="Langue" to="Menu" method="_on_Langue_item_selected"]
