@@ -76,7 +76,10 @@ func _ready():
 	
 	insect_spawner(spawn_insect_min,spawn_insect_max)
 
-	$ui_hud.showInitialMessage()
+	if global.display_tutorial:
+		$ui_hud.showInitialMessage()
+		
+	global.display_tutorial = false
 	
 	play()
 	

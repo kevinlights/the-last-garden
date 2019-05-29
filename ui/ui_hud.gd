@@ -14,10 +14,10 @@ onready var fleurBleueButtonButton_ressource = load("res://ui/FleurBleueButton.t
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$MessageDebut/ProtectionOeufMessage.set_text(tr("string_tuto1"))
-	$MessageDebut2/ProtectionOeufMessage.set_text(tr("string_tuto2"))
-	$MessageDebut3/ProtectionOeufMessage.set_text(tr("string_tuto3") + "\n" +  tr("string_tuto4"))
-	$MessageDebut4/ProtectionOeufMessage.set_text(tr("string_tuto5"))
+	$MessageDebut/Panel/Message.set_text(tr("string_tuto1"))
+	$MessageDebut2/Panel/Message.set_text(tr("string_tuto2"))
+	$MessageDebut3/Panel/Message.set_text(tr("string_tuto3") + "\n" +  tr("string_tuto4"))
+	$MessageDebut4/Panel/Message.set_text(tr("string_tuto5"))
 	
 	$"EndTurnButton/Fin de tour".set_text(tr("string_end_turn"))
 	
@@ -53,21 +53,22 @@ func _on_Game_mana_set(mana):
 	$Graines/Mana.set_text(str(mana)+"/2")
 
 func showInitialMessage():
+	
 	yield(get_tree().create_timer(0.5), "timeout")
 	$MessageDebut.show()
-	
-	yield(get_tree().create_timer(4), "timeout")
+	yield($MessageDebut/Panel/Button,"pressed")
 	$MessageDebut.hide()
+	
 	$MessageDebut2.show()
-	yield(get_tree().create_timer(5), "timeout")
+	yield($MessageDebut2/Panel/Button,"pressed")
 	$MessageDebut2.hide()
+	
 	$MessageDebut3.show()
-	
-	yield(get_tree().create_timer(6), "timeout")
+	yield($MessageDebut3/Panel/Button,"pressed")
 	$MessageDebut3.hide()
-	$MessageDebut4.show()
 	
-	yield(get_tree().create_timer(4), "timeout")
+	$MessageDebut4.show()
+	yield($MessageDebut4/Panel/Button,"pressed")
 	$MessageDebut4.hide()
 	
 

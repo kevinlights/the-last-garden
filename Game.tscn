@@ -295,49 +295,80 @@ visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 
-[node name="ProtectionOeufMessage" type="Label" parent="ui_hud/MessageDebut"]
+[node name="Panel" type="Panel" parent="ui_hud/MessageDebut"]
+margin_left = 349.0
+margin_top = 104.0
+margin_right = 687.0
+margin_bottom = 160.0
+
+[node name="Message" type="Label" parent="ui_hud/MessageDebut/Panel"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = 334.681
-margin_top = 130.33
-margin_right = 647.681
-margin_bottom = 163.33
+margin_left = -119.08
+margin_top = 8.45999
+margin_right = 117.92
+margin_bottom = 32.46
 custom_fonts/font = ExtResource( 18 )
-custom_colors/font_color = Color( 0.0823529, 0.243137, 0.27451, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Protégez l'oeuf de la reine-mère"
 
+[node name="Button" type="Button" parent="ui_hud/MessageDebut/Panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -44.2309
+margin_top = -25.8119
+margin_right = 44.7691
+margin_bottom = -5.81194
+text = "Ok"
+
 [node name="Fleche" type="TextureRect" parent="ui_hud/MessageDebut"]
-margin_left = 531.899
-margin_top = 164.329
-margin_right = 716.899
-margin_bottom = 303.329
+margin_left = 544.0
+margin_top = 164.0
+margin_right = 729.0
+margin_bottom = 303.0
 rect_rotation = 90.0
 rect_scale = Vector2( 0.350456, 0.350456 )
 texture = ExtResource( 19 )
 
 [node name="MessageDebut2" type="Control" parent="ui_hud"]
-editor/display_folded = true
 visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 
-[node name="ProtectionOeufMessage" type="Label" parent="ui_hud/MessageDebut2"]
+[node name="Panel" type="Panel" parent="ui_hud/MessageDebut2"]
+margin_left = 118.0
+margin_top = 43.0
+margin_right = 675.0
+margin_bottom = 111.0
+
+[node name="Message" type="Label" parent="ui_hud/MessageDebut2/Panel"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = 235.786
-margin_top = 16.5367
-margin_right = 862.786
-margin_bottom = 48.5367
+margin_left = -242.909
+margin_top = 11.7147
+margin_right = 238.091
+margin_bottom = 28.7147
 custom_fonts/font = ExtResource( 18 )
-custom_colors/font_color = Color( 0.0823529, 0.243137, 0.27451, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Utilisez les orbes pour planter des fleurs et combattre les insectes"
 
+[node name="Button" type="Button" parent="ui_hud/MessageDebut2/Panel"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -320.739
+margin_top = 38.1852
+margin_right = -231.739
+margin_bottom = 58.1852
+text = "Ok"
+
 [node name="Fleche" type="TextureRect" parent="ui_hud/MessageDebut2"]
-margin_left = 242.133
-margin_top = 49.4313
-margin_right = 427.133
-margin_bottom = 188.431
-rect_rotation = -180.0
+margin_left = 90.3344
+margin_top = 118.128
+margin_right = 275.334
+margin_bottom = 257.128
+rect_rotation = -135.0
 rect_scale = Vector2( 0.350456, 0.350456 )
 texture = ExtResource( 19 )
 
@@ -347,24 +378,35 @@ visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 
-[node name="ProtectionOeufMessage" type="Label" parent="ui_hud/MessageDebut3"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = 380.651
-margin_top = 386.635
-margin_right = 1007.65
-margin_bottom = 433.635
+[node name="Panel" type="Panel" parent="ui_hud/MessageDebut3"]
+margin_left = 443.0
+margin_top = 403.0
+margin_right = 894.0
+margin_bottom = 490.0
+
+[node name="Message" type="Label" parent="ui_hud/MessageDebut3/Panel"]
+margin_left = 15.0
+margin_top = 11.0
+margin_right = 430.0
+margin_bottom = 48.0
 custom_fonts/font = ExtResource( 18 )
-custom_colors/font_color = Color( 0.0823529, 0.243137, 0.27451, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "- Les plantes actionnent leurs effets quand elles éclosent
 - Vous en aurez 3 nouvelles à chaque tour"
 
+[node name="Button" type="Button" parent="ui_hud/MessageDebut3/Panel"]
+margin_left = 182.32
+margin_top = 55.9134
+margin_right = 271.32
+margin_bottom = 75.9134
+text = "Ok"
+
 [node name="Fleche" type="TextureRect" parent="ui_hud/MessageDebut3"]
 margin_left = 455.356
-margin_top = 463.221
+margin_top = 449.925
 margin_right = 640.356
-margin_bottom = 602.221
-rect_rotation = 138.86
+margin_bottom = 588.925
+rect_rotation = 135.0
 rect_scale = Vector2( 0.350456, 0.350456 )
 texture = ExtResource( 19 )
 
@@ -374,28 +416,40 @@ visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 
-[node name="ProtectionOeufMessage" type="Label" parent="ui_hud/MessageDebut4"]
+[node name="Panel" type="Panel" parent="ui_hud/MessageDebut4"]
+margin_left = 447.202
+margin_top = 428.677
+margin_right = 846.202
+margin_bottom = 499.677
+
+[node name="Message" type="Label" parent="ui_hud/MessageDebut4/Panel"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = 321.887
-margin_top = 528.508
-margin_right = 743.887
-margin_bottom = 561.508
+margin_left = -161.991
+margin_top = 12.5029
+margin_right = 163.009
+margin_bottom = 29.5029
 custom_fonts/font = ExtResource( 18 )
-custom_colors/font_color = Color( 0.0823529, 0.243137, 0.27451, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "A chaque tour, les insectes jouent en premier"
 
+[node name="Button" type="Button" parent="ui_hud/MessageDebut4/Panel"]
+margin_left = 156.891
+margin_top = 40.4011
+margin_right = 245.891
+margin_bottom = 60.4011
+text = "Ok"
+
 [node name="Fleche" type="TextureRect" parent="ui_hud/MessageDebut4"]
-margin_left = 766.446
-margin_top = 515.832
-margin_right = 951.446
-margin_bottom = 654.833
-rect_rotation = -360.0
+margin_left = 870.6
+margin_top = 428.299
+margin_right = 1055.6
+margin_bottom = 567.3
+rect_rotation = 45.0
 rect_scale = Vector2( 0.350456, 0.350456 )
 texture = ExtResource( 19 )
 
 [node name="bg" type="CanvasLayer" parent="."]
-editor/display_folded = true
 layer = -5
 scale = Vector2( 0.559144, 0.570343 )
 transform = Transform2D( 0.559144, 0, 0, 0.570343, 0, 0 )

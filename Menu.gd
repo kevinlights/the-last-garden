@@ -1,7 +1,7 @@
 extends MarginContainer
 
-
 func _ready():
+	global.display_tutorial = true
 	update_strings()
 	get_parent().get_node("Langue").select(1)
 	match TranslationServer.get_locale():
@@ -35,3 +35,7 @@ func _on_Langue_item_selected(ID):
 		3:
 			TranslationServer.set_locale("eo")
 	update_strings()
+
+
+func _on_DisableTuto_toggled(button_pressed):
+	global.display_tutorial = not button_pressed

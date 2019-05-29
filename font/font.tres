@@ -3,5 +3,7 @@
 [ext_resource path="res://font/riffic.otf" type="DynamicFontData" id=1]
 
 [resource]
-size = 20
+size = 15
+outline_size = 1
+outline_color = Color( 0.235294, 0.235294, 0.235294, 1 )
 font_data = ExtResource( 1 )
