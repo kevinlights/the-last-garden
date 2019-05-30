@@ -10,7 +10,7 @@ onready var longevite = get_node("Sprite2/Longevite")
 
 var projectile_ressource = load("res://Characters/Plants/Projectile.tscn")
 
-export var turns_to_hatch : int = 3
+export var turns_to_hatch : int = 2
 export var turns_to_fade : int = 7
 export var attack_radius : int = 1
 
