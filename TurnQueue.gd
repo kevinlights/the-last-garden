@@ -93,6 +93,12 @@ func as_insect():
 			return true
 	return false
 
+func as_insect_unhatched():
+	for character in get_characters():
+		if (character.is_insect or character.is_insect_unhatched) and not character.to_remove:
+			return true
+	return false
+
 func contain_ronce(position : Vector2):
 	for character in get_characters():
 		if not character.is_insect and character.is_ronce and not character.to_remove:

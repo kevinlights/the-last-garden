@@ -6,7 +6,7 @@ onready var sprite : Sprite = $RonceSprite
 onready var tileMap : TileMap = get_node("../../TileMap")
 onready var longevite = get_node("RonceSprite/Longevite")
 
-export var turns_to_hatch : int = 3
+export var turns_to_hatch : int = 2
 export var turns_to_fade : int = 5
 
 var sprites : Dictionary = {"seed":0,"adult":1}

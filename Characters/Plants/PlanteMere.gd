@@ -3,7 +3,10 @@ extends Character
 signal game_won()
 signal game_lost()
 
-export var beginningLevel : int = 20
+onready var soundsMusique : Node = get_node("../../Sounds/Musique")
+onready var soundsMusiqueVictoire : Node = get_node("../../Sounds/MusiqueVictoire")
+
+export var beginningLevel : int = 1 #20
 
 onready var longevite = $PlanteMereSprite/Longevite
 var currentLevel : int = beginningLevel
@@ -27,21 +30,23 @@ func update():
 		longevite.set_text(str(currentLevel))
 		if(currentLevel == 0):
 			hatch()
+			yield(self,"game_won")
 		emit_signal("updated")
 	else :
 		emit_signal("updated")
 		get_parent().remove_child(self)
 	
 func hatch():
-		
+	soundsMusique.stop()
+	soundsMusiqueVictoire.play()
+	$AnimationPlayer.playback_speed = 0.5
 	$AnimationPlayer.play("eclosion")
+	longevite.set_text("")
 	tq.kill_all_insect()
 	yield(get_tree().create_timer(0.2), "timeout")
 	for v in tm.get_used_cells():
 		terrain.getBloc(v).uncorrupt()
-	
 	yield($AnimationPlayer, "animation_finished")
-	longevite.set_text("")
 	emit_signal("game_won")
 	
 func fade():

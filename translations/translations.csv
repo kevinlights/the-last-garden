@@ -6,7 +6,7 @@ string_options,Options,Settings,Opcioj
 string_daisy_name,Pâquerette,Daisy,Lekanteto
 string_daisy_description,A l'éclosion: lance un pétale explosif sur un insecte.,Upon bloom: throws an explosive petal on an insect,TODO
 string_daisy_cost,Coût : 1,Cost : 1,Kosto
-string_daisy_blooming,Eclosion : 2 tours,Blooming : 2 turns,Florado: 2 vicoj
+string_daisy_blooming,Eclosion : 3 tours,Blooming : 3 turns,Florado: 3 vicoj
 string_daisy_withering,Flétrissement : 7 tours,Withering : 7 turns,Velki: 7 vicoj
 string_rafflesia_name,Rafflesia,Rafflesia,Raflezio
 string_rafflesia_description,Attire vers elle les insectes à sa portée,Attract in range insects to itself,Altiras la insektojn al ĝi
@@ -16,7 +16,7 @@ string_rafflesia_withering,Flétrissement : 6 tours,Withering : 6 turns,Velki: 6
 string_thorn_bush_name,Ronces,Thorn bush,Rubusoj
 string_thorn_bush_description,Tue l’insecte qui vole sur elle.,Upon bloom : kill the insect that flies on it.,TODO
 string_thorn_bush_cost,Coût : 1,Cost : 1,Kosto: 1
-string_thorn_bush_blooming,Eclosion : 3 tours,Blooming : 3 turns,Florado: 3 vicoj
+string_thorn_bush_blooming,Eclosion : 2 tours,Blooming : 2 turns,Florado: 2 vicoj
 string_thorn_bush_withering,Flétrissement : 5 tours,Withering : 5 turns,Velki: 5 vicoj
 string_lily_flower_name,Lys bleu,Blue lily,Lilio
 string_lily_flower_description,"A l'éclosion: sur sa ligne et sa colonne, transforme le métal en herbe","Upon bloom: on its row and column, change metal to grass",TODO

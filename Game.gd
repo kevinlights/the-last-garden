@@ -32,13 +32,13 @@ export var cout_mana_ronces : int = 1
 export var cout_mana_fleurbleue : int = 1
 
 # Parametre spawn insects
-export var spawn_insect_min : int = 1
-export var spawn_insect_max : int = 2
-export var spawn_insect_step : int = 1
+export var spawn_insect_min : int = 3
+export var spawn_insect_max : int = 4
+export var spawn_insect_wave_step : int = 2
 export var spawn_insect_min_turn_step : int = 1
 export var spawn_insect_max_turn_step : int = 1
 export var next_wave_turn_step : int = 2
-export var next_wave_hatch_step : int = 2
+export var next_wave_hatch_step : int = 1
 
 var mana : int
 var slots : Array = Array()
@@ -58,11 +58,12 @@ var selected_tile : Vector2 = Vector2(-100,-100)
 var current_wave : int
 var next_wave_turn : int = next_wave_turn_step
 var next_wave_hatch : int = 1
+var game_won : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
-	current_wave = 1
+	current_wave = 0
 	mana = mana_max
 
 	emit_signal("mana_set", mana)
@@ -113,21 +114,26 @@ func play():
 				turnQueue.play_turn()
 				yield(turnQueue,"turn_finished")
 				yield(get_tree().create_timer(1), "timeout")
-				if (not turnQueue.as_insect() and turnQueue.turn_number >= next_wave_turn):
-					current_wave += 1
-					next_wave_turn = 1
-					if (current_wave % spawn_insect_step) == 0 :
-						spawn_insect_min += spawn_insect_min_turn_step
-						spawn_insect_max += spawn_insect_max_turn_step
-					insect_spawner(spawn_insect_min,spawn_insect_max)
-					next_wave_turn = turnQueue.turn_number + next_wave_turn_step + next_wave_hatch
-				if turnQueue.turn_number >= next_wave_turn:
-					current_wave += 1
-					next_wave_turn = turnQueue.turn_number + next_wave_turn_step + next_wave_hatch
-					if (current_wave % spawn_insect_step) == 0 :
-						spawn_insect_min += spawn_insect_min_turn_step
-						spawn_insect_max += spawn_insect_max_turn_step
-					insect_spawner(spawn_insect_min,spawn_insect_max)
+				if(not game_won):
+					if (not turnQueue.as_insect_unhatched()):
+						var tmp_wave_hatch : int = next_wave_hatch
+						current_wave += 1
+						next_wave_hatch = 1
+						if (current_wave % spawn_insect_wave_step) == 0 :
+							print("satut")
+							spawn_insect_min += spawn_insect_min_turn_step
+							spawn_insect_max += spawn_insect_max_turn_step
+						insect_spawner(spawn_insect_min,spawn_insect_max)
+						next_wave_hatch = tmp_wave_hatch
+						next_wave_turn = turnQueue.turn_number + next_wave_turn_step + next_wave_hatch
+					elif turnQueue.turn_number >= next_wave_turn:
+						current_wave += 1
+						next_wave_turn = turnQueue.turn_number + next_wave_turn_step + next_wave_hatch
+						if (current_wave % spawn_insect_wave_step) == 0 :
+							print("satut")
+							spawn_insect_min += spawn_insect_min_turn_step
+							spawn_insect_max += spawn_insect_max_turn_step
+						insect_spawner(spawn_insect_min,spawn_insect_max)
 				mana = mana_max
 				emit_signal("mana_set", mana)
 				add_plants()
@@ -138,6 +144,7 @@ func add_plants():
 	var choose : float
 	slots = []
 	for i in range(nb_plants_per_turn):
+		randomize()
 		choose = randf()
 		if choose <= pissenlit_chance:
 			slots.append("pissenlit") 
@@ -151,11 +158,14 @@ func add_plants():
 
 func insect_spawner(spawn_min : int, spawn_max : int):
 	
-	var nb_insects : int = randi() % spawn_max + spawn_min + 1
+	randomize()
+	var nb_insects : int = (randi() % ((spawn_max-spawn_min)+1)) + spawn_min
+	print(nb_insects)
 	
 	var enemy_spawn_postions : Array = tileMap.tile_peripheriques()
 	turnQueue.delete_occupied_tiles(enemy_spawn_postions)
 	for i in range(nb_insects):
+		randomize()
 		var test_spawn = randi() % enemy_spawn_postions.size()
 		ajouter_instect("insectotueur", enemy_spawn_postions[test_spawn],queen_position)
 		enemy_spawn_postions.remove(test_spawn)
@@ -204,8 +214,7 @@ func ajouter_reine():
 	turnQueue.add_character(new_queen)
 
 func _on_game_won():
-	$Sounds/Musique.stop()
-	$Sounds/MusiqueVictoire.play()
+	game_won = true
 	$ui_hud.showVictoryScreen()
 
 func _on_game_lost():
