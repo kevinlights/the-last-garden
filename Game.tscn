@@ -235,27 +235,26 @@ align = 1
 valign = 1
 
 [node name="EcranFinDePartie" type="CenterContainer" parent="ui_hud"]
-editor/display_folded = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 70.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ui_hud/EcranFinDePartie"]
-editor/display_folded = true
 margin_left = 327.0
-margin_top = 280.0
+margin_top = 245.0
 margin_right = 697.0
-margin_bottom = 320.0
+margin_bottom = 285.0
 
 [node name="CenterContainer" type="CenterContainer" parent="ui_hud/EcranFinDePartie/VBoxContainer"]
-margin_right = 370.0
+editor/display_folded = true
+margin_right = 281.0
+margin_bottom = 64.0
 
 [node name="VICTOIRE" type="Label" parent="ui_hud/EcranFinDePartie/VBoxContainer/CenterContainer"]
 visible = false
-margin_left = 44.0
-margin_top = -32.0
-margin_right = 325.0
-margin_bottom = 32.0
+margin_right = 281.0
+margin_bottom = 64.0
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.921569, 0.835294, 0.286275, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -263,19 +262,19 @@ text = "VICTOIRE"
 
 [node name="DEFAITE" type="Label" parent="ui_hud/EcranFinDePartie/VBoxContainer/CenterContainer"]
 visible = false
-margin_left = 60.0
-margin_top = -32.0
-margin_right = 310.0
-margin_bottom = 32.0
+margin_left = 15.0
+margin_right = 265.0
+margin_bottom = 64.0
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.92549, 0.278431, 0.192157, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "DEFAITE"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ui_hud/EcranFinDePartie/VBoxContainer"]
-margin_top = 4.0
-margin_right = 370.0
-margin_bottom = 40.0
+editor/display_folded = true
+margin_top = 68.0
+margin_right = 281.0
+margin_bottom = 68.0
 custom_constants/separation = 10
 
 [node name="Rejouer" type="Button" parent="ui_hud/EcranFinDePartie/VBoxContainer/HBoxContainer"]
