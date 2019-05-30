@@ -1,43 +1,43 @@
 id,fr,en,eo
 string_new_game,Nouvelle partie,New game,Nova ludo
 string_quit,Quitter,Quit,Forlasi
-string_notuto,Désactiver le didacticiel,Disable tutorial,TODO
+string_notuto,Désactiver le didacticiel,Disable tutorial,Malŝalti la lernilon
 string_options,Options,Settings,Opcioj
 string_daisy_name,Pâquerette,Daisy,Lekanteto
-string_daisy_description,A l'éclosion: lance un pétale explosif sur un insecte.,Upon bloom: throws an explosive petal on an insect,TODO
+string_daisy_description,A l'éclosion: lance un pétale explosif sur un insecte.,Upon bloom: throws an explosive petal on an insect,Kiam la florado : ĵetas eksplodeman petalon al insekto
 string_daisy_cost,Coût : 1,Cost : 1,Kosto
-string_daisy_blooming,Eclosion : 3 tours,Blooming : 3 turns,Florado: 3 vicoj
+string_daisy_blooming,Éclosion : 2 tours,Blooming : 2 turns,Florado: 2 vicoj
 string_daisy_withering,Flétrissement : 7 tours,Withering : 7 turns,Velki: 7 vicoj
 string_rafflesia_name,Rafflesia,Rafflesia,Raflezio
 string_rafflesia_description,Attire vers elle les insectes à sa portée,Attract in range insects to itself,Altiras la insektojn al ĝi
 string_rafflesia_cost,Coût : 1,Cost : 1,Kosto: 1
-string_rafflesia_blooming,Eclosion : 3 tours,Blooming : 3 turns,Florado: 3 vicoj
+string_rafflesia_blooming,Éclosion : 3 tours,Blooming : 3 turns,Florado: 3 vicoj
 string_rafflesia_withering,Flétrissement : 6 tours,Withering : 6 turns,Velki: 6 vicoj
 string_thorn_bush_name,Ronces,Thorn bush,Rubusoj
-string_thorn_bush_description,Tue l’insecte qui vole sur elle.,Upon bloom : kill the insect that flies on it.,TODO
+string_thorn_bush_description,Tue l’insecte qui vole sur elle.,Upon bloom : kill the insect that flies on it.,Kiam la florado : Mortigas la flugantan insekton super ĝi
 string_thorn_bush_cost,Coût : 1,Cost : 1,Kosto: 1
-string_thorn_bush_blooming,Eclosion : 2 tours,Blooming : 2 turns,Florado: 2 vicoj
+string_thorn_bush_blooming,Éclosion : 3 tours,Blooming : 3 turns,Florado: 3 vicoj
 string_thorn_bush_withering,Flétrissement : 5 tours,Withering : 5 turns,Velki: 5 vicoj
 string_lily_flower_name,Lys bleu,Blue lily,Lilio
-string_lily_flower_description,"A l'éclosion: sur sa ligne et sa colonne, transforme le métal en herbe","Upon bloom: on its row and column, change metal to grass",TODO
+string_lily_flower_description,"A l'éclosion: sur sa ligne et sa colonne, transforme le métal en herbe","Upon bloom: on its row and column, change metal to grass",Kiam la florado : ŝanĝas la metalon en herbo sur ĝia vertikalo kaj horizontalo
 string_lily_flower_cost,Coût : 1,Cost : 1,Kosto: 1
-string_lily_flower_blooming,Eclosion : 2 tours,Blooming : 2 turns,Florado: 2 vicoj
+string_lily_flower_blooming,Éclosion : 2 tours,Blooming : 2 turns,Florado: 2 vicoj
 string_lily_flower_withering,Flétrissement : 7 tours,Withering : 7 turns,Velki: 7 vicoj
 string_victory,VICTOIRE,VICTORY,Venko
-string_defeat,DEFAITE,DEFEAT,Malvenko
+string_defeat,DÉFAITE,DEFEAT,Malvenko
 string_rejouer,Rejouer,Replay,Refari la ludon
 string_retour,Retour,Quit,Nuligi
-string_tuto1.1,Protégez la graine de la reine-mère,Protect the queen-mother’s seed,TODO
-string_tuto1.2,"Si un insecte la dévore, vous perdez. Si elle éclot, vous gagnez","If an insect devours her, you loose. If she blooms, you win",TODO
-string_tuto2.1,- Utilisez les orbes pour planter des plantes qui serviront à combattre les insectes,- Use orbs to plant flower wich will help you fight insects,TODO
-string_tuto2.2,- Votre nombre d'orbes reviens à son maximum au début de chaque tour,- Your number of orbs is replenished at the start of each turn,TODO
-string_tuto3.1,"- Lorsque vous plantez une plante, elle apparaît à l'état de bourgeon","- When you plant a plant, it appears as a bud",TODO
-string_tuto3.2,"- Quand elle éclot, elle déclanche son effet","- When it blooms, it triggers its effect",TODO
-string_tuto3.3,- Elle reste ensuite sur le champ de battaille jusqu'à son flétrissement,- It then stay on the battlefield until it withers,TODO
-string_tuto3.4,- Vous receverez 3 nouvelles plantes aléatoires au début de chaque tour,- You will recieve 3 new random plants at the start of every turn,TODO
-string_tuto4.1,"- A la fin d'un tour, les insectes jouent en premier","- At the end of every turn, insects play first",TODO
-string_tuto4.2,"- Les insectes transforment l'herbe en métal,",- Insects transform grass into metal,TODO
-string_tuto4.3,- Il est impossible de planter sur le métal,- You can't plant on metal,TODO
+string_tuto1.1,Protégez la graine de la reine-mère,Protect the queen-mother’s seed,Protektu la grajnon de la reĝina patrino
+string_tuto1.2,"Si un insecte la dévore, vous perdez. Si elle éclot, vous gagnez","If an insect devours her, you loose. If she blooms, you win","Se insekto voras ĝin, vi malganjas. Se ĝi floras, vi ganjas"
+string_tuto2.1,- Utilisez les orbes pour planter des plantes qui serviront à combattre les insectes,- Use orbs to plant flower wich will help you fight insects,- Uzu la orbojn por planti plantojn kiu balalos insektojn
+string_tuto2.2,- Votre nombre d'orbes reviens à son maximum au début de chaque tour,- Your number of orbs is replenished at the start of each turn,- Via nombro da orboj restaŭras komence de ĉiu vico
+string_tuto3.1,"- Lorsque vous plantez une plante, elle apparaît à l'état de bourgeon","- When you plant a plant, it appears as a bud","- Kiam vi plantas, ĝi komencas kiel burĝona stato"
+string_tuto3.2,"- Quand elle éclot, elle déclenche son effet","- When it blooms, it triggers its effect","- Kiam ĝi floras, la planto aktivigas ĝian efekton"
+string_tuto3.3,- Elle reste ensuite sur le champ de bataille jusqu'à son flétrissement,- It then stay on the battlefield until it withers,- Ĝi restas sur la batalejo ĝis ĝi velkas
+string_tuto3.4,- Vous recevrez 3 nouvelles plantes aléatoires au début de chaque tour,- You will recieve 3 new random plants at the start of every turn,- Vi gajnos tri novajn plantojn lotece komence de ĉiu vico
+string_tuto4.1,"- A la fin d'un tour, les insectes jouent en premier","- At the end of every turn, insects play first",- Fine de ĉiu vico la inesktojn ludas unue
+string_tuto4.2,"- Les insectes transforment l'herbe en métal,",- Insects transform grass into metal,- La insektojn ŝanĝas la herbon en metalo
+string_tuto4.3,- Il est impossible de planter sur le métal,- You can't plant on metal,- Oni ne povas planti sur la metalo
 string_language,Langue:,Language:,Lingvo :
 string_sound_level,Niveau du son :,Sound level :,Sonoran laŭtecon
 string_end_turn,Fin de tour,End turn,Fini la vicon
