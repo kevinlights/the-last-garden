@@ -81,6 +81,7 @@ text = "INSECTOTUEURS"
 align = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu/VBoxContainer"]
+editor/display_folded = true
 margin_top = 220.0
 margin_right = 964.0
 margin_bottom = 290.0

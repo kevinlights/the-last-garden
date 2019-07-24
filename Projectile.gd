@@ -23,8 +23,8 @@ signal projectile_done(position)
 onready var root : Node2D = get_parent().get_parent()
 onready var turnQueue : Node = get_node("../TurnQueue")
 onready var cam : Camera2D = get_node("../Camera2D")
-#onready var boom = load("res://boom.tscn")
-onready var boom = load("res://boom_gles2.tscn")
+onready var boom = load("res://boom.tscn")
+#onready var boom = load("res://boom_gles2.tscn")
 
 
 export var speed : int = 500
