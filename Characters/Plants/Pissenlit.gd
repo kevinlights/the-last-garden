@@ -51,7 +51,8 @@ func update():
 		emit_signal("updated")
 	else :
 		emit_signal("updated")
-		get_parent().remove_child(self)
+		#get_parent().remove_child(self)
+		self.queue_free()
 
 # La plante eclos
 func hatch():

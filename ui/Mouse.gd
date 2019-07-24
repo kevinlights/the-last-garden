@@ -46,7 +46,9 @@ func _process(delta):
 		visible = false
 
 func _on_ui_hud_plant_selected(plant):
-	get_parent().remove_child(selected_plant)
+	#get_parent().remove_child(selected_plant)
+	if selected_plant != null :
+		selected_plant.queue_free()
 	match plant:
 		"pissenlit":
 			selected_plant = pissenlit_ressource.instance()
@@ -70,16 +72,22 @@ func _on_ui_hud_plant_selected(plant):
 			selected_plant.sprite.modulate = Color(1, 1, 1, 0.5)
 
 func _on_EndTurnButton_pressed():
-	get_parent().remove_child(selected_plant)
+	#get_parent().remove_child(selected_plant)
+	if selected_plant != null :
+		selected_plant.queue_free()
 	visible = false
 	selected_plant = null
 
 func _on_Game_plant_posee(slot):
-	get_parent().remove_child(selected_plant)
+	#get_parent().remove_child(selected_plant)
+	if selected_plant != null :
+		selected_plant.queue_free()
 	visible = false
 	selected_plant = null
 
 func _on_Game_plants_changed(slots):
-	get_parent().remove_child(selected_plant)
+	#get_parent().remove_child(selected_plant)
+	if selected_plant != null:
+		selected_plant.queue_free()
 	visible = false
 	selected_plant = null

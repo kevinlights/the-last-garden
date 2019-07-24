@@ -100,7 +100,6 @@ script = ExtResource( 5 )
 script = ExtResource( 6 )
 
 [node name="ui_navigation" type="Node" parent="."]
-editor/display_folded = true
 script = ExtResource( 7 )
 
 [node name="VisualisationPlantSkill" type="TileMap" parent="ui_navigation"]
@@ -119,6 +118,7 @@ texture = SubResource( 3 )
 script = ExtResource( 10 )
 
 [node name="ui_hud" type="CanvasLayer" parent="."]
+editor/display_folded = true
 script = ExtResource( 11 )
 
 [node name="PlanteDescription" type="PanelContainer" parent="ui_hud"]
@@ -457,6 +457,7 @@ rect_scale = Vector2( 0.350456, 0.350456 )
 texture = ExtResource( 19 )
 
 [node name="bg" type="CanvasLayer" parent="."]
+editor/display_folded = true
 layer = -5
 scale = Vector2( 0.559144, 0.570343 )
 transform = Transform2D( 0.559144, 0, 0, 0.570343, 0, 0 )
@@ -467,6 +468,7 @@ scale = Vector2( 1.04126, 1.06425 )
 texture = SubResource( 8 )
 
 [node name="Sounds" type="Node" parent="."]
+editor/display_folded = true
 script = ExtResource( 20 )
 
 [node name="Musique" type="AudioStreamPlayer" parent="Sounds"]
@@ -485,16 +487,16 @@ volume_db = -20.0
 [node name="SonPlantage" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 24 )
 [connection signal="mana_set" from="." to="ui_hud" method="_on_Game_mana_set"]
-[connection signal="plant_posee" from="." to="ui_navigation/Mouse" method="_on_Game_plant_posee"]
 [connection signal="plant_posee" from="." to="ui_hud" method="_on_Game_plant_posee"]
+[connection signal="plant_posee" from="." to="ui_navigation/Mouse" method="_on_Game_plant_posee"]
 [connection signal="plant_posee" from="." to="Sounds" method="_on_Game_plant_posee"]
-[connection signal="plants_changed" from="." to="ui_navigation/Mouse" method="_on_Game_plants_changed"]
 [connection signal="plants_changed" from="." to="ui_hud" method="_on_Game_plants_changed"]
-[connection signal="plant_selected" from="ui_hud" to="ui_navigation/Mouse" method="_on_ui_hud_plant_selected"]
+[connection signal="plants_changed" from="." to="ui_navigation/Mouse" method="_on_Game_plants_changed"]
 [connection signal="plant_selected" from="ui_hud" to="." method="_on_ui_hud_plant_selected"]
-[connection signal="pressed" from="ui_hud/EndTurnButton" to="ui_navigation/Mouse" method="_on_EndTurnButton_pressed"]
-[connection signal="pressed" from="ui_hud/EndTurnButton" to="." method="_on_EndTurnButton_pressed"]
+[connection signal="plant_selected" from="ui_hud" to="ui_navigation/Mouse" method="_on_ui_hud_plant_selected"]
 [connection signal="pressed" from="ui_hud/EndTurnButton" to="ui_hud" method="_on_EndTurnButton_pressed"]
+[connection signal="pressed" from="ui_hud/EndTurnButton" to="." method="_on_EndTurnButton_pressed"]
+[connection signal="pressed" from="ui_hud/EndTurnButton" to="ui_navigation/Mouse" method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EndTurnButton" to="ui_navigation" method="_on_EndTurnButton_pressed"]
 [connection signal="pressed" from="ui_hud/EcranFinDePartie/VBoxContainer/HBoxContainer/Rejouer" to="ui_hud" method="_on_Rejouer_pressed"]
 [connection signal="pressed" from="ui_hud/EcranFinDePartie/VBoxContainer/HBoxContainer/Retour" to="ui_hud" method="_on_Retour_pressed"]

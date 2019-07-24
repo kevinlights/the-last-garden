@@ -41,7 +41,8 @@ func update():
 			if turnsBeforeFade != 0:
 				longevite.set_text(str(turnsBeforeFade))
 	else:
-		get_parent().remove_child(self)
+		#get_parent().remove_child(self)
+		self.queue_free()
 		
 	emit_signal("updated")
 	

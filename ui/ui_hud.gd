@@ -140,7 +140,8 @@ func _on_FleurBleueButton_mouse_exited():
 
 func _on_Game_plants_changed(slots):
 	for child in boutonsPlantation.get_children():
-		boutonsPlantation.remove_child(child)
+		#boutonsPlantation.remove_child(child)
+		child.queue_free()
 	var new_button
 	for plant in slots:
 		match plant:
@@ -155,7 +156,8 @@ func _on_Game_plants_changed(slots):
 		boutonsPlantation.add_child(new_button)
 
 func _on_Game_plant_posee(slot):
-	boutonsPlantation.remove_child(boutonsPlantation.get_children()[slot])
+	#boutonsPlantation.remove_child(boutonsPlantation.get_children()[slot])
+	boutonsPlantation.get_children()[slot].queue_free()
 	plant_selected = false
 	selected_plant = null
 	$EcranFinDePartie/VBoxContainer/HBoxContainer/Rejouer.grab_focus()

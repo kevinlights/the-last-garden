@@ -41,7 +41,8 @@ func update():
 	else :
 		emit_signal("updated")
 		is_ronce = false
-		get_parent().remove_child(self)
+		#get_parent().remove_child(self)
+		self.queue_free()
 
 func hatch():
 	$AnimationPlayer.play("meta")

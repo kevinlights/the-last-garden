@@ -1,20 +1,22 @@
 extends MarginContainer
 
+onready var langueSelector : OptionButton = get_parent().get_node("Langue")
+
 func _ready():
 	global.display_tutorial = true
 	update_strings()
 	get_parent().get_node("Langue").select(0)
 	match TranslationServer.get_locale():
 		"fr":
-			get_parent().get_node("Langue").select(0)
+			langueSelector.select(0)
 		"en":
-			get_parent().get_node("Langue").select(1)
+			langueSelector.select(1)
 		"eo":
-			get_parent().get_node("Langue").select(2)
+			langueSelector.select(2)
 	
 func update_strings():
-	$"VBoxContainer/VBoxContainer/Nouvelle Partie".set_text(tr("string_new_game"))
-	$"VBoxContainer/Quitter".set_text(tr("string_quit"))
+	$VBoxContainer/VBoxContainer/NouvellePartie.set_text(tr("string_new_game"))
+	$VBoxContainer/Quitter.set_text(tr("string_quit"))
 	$VBoxContainer/VBoxContainer/DisableTuto.set_text(tr("string_notuto"))
 	
 func _on_Nouvelle_Partie_pressed():

@@ -43,4 +43,5 @@ func process_to_goal(distance : float):
 		emit_signal("projectile_done",goal)
 
 func fade():
-	get_parent().remove_child(self)
+	#get_parent().remove_child(self)
+	self.queue_free()

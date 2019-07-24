@@ -137,8 +137,9 @@ func fade():
 	$AnimationPlayer.play("meurt")
 	yield($AnimationPlayer, "animation_finished")
 	to_remove = true
-	get_parent().remove_child(self)
 	longevite.set_text(" ")
+	#get_parent().remove_child(self)
+	self.queue_free()
 	
 func get_skill_zone():
 	return [tileMap.world_to_map(movement_predictor())]

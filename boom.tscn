@@ -106,4 +106,3 @@ one_shot = true
 speed_scale = 0.2
 process_material = SubResource( 6 )
 texture = ExtResource( 2 )
-

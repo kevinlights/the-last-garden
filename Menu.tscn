@@ -7,7 +7,7 @@
 [ext_resource path="res://art2d/bg3.png" type="Texture" id=5]
 [ext_resource path="res://font/riffic.otf" type="DynamicFontData" id=6]
 [ext_resource path="res://sounds/symphony - 01 Sky Island.ogg" type="AudioStream" id=7]
-[ext_resource path="res://title.png" type="Texture" id=8]
+[ext_resource path="res://art2d/title.png" type="Texture" id=8]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 3 )
@@ -72,9 +72,9 @@ alignment = 2
 
 [node name="INSECTOTUEURS" type="Label" parent="Menu/VBoxContainer"]
 visible = false
-margin_top = 43.0
+margin_top = 107.0
 margin_right = 964.0
-margin_bottom = 86.0
+margin_bottom = 150.0
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.870588, 0.337255, 1, 1 )
 text = "INSECTOTUEURS"
@@ -85,7 +85,7 @@ margin_top = 220.0
 margin_right = 964.0
 margin_bottom = 290.0
 
-[node name="Nouvelle Partie" type="MenuButton" parent="Menu/VBoxContainer/VBoxContainer"]
+[node name="NouvellePartie" type="MenuButton" parent="Menu/VBoxContainer/VBoxContainer"]
 margin_right = 964.0
 margin_bottom = 40.0
 custom_fonts/font = SubResource( 4 )
@@ -132,7 +132,7 @@ rect_min_size = Vector2( 140, 0 )
 text = "Français"
 items = [ "Français", null, false, -1, null, "English", null, false, -1, null, "Esperanto", null, false, -1, null ]
 selected = 0
-[connection signal="pressed" from="Menu/VBoxContainer/VBoxContainer/Nouvelle Partie" to="Menu" method="_on_Nouvelle_Partie_pressed"]
+[connection signal="pressed" from="Menu/VBoxContainer/VBoxContainer/NouvellePartie" to="Menu" method="_on_Nouvelle_Partie_pressed"]
 [connection signal="toggled" from="Menu/VBoxContainer/VBoxContainer/DisableTuto" to="Menu" method="_on_DisableTuto_toggled"]
 [connection signal="pressed" from="Menu/VBoxContainer/Quitter" to="Menu" method="_on_Quitter_pressed"]
 [connection signal="item_selected" from="Langue" to="Menu" method="_on_Langue_item_selected"]
