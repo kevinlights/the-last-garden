@@ -22,11 +22,17 @@ _global_script_class_icons={
 
 config/name="Pot-au-Jeu-2"
 run/main_scene="res://Menu.tscn"
+run/disable_stdout=true
+run/disable_stderr=true
 config/icon="res://icon.png"
 
 [autoload]
 
 global="*res://global.gd"
+
+[debug]
+
+gdscript/warnings/enable=false
 
 [display]
 
